@@ -209,7 +209,7 @@ volume: MACRO
 	ENDC
 ENDM
 
-; obselete equivalent to toggle_perfect_pitch
+; obsolete equivalent to toggle_perfect_pitch
 pitch_offset: MACRO
 	db pitch_offset_cmd
 	IF \1 < 0
@@ -340,7 +340,7 @@ sound_jump_if: MACRO
 	dw \2 ; address
 ENDM
 
-; renders "sound_loop 0" obselete
+; renders "sound_loop 0" obsolete
 sound_jump: MACRO
 	db sound_jump_cmd
 	dw \1 ; address
