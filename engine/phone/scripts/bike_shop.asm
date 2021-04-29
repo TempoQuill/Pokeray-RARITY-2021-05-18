@@ -1,0 +1,5 @@
+BikeShopPhoneCallerScript:
+	writetext BikeShopPhoneCallerText
+	clearflag ENGINE_BIKE_SHOP_CALL_ENABLED
+	specialemail SPECIALCALL_NONE
+	end
