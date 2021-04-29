@@ -2,8 +2,7 @@ Music_PostCredits:
 	channel_count 2
 	channel 1, Music_PostCredits_Ch1
 	channel 2, Music_PostCredits_Ch2
-; from last placement of either PokeTower or Silph Co. from RBY
-	channel 3
+	channel 3 ; last placement of either PokeTower or Silph Co. from RBY
 
 Music_PostCredits_Ch1:
 	tempo 271
