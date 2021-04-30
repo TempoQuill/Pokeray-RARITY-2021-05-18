@@ -5,7 +5,8 @@
 VARS:
 Nybble 2 = Reversed octave value (1 = d7, 2 = d6, etc.)
 
-USAGE: ```
+USAGE:
+```
 	octave 1
 ```
 
@@ -28,7 +29,8 @@ Byte 3 = Volume Envelope
 Channel 4/8
 Byte 2 = Note length multiplier
 
-USAGE: ```
+USAGE:
+```
 	note_type 12, 10, 1
 	...
 	drum_speed 6
@@ -42,7 +44,8 @@ Nybble 4 = Note Offset (0-F)
 
 NOTE: In Pokemon Ray, the note table has been expanded to make all note offsets for this command valid.
 
-USAGE: ```
+USAGE:
+```
 	transpose 0, 0
 ```
 
@@ -53,7 +56,8 @@ Byte 2-3 = Big endian speed
 
 NOTE: Tempo is calculated by frame fractions of 256.  Contrary to programming rumors, in-RAM note length is not affected by shorter or longer tempos, but most songs forego the second byte in favor of practicality.
 
-USAGE: ```
+USAGE:
+```
 	tempo 256
 ```
 
@@ -64,7 +68,8 @@ Crumb 8 = Pulse ID
 
 NOTE: Only works on channels 1-2/5-6.
 
-USAGE: ```
+USAGE:
+```
 	duty_cycle 1
 ```
 
@@ -80,7 +85,8 @@ Channel 3/7
 Crumb 5 = Volume (0 = none 1 = 100 2 = 50 3 = 25)
 Nybble 4 = Wavetable ID
 
-USAGE: ```
+USAGE:
+```
 	volume_envelope 1, -1
 ```
 
@@ -92,7 +98,8 @@ Nybble 4 = Sweep direction / Incremental value
 
 NOTE: Only works on channel 1/5.
 
-USAGE: ```
+USAGE:
+```
 	pitch_sweep 7, -7
 ```
 
@@ -103,7 +110,8 @@ Crumbs 5-8 = Pulse ID (5, 6, 7, 8)
 
 NOTE: Only works on channels 1-2/5-6.
 
-USAGE: ```
+USAGE:
+```
 	duty_cycle_pattern 1, 0, 3, 2
 ```
 
@@ -111,7 +119,8 @@ USAGE: ```
 
 NOTE: Only works on channels 5-8
 
-USAGE: ```
+USAGE:
+```
 	toggle_music
 ```
 
@@ -124,7 +133,8 @@ Nybble 6 = Pitch of destination
 
 NOTE: I've been trying to figure out how to get this to work on channels 2-3/6-7.  But for now, it still only works on channel 1/5.
 
-USAGE: ```
+USAGE:
+```
 	pitch_slide 1, 4, A_
 ```
 
@@ -135,7 +145,8 @@ Byte 2 = Preamble length
 Nybble 5 = Key pitch distance
 Nybble 6 = Time between keys
 
-USAGE: ```
+USAGE:
+```
 	vibrato 20, 2, 3
 ```
 
@@ -146,7 +157,8 @@ IMPORTANT NOTE: This only works in Ray.  This is because it was stubbed in the r
 VARS:
 Byte 2 = Mute flag (On/off)
 
-USAGE: ```
+USAGE:
+```
 	set_mute TRUE
 ```
 
@@ -157,7 +169,8 @@ Byte 2 = Drum Kit
 
 NOTE: This command is only one byte if used a second time.  Keep track of whether or not its on when making music.
 
-USAGE: ```
+USAGE:
+```
 	toggle_noise 2
 	...
 	toggle_noise
@@ -180,7 +193,8 @@ Bit 7 = Channel 4/8 LEFT
 
 NOTE: Parameters are in binary.
 
-USAGE: ```
+USAGE:
+```
 	old_panning %1101, %1110
 	...
 	stereo_panning %0110, %1011
@@ -194,7 +208,8 @@ Nybble 4 = Right Speeker
 
 NOTE: This variables need to match
 
-USAGE: ```
+USAGE:
+```
 	volume 7, 7
 ```
 
@@ -205,7 +220,8 @@ Byte 2-3 = Big-endian 16-bit addend
 
 NOTE: `E6`'s use has been moderated due to the addition of `F1` Ray (more on that later).
 
-USAGE: ```
+USAGE:
+```
 	pitch_offset 2
 ```
 
@@ -218,7 +234,8 @@ Byte 2 = Note Offset (0-F is the valid range)
 
 NOTE: `E7` is a primative version of `D9`.  It only adds pitch values, and doesn't even set any carry flags, leaving the possibility of triggering the rest pitch if the offset is high enough.
 
-USAGE: ```
+USAGE:
+```
 	relative_pitch 2
 ```
 
@@ -231,7 +248,8 @@ Byte 2 = Sequence ID.
 
 NOTE: Channel 1/2/5/6 and Channel 3/7 are handled differently and, as such, possess their own groups of volume envelopes.  Each sequence either ends with `FE`, which resets the offset counter (which limits the sequence to 256 bytes), or `FF`, which ends the sequence entirely.
 
-USAGE: ```
+USAGE:
+```
 	volume_envelope_group 2
 ```
 
@@ -242,7 +260,8 @@ Byte 2 = Signed offset (-128 to 127)
 
 NOTE: The raw command is only 2 bytes, which Ray gets right.  Even so, it still has legacy for Gold, which misunderstands the command to be 3 bytes due to the assumption that this command would use the same format as `E6`.
 
-USAGE: ```
+USAGE:
+```
 	tempo_relative -2
 ```
 
@@ -251,7 +270,8 @@ USAGE: ```
 VARS:
 Byte 2-3 = Pointer to the RST for the channel that runs into this command.
 
-USAGE: ```
+USAGE:
+```
 	restart_channel .rst1
 ```
 
@@ -260,19 +280,22 @@ USAGE: ```
 VARS:
 Byte 2-3 = Song/Sound Effect ID to play
 
-USAGE: ```
+USAGE:
+```
 	new_song MUSIC_AZALEA_TOWN
 ```
 
 ## `EC` **Turn the Music Off**
 
-USAGE: ```
+USAGE:
+```
 	sfx_priority_on
 ```
 
 ## `ED` **Resume Playing the Music**
 
-USAGE: ```
+USAGE:
+```
 	sfx_priority_off
 ```
 
@@ -283,7 +306,8 @@ Byte 2-3 = Address to jump to.
 
 NOTE: This will only work through external assistance, possibly by certain events activiting the RAM exclusive to this command.
 
-USAGE: ```
+USAGE:
+```
 	sound_jump_ram Music_NorgeoTown_Ch1.body
 ```
 
@@ -293,7 +317,8 @@ VARS:
 Nybble 3 = Left Speaker (0 or f)
 Nybble 4 = Right Speaker (0 or f)
 
-USAGE: ```
+USAGE:
+```
 	stereo_panning TRUE, FALSE
 ```
 
@@ -304,7 +329,8 @@ Byte 2 = Drum Kit
 
 NOTE: This command is only one byte if used a second time.  Keep track of whether or not its on when making music.
 
-USAGE: ```
+USAGE:
+```
 	sfx_toggle_noise 2
 	...
 	sfx_toggle_noise
@@ -314,7 +340,8 @@ USAGE: ```
 
 NOTE: This acts just like `E8` from Red.  It also renders `E6` obsolete in this regard.  However, `F1` and `E6` do stack with each other.  Preambling `E6` with `F1` just means to add by one more than `E6` says.  This is an exclusive command to Ray as the command is empty in Gold.
 
-USAGE: ```
+USAGE:
+```
 	pitch_inc_switch
 ```
 
@@ -322,7 +349,8 @@ USAGE: ```
 
 NOTE: This merely acts as a placeholder equivalent to `F1` in Yoshi.  No scripts even rely on `wSoundEventFlag` anyway.  This is an exclusive command to Ray as the command is empty in Gold.
 
-USAGE: ```
+USAGE:
+```
 	toggle_sound_event
 ```
 
@@ -330,7 +358,8 @@ USAGE: ```
 
 NOTE: Acts like `F8` from Red.  Uses the same flags `DF` uses.
 
-USAGE: ```
+USAGE:
+```
 	set_music
 ```
 
@@ -348,7 +377,8 @@ USAGE (if any): ```
 
 NOTE: No scripts rely on `wSoundEventFlag`.
 
-USAGE: ```
+USAGE:
+```
 	set_sound_event
 ```
 
@@ -357,7 +387,8 @@ USAGE: ```
 VARS:
 Byte 2 = Activation Statment
 
-USAGE: ```
+USAGE:
+```
 	set_condition TRUE
 ```
 
@@ -367,7 +398,8 @@ VARS:
 Byte 2 = Activation Statment
 Byte 3-4 = Address to jump to
 
-USAGE: ```
+USAGE:
+```
 	sound_jump_if TRUE, .mainloop2
 ```
 
@@ -376,7 +408,8 @@ USAGE: ```
 VARS:
 Byte 2-3 = Address to jump to
 
-USAGE: ```
+USAGE:
+```
 	sound_jump Music_WildPokemonVictory_Ch1.body
 ```
 
@@ -386,7 +419,8 @@ VARS:
 Byte 2 = Loop count (0 to act like `FC`; obsolete)
 Byte 3-4 = Pointer
 
-USAGE: ```
+USAGE:
+```
 	sound_loop 4, .loop1
 ```
 
@@ -395,12 +429,14 @@ USAGE: ```
 VARS:
 Byte 2-3 = Address to call
 
-USAGE: ```
+USAGE:
+```
 	sound_call .sub1
 ```
 
 ## `FF` **Return / End**
 
-USAGE: ```
+USAGE:
+```
 	sound_ret
 ```
