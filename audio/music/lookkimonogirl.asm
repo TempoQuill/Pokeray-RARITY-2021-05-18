@@ -3,8 +3,7 @@ Music_LookKimonoGirl:
 	channel 1, Music_LookKimonoGirl_Ch1
 	channel 2, Music_LookKimonoGirl_Ch2
 	channel 3, Music_LookKimonoGirl_Ch3
-; from the early johto bike music in Spaceworld 1999
-	channel 4
+	channel 4 ; from early placement of Johto Bike
 
 Music_LookKimonoGirl_Ch1:
 	tempo 160

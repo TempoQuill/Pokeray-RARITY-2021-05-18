@@ -3,8 +3,7 @@ Music_VermilionCity:
 	channel 1, Music_VermilionCity_Ch1
 	channel 2, Music_VermilionCity_Ch2
 	channel 3, Music_VermilionCity_Ch3
-; from RBY placeholder
-	channel 4
+	channel 4 ; from RBY placeholder
 
 Music_VermilionCity_Ch1:
 	stereo_panning FALSE, TRUE

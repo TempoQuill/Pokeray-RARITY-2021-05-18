@@ -1,10 +1,9 @@
-Music_NewBarkTown: ; june 1999 arr
+Music_NewBarkTown: ; leftover from Gold, unused
 	channel_count 3
 	channel 1, Music_NewBarkTown_Ch1
 	channel 2, Music_NewBarkTown_Ch2
 	channel 3, Music_NewBarkTown_Ch3
-; from march 1999 arr
-	channel 4
+	channel 4 ; from old arr
 
 Music_NewBarkTown_Ch1:
 	tempo 187

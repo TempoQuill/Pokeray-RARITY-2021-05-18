@@ -3,8 +3,7 @@ Music_KantoWildBattle:
 	channel 1, Music_KantoWildBattle_Ch1
 	channel 2, Music_KantoWildBattle_Ch2
 	channel 3, Music_KantoWildBattle_Ch3
-; possibly from Viridian City sometime after the Spaceworld 1997 demo
-	channel 4
+	channel 4 ; possibly from Viridian City sometime after the Spaceworld 1997 demo
 
 Music_KantoWildBattle_Ch1:
 	tempo 112

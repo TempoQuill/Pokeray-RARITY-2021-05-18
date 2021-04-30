@@ -3,8 +3,7 @@ Music_LavenderTown:
 	channel 1, Music_LavenderTown_Ch1
 	channel 2, Music_LavenderTown_Ch2
 	channel 3, Music_LavenderTown_Ch3
-; from RBY placeholder (rocket HQ and lavender)
-	channel 4
+	channel 4 ; from RBY placeholder (rocket HQ and lavender)
 
 Music_LavenderTown_Ch1:
 	tempo 160

@@ -3,8 +3,7 @@ Music_NewBarkTownSilent:
 	channel 1, Music_NewBarkTownSilent_Ch1
 	channel 2, Music_NewBarkTownSilent_Ch2
 	channel 3, Music_NewBarkTownSilent_Ch3
-; from march 1999 arr
-	channel 4
+	channel 4 ; from older arr
 
 Music_NewBarkTownSilent_Ch1:
 	tempo 187

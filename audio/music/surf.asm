@@ -3,8 +3,7 @@ Music_Surf:
 	channel 1, Music_Surf_Ch1
 	channel 2, Music_Surf_Ch2
 	channel 3, Music_Surf_Ch3
-; possibly early placement of Azalea Town music
-	channel 4
+	channel 4 ; possibly early placement of Azalea Town music
 
 Music_Surf_Ch1:
 	tempo 108

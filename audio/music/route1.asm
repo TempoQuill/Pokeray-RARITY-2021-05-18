@@ -3,8 +3,7 @@ Music_Route1:
 	channel 1, Music_Route1_Ch1
 	channel 2, Music_Route1_Ch2
 	channel 3, Music_Route1_Ch3
-; from RBY placeholder
-	channel 4
+	channel 4 ; from RBY placeholder
 
 Music_Route1_Ch1:
 	stereo_panning FALSE, TRUE

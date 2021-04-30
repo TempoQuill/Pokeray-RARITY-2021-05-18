@@ -3,8 +3,7 @@ Music_DancingHall:
 	channel 1, Music_DancingHall_Ch1
 	channel 2, Music_DancingHall_Ch2
 	channel 3, Music_DancingHall_Ch3
-; most likely leftover from RBY's Rocket HQ music
-	channel 4
+	channel 4 ; most likely leftover from RBY's Rocket HQ music
 
 Music_DancingHall_Ch1:
 	tempo 208

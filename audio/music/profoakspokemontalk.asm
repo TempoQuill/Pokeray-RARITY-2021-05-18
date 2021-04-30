@@ -3,9 +3,8 @@ Music_ProfOaksPokemonTalk:
 	channel 1, Music_ProfOaksPokemonTalk_Ch1
 	channel 2, Music_ProfOaksPokemonTalk_Ch2
 	channel 3, Music_ProfOaksPokemonTalk_Ch3
-; possibly from early placement of rival music
+	channel 4 ; possibly from early placement of rival music
 ; strangely enough, the placeholder music doesn't even have this unused byte
-	channel 4
 
 Music_ProfOaksPokemonTalk_Ch1:
 	tempo 164

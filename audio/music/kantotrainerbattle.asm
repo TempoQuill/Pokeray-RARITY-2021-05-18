@@ -3,8 +3,7 @@ Music_KantoTrainerBattle:
 	channel 1, Music_KantoTrainerBattle_Ch1
 	channel 2, Music_KantoTrainerBattle_Ch2
 	channel 3, Music_KantoTrainerBattle_Ch3
-; from Viridian City in the Spaceworld 1997 demo
-	channel 4
+	channel 4 ; from Viridian City in the Spaceworld 1997 demo
 
 Music_KantoTrainerBattle_Ch1:
 	tempo 114
