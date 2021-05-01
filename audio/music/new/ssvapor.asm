@@ -4,7 +4,7 @@ Music_SSVapor:
 	channel 1, Music_SSVapor_Ch1
 	channel 2, Music_SSVapor_Ch2
 	channel 3, Music_SSVapor_Ch3
-	channel 4 ; from placeholders
+	channel 4 ; from placeholders (Fire Flower BGM and SS Aqua)
 	
 Music_SSVapor_Ch1:
 	tempo 235

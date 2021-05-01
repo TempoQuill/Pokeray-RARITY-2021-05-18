@@ -4,7 +4,7 @@ Music_TraversalCity:
 	channel 1, Music_TraversalCity_Ch1
 	channel 2, Music_TraversalCity_Ch2
 	channel 3, Music_TraversalCity_Ch3
-	channel 4 ; from Cherrygrove City
+	channel 4 ; from Mushroom BGM and Cherrygrove City
 
 Music_TraversalCity_Ch1:
 	tempo 239

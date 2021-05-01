@@ -593,7 +593,6 @@ Music_Route55_Ch3:
 	rest 6
 	note A_, 2
 	sound_call .sub3
-	note D_, 16
 	note A_, 1
 	note A#, 15
 	note_type 12, 1, 5
