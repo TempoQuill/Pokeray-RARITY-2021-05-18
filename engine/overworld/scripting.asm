@@ -213,13 +213,13 @@ ScriptCommandTable:
 	dw Script_pokemart                   ; 93
 	dw Script_elevator                   ; 94
 	dw Script_trade                      ; 95
-	dw Script_askforemailaddr          ; 96
-	dw Script_email                  ; 97
-	dw Script_endofmessage                     ; 98
+	dw Script_askforemailaddr            ; 96
+	dw Script_email                      ; 97
+	dw Script_endofmessage               ; 98
 	dw Script_describedecoration         ; 99
 	dw Script_fruittree                  ; 9a
-	dw Script_specialemail           ; 9b
-	dw Script_checkemail             ; 9c
+	dw Script_specialemail               ; 9b
+	dw Script_checkemail                 ; 9c
 	dw Script_verbosegiveitem            ; 9d
 	dw Script_swarm                      ; 9e
 	dw Script_halloffame                 ; 9f

@@ -3,7 +3,7 @@
 SwarmWaterWildMons:
 
 ; Marill swarm
-	map_id MOUNT_MORTAR_1F_OUTSIDE
+	db  3, 49 ; MOUNT_MORTAR_1F_OUTSIDE
 	db 4 percent ; encounter rate
 	db 20, GOLDEEN
 	db 20, MARILL

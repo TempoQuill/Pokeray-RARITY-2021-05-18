@@ -25,22 +25,22 @@ Music_DilapPokeCenter_Ch1:
 	octave 2
 	note F#, 4
 	octave 3
-	note C_, 2
+	note C_, 4
 	sound_loop 7, .loop1
 	octave 2
-	note A#, 2
+	note A#, 4
 	octave 3
-	note C_, 2
+	note C_, 4
 .loop2:
 	octave 2
-	note G#, 2
+	note G#, 4
 	octave 3
-	note C_, 2
+	note C_, 4
 	sound_loop 3, .loop2
 	octave 2
-	note A#, 2
+	note A#, 4
 	octave 3
-	note C_, 2
+	note C_, 4
 	sound_jump .mainloop
 
 Music_DilapPokeCenter_Ch2:

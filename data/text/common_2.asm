@@ -1281,6 +1281,13 @@ _CoordinatesEventText::
 	done
 
 _ReceivedItemText::
+	text "<PLAYER> recieved"
+	line "a @"
+	text_ram wStringBuffer4
+	text "."
+	done
+
+; unused
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer4

@@ -39,8 +39,8 @@ ENDM
 	map_const LARCHS_HOUSE          5,   5 ; 7
 	map_const ROUTE_49              15,  9 ; 8
 	map_const ROUTE_49_HOUSE        4,   4 ; 9
-	map_const COTTAGE_LANAWE_GATE   4,   4 ; a
-	map_const ROUTE_49_50_GATE      4,   4 ; b
-	map_const ROUTE_49_VACUUM_GATE  4,   4 ; c
-	map_const ROUTE_49_51_GATE      4,   4 ; d
-	map_const COTTAGE_ROUTE_55_GATE 4,   4 ; e
+	map_const COTTAGE_LANAWE_GATE   4,   4 ; 10
+	map_const ROUTE_49_50_GATE      4,   4 ; 11
+	map_const ROUTE_49_VACUUM_GATE  4,   4 ; 12
+	map_const ROUTE_49_51_GATE      4,   4 ; 13
+	map_const COTTAGE_ROUTE_55_GATE 4,   4 ; 14

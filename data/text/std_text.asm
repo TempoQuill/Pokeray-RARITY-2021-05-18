@@ -85,7 +85,7 @@ MagazineBookshelfText:
 	line "#MON GRAPH…"
 	done
 
-TeamRocketOathText:
+; not used
 	text "TEAM ROCKET OATH"
 
 	para "Steal #MON for"
@@ -136,6 +136,10 @@ WrongSideText:
 	done
 
 TrashCanText:
+	text "Nope. There's only"
+	line "trash here."
+
+; not used
 	text "There's nothing in"
 	line "here…"
 	done
@@ -162,7 +166,7 @@ MartSignText:
 	para "#MON MART"
 	done
 
-ContestResults_ReadyToJudgeText:
+; not used
 	text "We will now judge"
 	line "the #MON you've"
 	cont "caught."
@@ -182,15 +186,15 @@ AskNumber1MText:
 	line "tough."
 
 	para "Could I get your"
-	line "phone number?"
+	line "e-mail address?"
 
-	para "I'll call you for"
-	line "a rematch."
+	para "I'll message you"
+	line "for a rematch."
 	done
 
 AskNumber2MText:
-	text "Register the phone"
-	line "number?"
+	text "Register the e-"
+	line "mail address?"
 	done
 
 RegisteredNumberMText:
@@ -201,7 +205,7 @@ RegisteredNumberMText:
 	done
 
 NumberAcceptedMText:
-	text "I'll call you if"
+	text "I'll e-mail you if"
 	line "anything comes up."
 	done
 
@@ -210,13 +214,13 @@ NumberDeclinedMText:
 	line "Just talk to me if"
 
 	para "you want to get my"
-	line "phone number."
+	line "e-mail address."
 	done
 
 PhoneFullMText:
-	text "Your phone doesn't"
+	text "Your e-mail doesn't"
 	line "have enough memory"
-	cont "for more numbers."
+	cont "for more users."
 	done
 
 RematchMText:
@@ -229,15 +233,15 @@ AskNumber1FText:
 	line "at battling."
 
 	para "Want to give me"
-	line "your phone number?"
+	line "your e-mail?"
 
-	para "I'll phone you for"
-	line "another battle."
+	para "I'll message you"
+	line "for more battles."
 	done
 
 AskNumber2FText:
-	text "Register the phone"
-	line "number?"
+	text "Register the e-"
+	line "mail address?"
 	done
 
 RegisteredNumberFText:
@@ -248,7 +252,7 @@ RegisteredNumberFText:
 	done
 
 NumberAcceptedFText:
-	text "I'll call you if"
+	text "I'll e-mail you if"
 	line "something's up."
 	done
 
@@ -256,14 +260,14 @@ NumberDeclinedFText:
 	text "Oh, fine then…"
 	line "If you want to get"
 
-	para "my phone number,"
-	line "just tell me."
+	para "my e-mail, just"
+	line "tell me."
 	done
 
 PhoneFullFText:
-	text "Your phone doesn't"
+	text "Your e-mail doesn't"
 	line "have enough memory"
-	cont "for more numbers."
+	cont "for more users."
 	done
 
 RematchFText:
@@ -271,7 +275,7 @@ RematchFText:
 	line "Let's battle!"
 	done
 
-ContestResults_PlayerWonAPrizeText:
+; not used
 	text "<PLAYER> wins the"
 	line "No. @"
 	text_ram wStringBuffer3
@@ -282,29 +286,44 @@ ContestResults_PlayerWonAPrizeText:
 	done
 
 ReceivedItemText:
+	text "<PLAYER> recieved"
+	line "a @"
+	text_ram wStringBuffer4
+	text "."
+	done
+
+ReceivedItemGroupText:
+	text "<PLAYER> recieved"
+	line "a group of"
+	cont "@"
+	text_ram wStringBuffer4
+	text "S."
+	done
+
+; not used
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer4
 	text "."
 	done
 
-ContestResults_JoinUsNextTimeText:
+; not used
 	text "Please join us for"
 	line "the next Contest!"
 	done
 
-ContestResults_ConsolationPrizeText:
+; not used
 	text "Everyone else gets"
 	line "a BERRY as a con-"
 	cont "solation prize!"
 	done
 
-ContestResults_DidNotWinText:
+; not used
 	text "We hope you do"
 	line "better next time."
 	done
 
-ContestResults_ReturnPartyText:
+; not used
 	text "We'll return the"
 	line "#MON we kept"
 
@@ -312,7 +331,7 @@ ContestResults_ReturnPartyText:
 	line "Here you go!"
 	done
 
-ContestResults_PartyFullText:
+; not used
 	text "Your party's full,"
 	line "so the #MON was"
 
@@ -382,7 +401,7 @@ CoinVendor_CancelText:
 	line "Come again!"
 	done
 
-BugContestPrizeNoRoomText:
+; not used
 	text "Oh? Your PACK is"
 	line "full."
 

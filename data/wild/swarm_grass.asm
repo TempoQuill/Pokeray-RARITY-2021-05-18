@@ -3,7 +3,7 @@
 SwarmGrassWildMons:
 
 ; Yanma swarm
-	map_id ROUTE_35
+	map_id COTTAGE_TOWN
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 12, NIDORAN_M
@@ -31,7 +31,7 @@ SwarmGrassWildMons:
 	db 10, DITTO
 
 ; Snubbull swarm
-	map_id ROUTE_38
+	map_id ROUTE_49_VACUUM_GATE ; ROUTE_38
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 
 	; morn
@@ -60,7 +60,7 @@ SwarmGrassWildMons:
 	db 13, TAUROS
 
 ; Dunsparce swarm
-	map_id DARK_CAVE_VIOLET_ENTRANCE
+	map_id COTTAGE_TOWN
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 3, GEODUDE
@@ -88,7 +88,7 @@ SwarmGrassWildMons:
 	db 4, DUNSPARCE
 
 ; Marill swarm
-	map_id MOUNT_MORTAR_1F_OUTSIDE
+	map_id COTTAGE_TOWN
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 13, MARILL

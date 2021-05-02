@@ -3,9 +3,7 @@
 ## `D0-D7` **Octave**
 
 VARS:
-
-
-Nybble 2 = Reversed octave value (1 = d7, 2 = d6, etc.)
+- Nybble 2 = Reversed octave value (1 = d7, 2 = d6, etc.)
 
 
 USAGE:
@@ -17,30 +15,21 @@ USAGE:
 
 NAME:
 
-
 Channel 1-3/5-7
-
-`note_type`
+- `note_type`
 
 
 Channel 4/8
-
-`drum_speed`
-
+- `drum_speed`
 
 VARS:
 
-
 Channel 1-3/5-7
-
-Byte 2 = Note length multiplier
-
-Byte 3 = Volume Envelope
-
+- Byte 2 = Note length multiplier
+- Byte 3 = Volume Envelope
 
 Channel 4/8
-
-Byte 2 = Note length multiplier
+- Byte 2 = Note length multiplier
 
 USAGE:
 ```
@@ -52,12 +41,8 @@ USAGE:
 ## `D9` **Transposition**
 
 VARS:
-
-
-Nybble 3 = Octave Offset (0-7)
-
-Nybble 4 = Note Offset (0-F)
-
+- Nybble 3 = Octave Offset (0-7)
+- Nybble 4 = Note Offset (0-F)
 
 NOTE: In Pokemon Ray, the note table has been expanded to make all note offsets for this command valid.
 
@@ -69,13 +54,9 @@ USAGE:
 ## `DA` **Tempo**
 
 VARS:
-
-
-Byte 2-3 = Big endian speed
-
+- Byte 2-3 = Big endian speed
 
 NOTE: Tempo is calculated by frame fractions of 256.  Contrary to programming rumors, in-RAM note length is not affected by shorter or longer tempos, but most songs forego the second byte in favor of practicality.
-
 
 USAGE:
 ```
@@ -85,13 +66,9 @@ USAGE:
 ## `DB` **Pulse Cycle**
 
 VARS:
-
-
-Crumb 8 = Pulse ID
-
+- Crumb 8 = Pulse ID
 
 NOTE: Only works on channels 1-2/5-6.
-
 
 USAGE:
 ```
@@ -102,20 +79,13 @@ USAGE:
 
 VARS:
 
-
 Channel 1-2/5-6
-
-Nybble 3 = Volume
-
-Nybble 4 = Fade direction / speed
-
+- Nybble 3 = Volume
+- Nybble 4 = Fade direction / speed
 
 Channel 3/7
-
-Crumb 5 = Volume (0 = none 1 = 100 2 = 50 3 = 25)
-
-Nybble 4 = Wavetable ID
-
+- Crumb 6 = Volume (0 = none 1 = 100 2 = 50 3 = 25)
+- Nybble 4 = Wavetable ID
 
 USAGE:
 ```
@@ -126,15 +96,10 @@ USAGE:
 
 
 VARS:
-
-
-Nybble 3 = Sweep speed
-
-Nybble 4 = Sweep direction / Incremental value
-
+- Nybble 3 = Sweep speed
+- Nybble 4 = Sweep direction / Incremental value
 
 NOTE: Only works on channel 1/5.
-
 
 USAGE:
 ```
@@ -144,13 +109,9 @@ USAGE:
 ## `DE` **Pulse Cycle Loop**
 
 VARS:
-
-
-Crumbs 5-8 = Pulse ID (5, 6, 7, 8)
-
+- Crumbs 5-8 = Pulse ID (5, 6, 7, 8)
 
 NOTE: Only works on channels 1-2/5-6.
-
 
 USAGE:
 ```
@@ -161,7 +122,6 @@ USAGE:
 
 NOTE: Only works on channels 5-8
 
-
 USAGE:
 ```
 	toggle_music
@@ -170,17 +130,11 @@ USAGE:
 ## `E0` **Note Slide**
 
 VARS:
-
-
-Nybble 4 = Remaining note length before the note reaches its destination
-
-Nybble 5 = Octave of destination
-
-Nybble 6 = Pitch of destination
-
+- Nybble 4 = Remaining note length before the note reaches its destination
+- Nybble 5 = Octave of destination
+- Nybble 6 = Pitch of destination
 
 NOTE: I've been trying to figure out how to get this to work on channels 2-3/6-7.  But for now, it still only works on channel 1/5.
-
 
 USAGE:
 ```
@@ -190,14 +144,9 @@ USAGE:
 ## `E1` **Vibrato**
 
 VARS:
-
-
-Byte 2 = Preamble length
-
-Nybble 5 = Key pitch distance
-
-Nybble 6 = Time between keys
-
+- Byte 2 = Preamble length
+- Nybble 5 = Key pitch distance
+- Nybble 6 = Time between keys
 
 USAGE:
 ```
@@ -208,12 +157,8 @@ USAGE:
 
 IMPORTANT NOTE: This only works in Ray.  This is because it was stubbed in the retail release of Gold.
 
-
 VARS:
-
-
-Byte 2 = Mute flag (On/off)
-
+- Byte 2 = Mute flag (On/off)
 
 USAGE:
 ```
@@ -223,13 +168,9 @@ USAGE:
 ## `E3` **Drum Mode Switch (Channel 4)**
 
 VARS:
-
-
-Byte 2 = Drum Kit
-
+- Byte 2 = Drum Kit
 
 NOTE: This command is only one byte if used a second time.  Keep track of whether or not its on when making music.
-
 
 USAGE:
 ```
@@ -243,29 +184,17 @@ USAGE:
 IMPORTANT NOTE: In Gold, this is just `EF` without the check for stereo.  In turn, it was named `force_stereo_panning`, which uses the same parameters as normal stereo.  Legacy for that command exists in Ray, but defaults to `EF`.  However, the macro for `EF` may also be `E4` in Ray, due to partial legacy for PokeRed macros.
 
 VARS:
-
-
-Byte 2:
-
-Bit 0 = Channel 1/5 RIGHT
-
-Bit 1 = Channel 2/6 RIGHT
-
-Bit 2 = Channel 3/7 RIGHT
-
-Bit 3 = Channel 4/8 RIGHT
-
-Bit 4 = Channel 1/5 LEFT
-
-Bit 5 = Channel 2/6 LEFT
-
-Bit 6 = Channel 3/7 LEFT
-
-Bit 7 = Channel 4/8 LEFT
-
+- Byte 2:
+- Bit 0 = Channel 1/5 RIGHT
+- Bit 1 = Channel 2/6 RIGHT
+- Bit 2 = Channel 3/7 RIGHT
+- Bit 3 = Channel 4/8 RIGHT
+- Bit 4 = Channel 1/5 LEFT
+- Bit 5 = Channel 2/6 LEFT
+- Bit 6 = Channel 3/7 LEFT
+- Bit 7 = Channel 4/8 LEFT
 
 NOTE: Parameters are in binary.
-
 
 USAGE:
 ```
@@ -277,15 +206,10 @@ USAGE:
 ## `E5` **Global Volume**
 
 VARS:
-
-
-Nybble 3 = Left Speaker
-
-Nybble 4 = Right Speeker
-
+- Nybble 3 = Left Speaker
+- Nybble 4 = Right Speeker
 
 NOTE: This variables need to match
-
 
 USAGE:
 ```
@@ -295,13 +219,9 @@ USAGE:
 ## `E6` **Raw Pitch Modifier**
 
 VARS:
-
-
-Byte 2-3 = Big-endian 16-bit addend
-
+- Byte 2-3 = Big-endian 16-bit addend
 
 NOTE: `E6`'s use has been moderated due to the addition of `F1` Ray (more on that later).
-
 
 USAGE:
 ```
@@ -312,12 +232,8 @@ USAGE:
 
 IMPORTANT NOTE: This only works in Ray.  This is because it was stubbed in the retail release of Gold.
 
-
 VARS:
-
-
-Byte 2 = Note Offset (0-F is the valid range)
-
+- Byte 2 = Note Offset (0-F is the valid range; would've been 0-C in Gold)
 
 NOTE: `E7` is a primative version of `D9`.  It only adds pitch values, and doesn't even set any carry flags, leaving the possibility of triggering the rest pitch if the offset is high enough.
 
@@ -330,15 +246,10 @@ USAGE:
 
 IMPORTANT NOTE: This only works in Ray.  This is because it was stubbed in the retail release of Gold.
 
-
 VARS:
-
-
-Byte 2 = Sequence ID.
-
+- Byte 2 = Sequence ID.
 
 NOTE: Channel 1/2/5/6 and Channel 3/7 are handled differently and, as such, possess their own groups of volume envelopes.  Each sequence either ends with `FE`, which resets the offset counter (which limits the sequence to 256 bytes), or `FF`, which ends the sequence entirely.
-
 
 USAGE:
 ```
@@ -348,13 +259,9 @@ USAGE:
 ## `E9` **Tempo Offset**
 
 VARS:
+- Byte 2 = Signed offset (-128 to 127)
 
-
-Byte 2 = Signed offset (-128 to 127)
-
-
-NOTE: The raw command is only 2 bytes, which Ray gets right.  Even so, it still has legacy for Gold, which misunderstands the command to be 3 bytes due to the assumption that this command would use the same format as `D9`.
-
+NOTE: The raw command is only 2 bytes, which Ray gets right.  Even so, it still has legacy for Gold, which misunderstands the command to be 3 bytes due to the assumption that this command would use the same format as `DA`.
 
 USAGE:
 ```
@@ -364,10 +271,7 @@ USAGE:
 ## `EA` **Manual RST**
 
 VARS:
-
-
-Byte 2-3 = Pointer to the RST for the channel that runs into this command.
-
+- Byte 2-3 = Pointer to the RST for the channel that runs into this command.
 
 USAGE:
 ```
@@ -377,10 +281,7 @@ USAGE:
 ## `EB` **Present A New ID**
 
 VARS:
-
-
-Byte 2-3 = Song/Sound Effect ID to play
-
+- Byte 2-3 = Song/Sound Effect ID to play
 
 USAGE:
 ```
@@ -404,13 +305,9 @@ USAGE:
 ## `EE` **Jump Only During Active RAM**
 
 VARS:
-
-
-Byte 2-3 = Address to jump to.
-
+- Byte 2-3 = Address to jump to.
 
 NOTE: This will only work through external assistance, possibly by certain events activiting the RAM exclusive to this command.
-
 
 USAGE:
 ```
@@ -420,12 +317,8 @@ USAGE:
 ## `EF` **Stereo Panning**
 
 VARS:
-
-
-Nybble 3 = Left Speaker (0 or f)
-
-Nybble 4 = Right Speaker (0 or f)
-
+- Nybble 3 = Left Speaker (0 or f)
+- Nybble 4 = Right Speaker (0 or f)
 
 USAGE:
 ```
@@ -435,13 +328,9 @@ USAGE:
 ## `F0` **Drum Mode Switch (Channel 8)**
 
 VARS:
-
-
-Byte 2 = Drum Kit
-
+- Byte 2 = Drum Kit
 
 NOTE: This command is only one byte if used a second time.  Keep track of whether or not its on when making music.
-
 
 USAGE:
 ```
@@ -452,8 +341,7 @@ USAGE:
 
 ## `F1` **Pitch Incremental Switch**
 
-NOTE: This acts just like `E8` from Red.  It also renders `E6` obsolete in this regard.  However, `F1` and `E6` do stack with each other.  Preambling `E6` with `F1` just means to add by one more than `E6` says.  This is an exclusive command to Ray as the command is empty in Gold.
-
+NOTE: This is an exclusive command to Ray as the command is empty in Gold.  In ray, this acts just like `E8` from Red.  It also renders `E6` obsolete in this regard.  However, `F1` and `E6` do stack with each other.  Preambling `E6` with `F1` just means to add by one more than `E6` says.
 
 USAGE:
 ```
@@ -462,8 +350,7 @@ USAGE:
 
 ## `F2` **Switch Between 1 and 0 on wSoundEventFlag**
 
-NOTE: This merely acts as a placeholder equivalent to `F1` in Yoshi.  No scripts even rely on `wSoundEventFlag` anyway.  This is an exclusive command to Ray as the command is empty in Gold.
-
+NOTE: This is an exclusive command to Ray as the command is empty in Gold.  In the RARITY prototype of Ray at least, this merely acts as a placeholder equivalent to `F1` in Yoshi.  No scripts even rely on `wSoundEventFlag` anyway.
 
 USAGE:
 ```
@@ -472,8 +359,7 @@ USAGE:
 
 ## `F3` **Treat Sound Data As Music**
 
-NOTE: Acts like `F8` from Red.  Uses the same flags `DF` uses.  This is an exclusive command to Ray as the command is empty in Gold.
-
+NOTE: This is an exclusive command to Ray as the command is empty in Gold.  Acts like `F8` from Red.  Uses the same flags `DF` uses.
 
 USAGE:
 ```
@@ -481,6 +367,8 @@ USAGE:
 ```
 
 ## `F4-F8` **NOTHING**
+
+NOTE: In gold, the label is `music0x??` in `F1-F8`.
 
 USAGE (if any):
 ```
@@ -495,7 +383,6 @@ USAGE (if any):
 
 NOTE: No scripts rely on `wSoundEventFlag`.
 
-
 USAGE:
 ```
 	set_sound_event
@@ -504,10 +391,7 @@ USAGE:
 ## `FA` **Set a Local Condition**
 
 VARS:
-
-
-Byte 2 = Activation Statment
-
+- Byte 2 = Activation Statment
 
 USAGE:
 ```
@@ -517,12 +401,8 @@ USAGE:
 ## `FB` **Jump On Matching Local Condition**
 
 VARS:
-
-
-Byte 2 = Activation Statment
-
-Byte 3-4 = Address to jump to
-
+- Byte 2 = Activation Statment
+- Byte 3-4 = Address to jump to
 
 USAGE:
 ```
@@ -532,10 +412,7 @@ USAGE:
 ## `FC` **Jump**
 
 VARS:
-
-
-Byte 2-3 = Address to jump to
-
+- Byte 2-3 = Address to jump to
 
 USAGE:
 ```
@@ -545,12 +422,8 @@ USAGE:
 ## `FD` **Loop**
 
 VARS:
-
-
-Byte 2 = Loop count (0 to act like `FC`; obsolete)
-
-Byte 3-4 = Pointer
-
+- Byte 2 = Loop count (0 to act like `FC`; obsolete)
+- Byte 3-4 = Pointer
 
 USAGE:
 ```
@@ -560,10 +433,7 @@ USAGE:
 ## `FE` **Call**
 
 VARS:
-
-
-Byte 2-3 = Address to call
-
+- Byte 2-3 = Address to call
 
 USAGE:
 ```

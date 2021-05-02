@@ -284,7 +284,7 @@ AnthonyPhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, DUNSPARCE
 	getstring STRING_BUFFER_5, PhoneDarkCaveText
-	swarm DARK_CAVE_VIOLET_ENTRANCE
+	swarm COTTAGE_TOWN
 	sjump PhoneScript_SwarmCave
 
 ToddPhoneCalleeScript:
@@ -386,7 +386,7 @@ ArniePhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, YANMA
 	getstring STRING_BUFFER_5, PhoneRoute35Text
-	swarm ROUTE_35
+	swarm COTTAGE_TOWN
 	sjump PhoneScript_SwarmGrass
 
 AlanPhoneCalleeScript:
@@ -448,7 +448,7 @@ ChadPhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, SNUBBULL
 	getstring STRING_BUFFER_5, PhoneRoute38Text
-	swarm ROUTE_38
+	swarm ROUTE_49_VACUUM_GATE
 	sjump PhoneScript_SwarmGrass
 
 .WantsBattle:
@@ -645,7 +645,7 @@ ParryPhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, MARILL
 	getstring STRING_BUFFER_5, PhoneMtMortarText
-	swarm MOUNT_MORTAR_1F_OUTSIDE
+	swarm COTTAGE_TOWN
 	sjump PhoneScript_SwarmCave
 
 .WantsBattle:

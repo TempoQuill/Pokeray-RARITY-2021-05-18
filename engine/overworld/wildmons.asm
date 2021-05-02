@@ -37,7 +37,7 @@ FindNest:
 	decoord 0, 0
 	ld hl, EquintoGrassWildMons
 	call .FindGrass
-	ld hl, JohtoWaterWildMons
+	ld hl, EquintoWildWaterMons
 	call .FindWater
 	call .RoamMon1
 	call .RoamMon2
@@ -401,7 +401,7 @@ _WaterWildmonLookup:
 	ld bc, WATER_WILDDATA_LENGTH
 	call _SwarmWildmonCheck
 	ret c
-	ld hl, JohtoWaterWildMons
+	ld hl, EquintoWildWaterMons
 	ld bc, WATER_WILDDATA_LENGTH
 	jr _NormalWildmonOK
 
@@ -688,11 +688,10 @@ JumpRoamMon:
 .loop
 	ld hl, RoamMaps
 .innerloop1
-	; 0-15 are all valid indexes into RoamMaps,
-	; so this retry loop is unnecessary
-	; since NUM_ROAMMON_MAPS happens to be 16
+	; no indexes into RoamMaps,
+	; so this retry loop is necessary for now
 	call Random
-	maskbits NUM_ROAMMON_MAPS
+	and NUM_ROAMMON_MAPS
 	cp NUM_ROAMMON_MAPS
 	jr nc, .innerloop1
 	inc a

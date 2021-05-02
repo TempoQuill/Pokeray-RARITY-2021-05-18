@@ -44,6 +44,7 @@ StdScripts::
 	add_stdscript PCScript
 	add_stdscript GameCornerCoinVendorScript
 	add_stdscript HappinessCheckScript
+	add_stdscript ReceiveMultipleItemsScript
 
 PokecenterNurseScript:
 	opentext
@@ -341,6 +342,13 @@ GymStatue2Script:
 ReceiveItemScript:
 	waitsfx
 	writetext ReceivedItemText
+	playsound SFX_ITEM
+	waitsfx
+	end
+
+ReceiveMultipleItemsScript:
+	waitsfx
+	writetext ReceivedItemGroupText
 	playsound SFX_ITEM
 	waitsfx
 	end

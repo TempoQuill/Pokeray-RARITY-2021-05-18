@@ -38,7 +38,7 @@ PokemonFellFromTreeText:
 
 WantsToBattleText::
 	text "<ENEMY>"
-	line "wants to battle!"
+	line "started a battle!"
 	prompt
 
 BattleText_WildFled:
@@ -77,7 +77,7 @@ HasANightmareText:
 
 HurtByCurseText:
 	text "<USER>'s"
-	line "hurt by the CURSE!"
+	line "hurt by CURSE!"
 	prompt
 
 SandstormHitsText:
@@ -152,7 +152,7 @@ BattleText_TheRainStopped:
 
 BattleText_TheSunlightFaded:
 	text "The sunlight"
-	line "faded."
+	line "detensified."
 	prompt
 
 BattleText_TheSandstormSubsided:
@@ -235,7 +235,7 @@ BattleText_EnemyIsAboutToUseWillPlayerChangeMon:
 	text "."
 
 	para "Will <PLAYER>"
-	line "change #MON?"
+	line "swap #MON?"
 	done
 
 BattleText_EnemySentOut:
@@ -498,8 +498,8 @@ InLoveWithText:
 
 InfatuationText:
 	text "<USER>'s"
-	line "infatuation kept"
-	cont "it from attacking!"
+	line "too lovestruck to"
+	cont "attack!"
 	prompt
 
 DisabledMoveText:
@@ -616,7 +616,8 @@ CriticalHitText:
 	prompt
 
 OneHitKOText:
-	text "It's a one-hit KO!"
+	text "It's a one-hit
+	line "knock out!"
 	prompt
 
 SuperEffectiveText:
@@ -1065,7 +1066,7 @@ DownpourText:
 
 SunGotBrightText:
 	text "The sunlight got"
-	line "bright!"
+	line "intense!"
 	prompt
 
 BellyDrumText:
