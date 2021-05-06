@@ -100,6 +100,8 @@ DisplayDexEntry:
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 ; Check to see if we caught it.  Get out of here if we haven't.
+	ld a, [wTempSpecies + 1]
+	push af
 	ld a, [wTempSpecies]
 	dec a
 	call CheckCaughtMon

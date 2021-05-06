@@ -2185,6 +2185,13 @@ FaintYourPokemon:
 	ld a, $f0
 	ld [wCryTracks], a
 	ld bc, wBattleMonSpecies
+	ld a, [bc]
+	inc bc
+	push af
+	ld a, [bc]
+	ld b, a
+	pop af
+	ld c, a
 	call PlayStereoCry
 	call PlayerMonFaintedAnimation
 	hlcoord 9, 7
@@ -3372,6 +3379,13 @@ Function_SetEnemyMonAndSendOutAnimation:
 	ld a, $f
 	ld [wCryTracks], a
 	ld bc, wTempEnemyMonSpecies
+	ld a, [bc]
+	inc bc
+	push af
+	ld a, [bc]
+	ld b, a
+	pop af
+	ld c, a
 	call PlayStereoCry
 	call UpdateEnemyHUD
 	ld a, $1
@@ -3834,6 +3848,13 @@ SendOutPlayerMon:
 	ld [wCryTracks], a
 	push bc
 	ld bc, wCurPartySpecies
+	ld a, [bc]
+	inc bc
+	push af
+	ld a, [bc]
+	ld b, a
+	pop af
+	ld c, a
 	call PlayStereoCry
 	pop bc
 	call UpdatePlayerHUD
@@ -3960,8 +3981,17 @@ PursuitSwitch:
 
 	ld a, $f0
 	ld [wCryTracks], a
-	ld a, [wBattleMonSpecies]
+	push bc
+	ld bc, wBattleMonSpecies
+	ld a, [bc]
+	inc bc
+	push af
+	ld a, [bc]
+	ld b, a
+	pop af
+	ld c, a
 	call PlayStereoCry
+	pop bc
 	ld a, [wLastPlayerMon]
 	ld c, a
 	ld hl, wBattleParticipantsNotFainted
@@ -7734,6 +7764,7 @@ StartBattle:
 
 	ld a, [wTempWildMonSpecies]
 	ld [wCurPartySpecies], a
+	ld [wTempEnemyMonSpecies], a
 	push af
 	ld a, [wTempWildMonSpecies + 1]
 	ld [wCurPartySpecies + 1], a
@@ -8759,14 +8790,14 @@ BattleStartMessage:
 .not_shiny
 	ld a, $f
 	ld [wCryTracks], a
-	push bc
-	ld bc, wTempEnemyMonSpecies + 1
+	ld bc, wTempEnemyMonSpecies
 	ld a, [bc]
-	dec bc
-	ld h, a
+	inc bc
+	push af
 	ld a, [bc]
-	ld l, a
-	pop bc
+	ld b, a
+	pop af
+	ld c, a
 	call PlayStereoCry
 	ld hl, HookedPokemonAttackedText
 	ld a, [wBattleType]

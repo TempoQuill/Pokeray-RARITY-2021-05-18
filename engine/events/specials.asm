@@ -19,6 +19,8 @@ DummySpecial_c389:
 	ret
 
 GameCornerPrizeMonCheckDex:
+	xor a
+	push af
 	ld a, [wScriptVar]
 	dec a
 	call CheckCaughtMon

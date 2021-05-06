@@ -329,6 +329,8 @@ SurfFunction:
 	jr z, .alreadyfail
 	cp PLAYER_SURF_PIKA
 	jr z, .alreadyfail
+	cp PLAYER_SURF_BOARD
+	jr z, .alreadyfail
 	call GetFacingTileCoord
 	call GetTileCollision
 	cp WATER_TILE
@@ -365,11 +367,25 @@ SurfFunction:
 	ld a, $80
 	ret
 
+UsedSurfboardScript:
+	writetext _GotOnItemText ; "got on board"
+	sjump CommonSurf
+
+_GotOnItemText:
+	text "<PLAYER> got on"
+	line "the @"
+	text_ram wStringBuffer2
+	text "."
+	done
+
 SurfFromMenuScript:
 	special UpdateTimePals
 
 UsedSurfScript:
-	writetext UsedSurfText ; "used SURF!"
+	readmem wPlayerState
+	ifequal PLAYER_SURF_BOARD, UsedSurfboardScript
+	writetext UsedSurfText ; "got on #MON"
+CommonSurf:
 	waitbutton
 	closetext
 
@@ -404,12 +420,25 @@ GetSurfType:
 	ld d, 0
 	ld hl, wPartySpecies
 	add hl, de
+	add hl, de
+	inc hl
+
+	ld a, [hld]
+	and a
+	jr nz, .normal_surf
 
 	ld a, [hl]
+	and a
+	jr z, .board_surf
 	cp PIKACHU
 	ld a, PLAYER_SURF_PIKA
 	ret z
+.normal_surf
 	ld a, PLAYER_SURF
+	ret
+
+.board_surf
+	ld a, PLAYER_SURF_BOARD
 	ret
 
 CheckDirection:
@@ -451,6 +480,8 @@ TrySurfOW::
 	ld a, [wPlayerState]
 	cp PLAYER_SURF_PIKA
 	jr z, .quit
+	cp PLAYER_SURF_BOARD
+	jr z, .quit
 	cp PLAYER_SURF
 	jr z, .quit
 
@@ -462,10 +493,6 @@ TrySurfOW::
 
 ; Check tile permissions.
 	call CheckDirection
-	jr c, .quit
-
-	ld de, ENGINE_FOGBADGE
-	call CheckEngineFlag
 	jr c, .quit
 
 	ld d, SURF

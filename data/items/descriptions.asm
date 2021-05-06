@@ -406,8 +406,8 @@ CarbosDesc:
 	next "SPEED.@"
 
 LuckyPunchDesc:
-	db   "Raises CHANSEY's"
-	next "crit. ratio.@"
+	db   "A handy gag toy"
+	next "for CHANSEY.@"
 
 CalciumDesc:
 	db   "Aids a #MON's"
@@ -655,8 +655,8 @@ PolkadotBowDesc:
 	next "type moves.@"
 
 StickDesc:
-	db   "An ordinary stick."
-	next "Sell low.@"
+	db   "A useful stick"
+	next "for FARFETCH'D.@"
 
 SmokeBallDesc:
 	db   "Guarentees escape"
@@ -694,8 +694,8 @@ MiracleSeedDesc:
 	next "type moves.@"
 
 ThickClubDesc:
-	db   "A bone of some"
-	next "sort. Sell low.@"
+	db   "CUBONE & MAROWAK's"
+	next "weapon of choice.@"
 
 FocusBandDesc:
 	db   "May prevent faint-"
@@ -796,8 +796,8 @@ FastBallDesc:
 	next "#MON.@"
 
 LightBallDesc:
-	db   "An odd, electrical"
-	next "orb.@"
+	db   "PIKACHU's weapon"
+	next "of choice.@"
 
 FriendBallDesc:
 	db   "A BALL that makes"

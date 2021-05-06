@@ -1591,6 +1591,8 @@ Pokedex_GetSelectedMon:
 Pokedex_CheckCaught:
 	push de
 	push hl
+	ld a, [wTempSpecies + 1]
+	push af
 	ld a, [wTempSpecies]
 	dec a
 	call CheckCaughtMon

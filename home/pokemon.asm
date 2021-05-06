@@ -66,10 +66,23 @@ _PrepMonFrontpic::
 	ld a, [wCurPartySpecies]
 ; is a pokemon?
 	and a
+	jr nz, .may_be_egg
+	ld a, [wCurPartySpecies + 1]
+	and a
 	jr z, .not_pokemon
-	cp EGG
+	ld a, [wCurPartySpecies]
+.may_be_egg
+	cp LOW(EGG)
+	jr nz, .may_be_invalid
+	ld a, [wCurPartySpecies + 1]
+	cp HIGH(EGG)
 	jr z, .egg
-	cp NUM_POKEMON + 1
+	ld a, [wCurPartySpecies]
+.may_be_invalid
+	cp LOW(NUM_POKEMON + 1)
+	jr c, .egg
+	ld a, [wCurPartySpecies + 1]
+	cp HIGH(NUM_POKEMON + 1)
 	jr nc, .not_pokemon
 .egg
 	push hl
@@ -225,10 +238,13 @@ GetBaseData::
 
 ; Egg doesn't have BaseData
 	ld a, [wCurSpecies]
-	cp EGG
+	cp LOW(EGG)
+	jr nz, .get_base_data
+	ld a, [wCurSpecies + 1]
+	cp HIGH(EGG)
 	jr z, .egg
 
-; Get BaseData
+.get_base_data
 	dec a
 	ld bc, BASE_DATA_SIZE
 	ld hl, BaseData

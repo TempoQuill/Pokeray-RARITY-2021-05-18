@@ -333,9 +333,6 @@ UpdateChannels:
 
 	ld a, [wCurTrackVolumeEnvelope]
 	ldh [rNR12], a
-	ld a, [wCurTrackFrequency + 1]
-	or 1 << FREQUENCY_RST
-	ldh [rNR14], a
 	ret
 
 .ch1_vibrato_override
@@ -417,9 +414,6 @@ UpdateChannels:
 
 	ld a, [wCurTrackVolumeEnvelope]
 	ldh [rNR22], a
-	ld a, [wCurTrackFrequency + 1]
-	or 1 << FREQUENCY_RST
-	ldh [rNR24], a
 	ret
 
 .ch2_vibrato_override

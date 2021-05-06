@@ -39,8 +39,12 @@ StatsScreenMain:
 .not_tempmon
 	call CopyMonToTempMon
 	ld a, [wCurPartySpecies]
-	cp EGG
+	cp LOW(EGG)
+	jp nz, .skip_egg_check_1
+	ld a, [wCurPartySpecies + 1]
+	cp HIGH(EGG)
 	jp z, .got_stats
+.skip_egg_check_1
 	ld a, [wMonType]
 	cp BOXMON
 	jr c, .got_stats
@@ -54,8 +58,12 @@ StatsScreenMain:
 
 	pop bc
 	ld a, [wCurPartySpecies]
-	cp EGG
+	cp LOW(EGG)
+	jp nz, .skip_egg_check_2
+	ld a, [wCurPartySpecies + 1]
+	cp HIGH(EGG)
 	jp z, EggStatsInit
+.skip_egg_check_2
 	call StatsScreen_InitUpperHalf
 	ld b, 0
 	jp StatsScreen_JumpToLoadPageFunction

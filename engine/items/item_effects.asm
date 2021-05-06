@@ -479,6 +479,8 @@ PokeBallEffect:
 
 	call ClearSprites
 
+	ld a, [wTempSpecies + 1]
+	push af
 	ld a, [wTempSpecies]
 	dec a
 	call CheckCaughtMon

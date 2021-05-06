@@ -910,7 +910,7 @@ _OakRating11::
 
 _OakRating12::
 	text "Have you met KURT?"
-	line "His custom #"
+	line "His custom #-"
 	cont "BALLS should help."
 	done
 
@@ -981,7 +981,7 @@ _DummyGameDarnText::
 	text "Darn…"
 	done
 
-_StartMenuContestEndText::
+; not used
 	text "Would you like to"
 	line "end the Contest?"
 	done
@@ -1021,24 +1021,26 @@ _ItemsOakWarningText::
 	done
 
 _PokemonSwapItemText::
-	text "Took @"
+	text "@"
 	text_ram wMonOrItemNameBuffer
-	text "'s"
-	line "@"
+	text " gave"
+	line "you its"
+	cont "@"
 	text_ram wStringBuffer1
 	text " and"
 
-	para "made it hold"
+	para "took the"
 	line "@"
 	text_ram wStringBuffer2
 	text "."
 	prompt
 
 _PokemonHoldItemText::
-	text "Made @"
+	text "@"
 	text_ram wMonOrItemNameBuffer
 	text_start
-	line "hold @"
+	text " took"
+	line "the @"
 	text_ram wStringBuffer2
 	text "."
 	prompt
@@ -1060,11 +1062,13 @@ _ItemStorageFullText::
 	prompt
 
 _PokemonTookItemText::
-	text "Took @"
-	text_ram wStringBuffer1
-	text_start
-	line "from @"
+	text "@"
 	text_ram wMonOrItemNameBuffer
+	text_start
+	text " gave"
+	line "you its"
+	cont "@"
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
@@ -1073,7 +1077,7 @@ _PokemonAskSwapItemText::
 	text " is"
 	line "already holding"
 
-	para "@"
+	para "a(n) @"
 	text_ram wStringBuffer1
 	text "."
 	line "Switch items?"
@@ -1225,8 +1229,8 @@ _WouldYouLikeToSaveTheGameText::
 	done
 
 _SavingDontTurnOffThePowerText::
-	text "SAVING… DON'T TURN"
-	line "OFF THE POWER."
+	text "Saving… one moment"
+	line "please."
 	done
 
 _SavedTheGameText::
@@ -1264,8 +1268,8 @@ _MoveMonWOMailSaveText::
 	done
 
 _WindowPoppingErrorText::
-	text "No windows avail-"
-	line "able for popping."
+	text "No windows left"
+	line "for restoration."
 	done
 
 _ObjectEventText::
@@ -1313,7 +1317,7 @@ _PocketIsFullText::
 
 _CongratulationsYourPokemonText::
 	text "Congratulations!"
-	line "Your @"
+	line "@"
 	text_ram wStringBuffer2
 	text_end
 
@@ -1355,13 +1359,21 @@ _MartFinalPriceText::
 	done
 
 _HerbShopLadyIntroText::
-	text "Hello, dear."
+	text "Greetings, dear."
+
+;	text "Hello, dear."
 
 	para "I sell inexpensive"
 	line "herbal medicine."
 
-	para "They're good, but"
-	line "a trifle bitter."
+	para "They're quite"
+	line "healthy, but will"
+
+	para "leave a noticeable"
+	line "bitter aftertaste."
+
+;	para "They're good, but"
+;	line "a trifle bitter."
 
 	para "Your #MON may"
 	line "not like them."
@@ -1378,7 +1390,7 @@ _HerbalLadyFinalPriceText::
 	text " @"
 	text_ram wStringBuffer2
 	text "(S)"
-	line "will be ¥@"
+	line "will cost ¥@"
 	text_decimal hMoneyTemp, 3, 6
 	text "."
 	done
@@ -1389,13 +1401,13 @@ _HerbalLadyThanksText::
 	done
 
 _HerbalLadyPackFullText::
-	text "Oh? Your PACK is"
-	line "full, dear."
+	text "Oh? Your sack is"
+	line "filled up, dear."
 	done
 
 _HerbalLadyNoMoneyText::
-	text "Hehehe… You don't"
-	line "have the money."
+	text "Hehehe… Your funds"
+	line "have run dry."
 	done
 
 _HerbalLadyComeAgainText::

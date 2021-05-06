@@ -141,6 +141,8 @@ DrawEnemyHUDBorder:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
+	ld a, [wTempEnemyMonSpecies + 1]
+	push af
 	ld a, [wTempEnemyMonSpecies]
 	dec a
 	call CheckCaughtMon

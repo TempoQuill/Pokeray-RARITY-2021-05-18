@@ -877,14 +877,14 @@ _JustSawSomeRareMonText::
 	prompt
 
 _SavingRecordText::
-	text "SAVING RECORD…"
-	line "DON'T TURN OFF!"
+	text "Saving record… one"
+	line "moment please."
 	done
 
 _ReceiveItemText::
 	text_ram wPlayerName
 	text " received"
-	line "@"
+	line "a @"
 	text_ram wStringBuffer1
 	text "!@"
 	sound_item
@@ -892,7 +892,8 @@ _ReceiveItemText::
 	text_end
 
 _NoCoinsText::
-	text "You have no coins."
+	text "You don't have any"
+	line "coins."
 	prompt
 
 _NoCoinCaseText::
@@ -1702,7 +1703,9 @@ _BlindingFlashText::
 	db "@@"
 
 _UsedSurfText::
+	text "<PLAYER> got on"
+	line "@"
 	text_ram wStringBuffer2
-	text " used"
-	line "SURF!"
+	text "."
 	done
+
