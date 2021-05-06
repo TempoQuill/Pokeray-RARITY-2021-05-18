@@ -197,11 +197,6 @@ PhoneScript_SwarmCave:
 	promptbutton
 	sjump PhoneScript_SeeYouLater
 
-PhoneScript_BugCatchingContest:
-	writetext PhoneBugCatchingContestText
-	promptbutton
-	sjump PhoneScript_SeeYouLater
-
 IrwinRocketRumorScript:
 	writetext IrwinRocketTakeoverRumorText
 	promptbutton

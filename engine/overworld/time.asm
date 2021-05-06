@@ -96,50 +96,6 @@ CheckDailyResetTimer::
 	ld [hl], a  ; wDailyFlags2
 	jr RestartDailyResetTimer
 
-StartBugContestTimer:
-	ld a, BUG_CONTEST_MINUTES
-	ld [wLeftoversMinsRemaining], a
-	ld a, BUG_CONTEST_SECONDS
-	ld [wLeftoversSecsRemaining], a
-	call UpdateTime
-	ld hl, wLeftoversStartTime
-	call CopyDayHourMinSecToHL
-	ret
-
-CheckBugContestTimer::
-	ld hl, wLeftoversStartTime
-	call CalcSecsMinsHoursDaysSince
-	ld a, [wDaysSince]
-	and a
-	jr nz, .timed_out
-	ld a, [wHoursSince]
-	and a
-	jr nz, .timed_out
-	ld a, [wSecondsSince]
-	ld b, a
-	ld a, [wLeftoversSecsRemaining]
-	sub b
-	jr nc, .okay
-	add 60
-
-.okay
-	ld [wLeftoversSecsRemaining], a
-	ld a, [wMinutesSince]
-	ld b, a
-	ld a, [wLeftoversMinsRemaining]
-	sbc b
-	ld [wLeftoversMinsRemaining], a
-	jr c, .timed_out
-	and a
-	ret
-
-.timed_out
-	xor a
-	ld [wLeftoversMinsRemaining], a
-	ld [wLeftoversSecsRemaining], a
-	scf
-	ret
-
 InitializeStartDay:
 	call UpdateTime
 	ld hl, wTimerEventStartDay

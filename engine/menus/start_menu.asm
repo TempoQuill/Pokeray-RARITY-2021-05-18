@@ -20,10 +20,6 @@ StartMenu::
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	ld hl, .MenuHeader
-	jr z, .GotMenuData
-	ld hl, .ContestMenuHeader
-
-.GotMenuData:
 	call LoadMenuHeader
 	call .SetUpMenuItems
 	ld a, [wBattleMenuCursorBuffer]
@@ -157,12 +153,6 @@ StartMenu::
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 10, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
-	dw .MenuData
-	db 1 ; default selection
-
-.ContestMenuHeader:
-	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 2, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw .MenuData
 	db 1 ; default selection
 
@@ -392,12 +382,6 @@ endr
 	ret
 
 .DrawLeftoversStatus:
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	jr nz, .contest
-	ret
-.contest
-	farcall StartMenu_PrintBugContestStatus
 	ret
 
 StartMenu_Exit:

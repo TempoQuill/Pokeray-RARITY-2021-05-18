@@ -147,9 +147,6 @@ WildFled_EnemyFled_LinkBattleCanceled:
 
 BattleTurn:
 .loop
-	call CheckContestBattleOver
-	jr c, .quit
-
 	xor a
 	ld [wPlayerIsSwitching], a
 	ld [wEnemyIsSwitching], a
@@ -511,24 +508,6 @@ DetermineMoveOrder:
 	ret
 
 .enemy_first
-	and a
-	ret
-
-CheckContestBattleOver:
-	ld a, [wBattleType]
-	cp BATTLETYPE_CONTEST
-	jr nz, .contest_not_over
-	ld a, [wParkBallsRemaining]
-	and a
-	jr nz, .contest_not_over
-	ld a, [wBattleResult]
-	and BATTLERESULT_BITMASK
-	add DRAW
-	ld [wBattleResult], a
-	scf
-	ret
-
-.contest_not_over
 	and a
 	ret
 
@@ -4688,13 +4667,6 @@ BattleMenu:
 .ok
 
 .loop
-	ld a, [wBattleType]
-	cp BATTLETYPE_CONTEST
-	jr nz, .not_contest
-	callfar ContestBattleMenu
-	jr .next
-.not_contest
-
 	; Auto input: choose "ITEM"
 	ld a, [wInputType]
 	or a

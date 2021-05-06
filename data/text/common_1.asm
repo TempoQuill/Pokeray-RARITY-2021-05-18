@@ -834,13 +834,13 @@ _AskFloorElevatorText::
 	text "Which floor?"
 	done
 
-_BugCatchingContestTimeUpText::
-	text "ANNOUNCER: BEEEP!"
+; not used
+	text "ANNOUNCER: <……>"
 
 	para "Time's up!"
 	done
 
-_BugCatchingContestIsOverText::
+; not used
 	text "ANNOUNCER: The"
 	line "Contest is over!"
 	done

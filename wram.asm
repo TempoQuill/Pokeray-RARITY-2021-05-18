@@ -2415,7 +2415,6 @@ wEggMon::  box_struct wEggMon ; dcc6
 	ds 3
 
 wLeftoversSecondPartySpecies:: dw ; dce6
-wContestMon:: party_struct wContestMon ; dce8
 
 wSwarmMapGroup:: db ; dd14
 wSwarmMapNumber:: db ; dd15

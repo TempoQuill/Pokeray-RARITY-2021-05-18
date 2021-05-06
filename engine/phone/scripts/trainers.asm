@@ -139,12 +139,8 @@ JoeyPhoneCalleeScript:
 JoeyPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, YOUNGSTER, JOEY1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, Phone_CheckIfUnseenRare_Male
 	sjump Phone_GenericCall_Male
@@ -159,12 +155,6 @@ WadePhoneCalleeScript:
 	scall PhoneScript_AnswerPhone_Male
 	scall PhoneScript_Random2
 	ifequal 0, .Generic
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue .Generic
-	readvar VAR_WEEKDAY
-	ifequal TUESDAY, PhoneScript_BugCatchingContest
-	ifequal THURSDAY, PhoneScript_BugCatchingContest
-	ifequal SATURDAY, PhoneScript_BugCatchingContest
 
 .Generic:
 	sjump Phone_GenericCall_Male
@@ -173,21 +163,7 @@ WadePhoneCallerScript:
 	gettrainername STRING_BUFFER_3, BUG_CATCHER, WADE1
 	scall PhoneScript_GreetPhone_Male
 	scall PhoneScript_Random2
-	ifequal 0, .NoContest
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue .NoContest
-	readvar VAR_WEEKDAY
-	ifequal TUESDAY, PhoneScript_BugCatchingContest
-	ifequal THURSDAY, PhoneScript_BugCatchingContest
-	ifequal SATURDAY, PhoneScript_BugCatchingContest
-
-.NoContest:
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
-	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, Phone_CheckIfUnseenRare_Male
 	sjump Phone_GenericCall_Male
@@ -205,12 +181,8 @@ RalphPhoneCalleeScript:
 RalphPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, FISHER, RALPH1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, .QwilfishSwarm
 	scall PhoneScript_Random2
@@ -239,12 +211,8 @@ LizPhoneCalleeScript:
 LizPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, PICNICKER, LIZ1
 	scall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, Phone_CheckIfUnseenRare_Female
 	sjump Phone_GenericCall_Female
@@ -262,12 +230,8 @@ AnthonyPhoneCalleeScript:
 AnthonyPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, HIKER, ANTHONY2
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, .DunsparceSwarm
 	scall PhoneScript_Random2
@@ -295,12 +259,8 @@ ToddPhoneCalleeScript:
 ToddPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, CAMPER, TODD1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, Phone_CheckIfUnseenRare_Male
 	sjump Phone_GenericCall_Male
@@ -322,12 +282,8 @@ GinaPhoneCallerScript:
 	scall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue GinaRocketRumorScript
-	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
-
-.NoBattle:
 	scall PhoneScript_Random2
 	ifequal 0, Phone_CheckIfUnseenRare_Female
 	sjump Phone_GenericCall_Female
@@ -461,12 +417,6 @@ DerekPhoneCalleeScript:
 	scall PhoneScript_AnswerPhone_Male
 	scall PhoneScript_Random2
 	ifequal 0, .Generic
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue .Generic
-	readvar VAR_WEEKDAY
-	ifequal TUESDAY, PhoneScript_BugCatchingContest
-	ifequal THURSDAY, PhoneScript_BugCatchingContest
-	ifequal SATURDAY, PhoneScript_BugCatchingContest
 
 .Generic:
 	sjump Phone_GenericCall_Male
@@ -474,16 +424,6 @@ DerekPhoneCalleeScript:
 DerekPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, POKEFANM, DEREK1
 	scall PhoneScript_GreetPhone_Male
-	scall PhoneScript_Random2
-	ifequal 0, .NoContest
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue .NoContest
-	readvar VAR_WEEKDAY
-	ifequal TUESDAY, PhoneScript_BugCatchingContest
-	ifequal THURSDAY, PhoneScript_BugCatchingContest
-	ifequal SATURDAY, PhoneScript_BugCatchingContest
-
-.NoContest:
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
 	scall PhoneScript_Random2

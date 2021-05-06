@@ -8,10 +8,6 @@ SafariBattleMenu:
 	ld hl, MenuHeader_0x24eae
 	call LoadMenuHeader
 	jr Function24e78
-
-ContestBattleMenu:
-	ld hl, MenuHeader_0x24ee9
-	call LoadMenuHeader
 ; fallthrough
 Function24e78:
 	ld a, [wBattleMenuCursorBuffer]

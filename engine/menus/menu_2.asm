@@ -150,61 +150,6 @@ StartMenu_DrawLeftoversStatusBox:
 	call Textbox
 	ret
 
-StartMenu_PrintBugContestStatus:
-	ld hl, wOptions
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	call StartMenu_DrawLeftoversStatusBox
-	hlcoord 1, 5
-	ld de, .Balls_EN
-	call PlaceString
-	hlcoord 8, 5
-	ld de, wParkBallsRemaining
-	lb bc, PRINTNUM_LEFTALIGN | 1, 2
-	call PrintNum
-	hlcoord 1, 1
-	ld de, .CAUGHT
-	call PlaceString
-	ld a, [wContestMon]
-	and a
-	ld de, .None
-	jr z, .no_contest_mon
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-
-.no_contest_mon
-	hlcoord 8, 1
-	call PlaceString
-	ld a, [wContestMon]
-	and a
-	jr z, .skip_level
-	hlcoord 1, 3
-	ld de, .LEVEL
-	call PlaceString
-	ld a, [wContestMonLevel]
-	ld h, b
-	ld l, c
-	inc hl
-	ld c, 3
-	call Print8BitNumLeftAlign
-
-.skip_level
-	pop af
-	ld [wOptions], a
-	ret
-
-.Balls_JP:
-	db "ボール　　　こ@"
-.CAUGHT:
-	db "CAUGHT@"
-.Balls_EN:
-	db "BALLS:@"
-.None:
-	db "None@"
-.LEVEL:
-	db "LEVEL@"
-
 Kurt_SelectApricorn:
 	call FindApricornsInBag
 	jr c, .nope

@@ -315,7 +315,7 @@ PhoneSwarmCaveText:
 	line "to go look."
 	done
 
-PhoneBugCatchingContestText:
+; not used
 	text "They're holding"
 	line "the Bug-Catching"
 
