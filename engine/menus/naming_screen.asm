@@ -395,7 +395,7 @@ NamingScreenJoypadLoop:
 	cp $3
 	jr z, .end
 	call NamingScreen_GetLastCharacter
-	call NamingScreen_TryAddCharacter
+	call MailComposition_TryAddCharacter
 	ret nc
 
 .start
@@ -638,15 +638,6 @@ NamingScreen_AnimateCursor:
 	inc [hl]
 	ret
 
-NamingScreen_TryAddCharacter:
-	ld a, [wNamingScreenLastCharacter]
-	ld hl, Dakutens
-	cp "ﾞ"
-	jr z, AddDakutenToCharacter
-	ld hl, Handakutens
-	cp "ﾟ"
-	jr z, AddDakutenToCharacter
-
 MailComposition_TryAddCharacter:
 	ld a, [wNamingScreenMaxNameLength]
 	ld c, a
@@ -698,8 +689,6 @@ AddDakutenToCharacter:
 .done
 	ld a, [hl]
 	jr NamingScreen_LoadNextCharacter
-
-INCLUDE "data/text/dakutens.asm"
 
 NamingScreen_DeleteCharacter:
 	ld hl, wNamingScreenCurNameLength
@@ -953,7 +942,7 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	ret
 
 .PleaseWriteAMailString: ; unreferenced
-	db "メールを　かいてね@"
+	db "Please write@"
 
 .InitCharset:
 	call WaitTop
@@ -1076,7 +1065,7 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	cp $3
 	jr z, .finished
 	call NamingScreen_GetLastCharacter
-	call MailComposition_TryAddLastCharacter
+	call MailComposition_TryAddCharacter
 	jr c, .start
 	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
@@ -1313,48 +1302,5 @@ ComposeMail_GetCursorPosition:
 .letter
 	xor a
 	ret
-
-MailComposition_TryAddLastCharacter:
-	ld a, [wNamingScreenLastCharacter]
-	ld hl, Dakutens
-	cp "ﾞ"
-	jr z, .add_dakuten
-	ld hl, Handakutens
-	cp "ﾟ"
-	jp nz, MailComposition_TryAddCharacter
-
-.add_dakuten
-	ld a, [wNamingScreenCurNameLength]
-	and a
-	ret z
-	cp $11
-	jr nz, .asm_1259c
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-	dec [hl]
-	jr .asm_125a1
-
-.asm_1259c
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-
-.asm_125a1
-	call NamingScreen_GetTextCursorPosition
-	ld c, [hl]
-	pop hl
-.asm_125a6
-	ld a, [hli]
-	cp $ff
-	jp z, NamingScreen_AdvanceCursor_CheckEndOfString
-	cp c
-	jr z, .asm_125b2
-	inc hl
-	jr .asm_125a6
-
-.asm_125b2
-	ld a, [hl]
-	jp NamingScreen_LoadNextCharacter
 
 INCLUDE "data/text/mail_input_chars.asm"

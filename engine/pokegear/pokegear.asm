@@ -513,8 +513,8 @@ Pokegear_UpdateClock:
 	call PlaceHLTextAtBC
 	ret
 
-	db "ごぜん@"
-	db "ごご@"
+	db "MORN@"
+	db "GOGO@"
 
 .GearTodayText:
 	text_far _GearTodayText

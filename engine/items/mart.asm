@@ -751,7 +751,7 @@ MartSellPriceText:
 	text_end
 
 .UnusedString161d2:
-	db "！ダミー！@"
+	db "!DUMMY!@"
 
 MartWelcomeText:
 	text_far _MartWelcomeText

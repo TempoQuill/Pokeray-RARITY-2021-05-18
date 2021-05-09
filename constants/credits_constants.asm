@@ -50,17 +50,18 @@
 	const TERUKI_MURAKAWA
 	const KAZUYOSHI_OSAWA
 	const KIMIKO_NAKAMICHI
-	const GERONIMO_CHAVEZ    ; "  GERONIMO CHAVEZ  "
+	const GERONIMO_CHAVEZ    ; "  GERONIMO CHAVEZ   "
+	const SOLO_ACAPELLO      ; "   SOLO ACAPELLO    "
 	const JACK_GETSCHMAN     ; "   JACK GETSCHMAN   "
 	const ANDREW_STEIN       ; "    ANDREW STEIN    "
 	const SCOTT_CHENEY       ; "    SCOTT CHENEY    "
-	const SAMUEL_KERSSY      ; "   SAMUEL KERSSY   "
+	const SAMUEL_KERSSY      ; "   SAMUEL KERSSY    "
 	const JENNIFER_NICHOLSON ; " JENNIFER NICHOLSON "
-	const GRIFFIN_LEWIS      ; "   GRIFFIN LEWIS   "
+	const GRIFFIN_LEWIS      ; "   GRIFFIN LEWIS    "
 	const WILLIAM_ANDERSON   ; "  WILLIAM ANDERSON  "
-	const DANIEL_INGRAM      ; "   DANIEL INGRAM   "
+	const DANIEL_INGRAM      ; "   DANIEL INGRAM    "
 	const LAUREN_FAUST       ; "    LAUREN FAUST    "
-	const MINAKO_HAMANO      ; "   MINAKO HAMANO   "
+	const MINAKO_HAMANO      ; "   MINAKO HAMANO    "
 	const JOSHUA_CRAPO       ; "    JOSHUA CRAPO    "
 	const CREDIT_END
 	const STAFF

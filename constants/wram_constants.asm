@@ -275,7 +275,7 @@ PLAYER_SURF       EQU 12
 ; wDailyFlags1::
 	const_def
 	const DAILYFLAGS1_KURT_MAKING_BALLS_F             ; 0
-	const DAILYFLAGS1_BUG_CONTEST_F                   ; 1
+	const_skip                                        ; 1
 	const DAILYFLAGS1_SWARM_F                         ; 2
 	const DAILYFLAGS1_TIME_CAPSULE_F                  ; 3
 	const DAILYFLAGS1_ALL_FRUIT_TREES_F               ; 4

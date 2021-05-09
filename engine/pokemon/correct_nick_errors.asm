@@ -64,11 +64,11 @@ CorrectNickErrors::
 ; table defining which characters are actually text commands
 ; format:
 	;      ≥           <
-	db "<NULL>",   "ガ"
-	db "<JP_14>",  "<JP_18>" + 1
-	db "<NI>",     "<NO>"    + 1
-	db "<ROUTE>",  "<GREEN>" + 1
-	db "<ENEMY>",  "<ENEMY>" + 1
-	db "<MOM>",    "<TM>"    + 1
-	db "<ROCKET>", "┘"       + 1
+	db $0,         $5
+	db $14,        $19
+	db $1d,        $26
+	db $35,        $3a
+	db $3f,        $40
+	db $49,        $5d
+	db $5e,        $7f
 	db -1 ; end

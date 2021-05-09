@@ -4,7 +4,6 @@ LoadBattleMenu:
 	jr Function24e78
 
 SafariBattleMenu:
-; untranslated
 	ld hl, MenuHeader_0x24eae
 	call LoadMenuHeader
 	jr Function24e78
@@ -51,10 +50,10 @@ MenuData_0x24eb6:
 	dba Function24edc
 
 Strings24ebf:
-	db "サファりボール×　　@" ; "SAFARI BALL×  @"
-	db "エサをなげる@" ; "THROW BAIT"
-	db "いしをなげる@" ; "THROW ROCK"
-	db "にげる@" ; "RUN"
+	db "BALLx  @"
+	db "BAIT@"
+	db "ROCK@"
+	db "RUN@"
 
 Function24edc:
 	hlcoord 17, 13

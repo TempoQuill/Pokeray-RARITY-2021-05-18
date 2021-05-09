@@ -463,9 +463,9 @@ DummyGame_InitStrings:
 .dummy_text
 	db "@"
 .japstr1
-	db "とったもの@"
+	db "Taken@"
 .japstr2
-	db "あと　かい@"
+	db "Also@"
 
 DummyGame_Card2Coord:
 	ld d, 0

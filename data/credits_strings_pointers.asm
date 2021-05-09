@@ -50,18 +50,21 @@ CreditsStringsPointers:
 	dw Credits_TerukiMurakawa
 	dw Credits_KazuyoshiOsawa
 	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
-	dw Credits_KimikoNakamichi
+	; new strings
+	dw Credits_GeronimoChavez
+	dw Credits_SoloAcapello
+	dw Credits_JackGetschman
+	dw Credits_AndrewStein
+	dw Credits_ScottCheney
+	dw Credits_SamuelKerssy
+	dw Credits_JenniferNicholson
+	dw Credits_GriffinLewis
+	dw Credits_WilliamAnderson
+	dw Credits_DanielIngram
+	dw Credits_LaurenFaust
+	dw Credits_MinakoHamano
+	dw Credits_JoshuaCrapo
+	; misc strings
 	dw Credits_End
 	dw Credits_Staff
 	dw Credits_Director

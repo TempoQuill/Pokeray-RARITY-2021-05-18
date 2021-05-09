@@ -368,14 +368,28 @@ SurfFunction:
 	ret
 
 UsedSurfboardScript:
+	checkitem ITEM_B3
+	iffalse CantSurfWOBoard
 	writetext _GotOnItemText ; "got on board"
 	sjump CommonSurf
+
+CantSurfWOBoard:
+	writetext _CantSurfWithoutBoardText
+	waitbutton
+	closetext
+	end
 
 _GotOnItemText:
 	text "<PLAYER> got on"
 	line "the @"
 	text_ram wStringBuffer2
 	text "."
+	done
+
+_CantSurfWithoutBoardText:
+	text "You can't SURF"
+	line "without your SURF"
+	cont "BOARD!"
 	done
 
 SurfFromMenuScript:
@@ -485,6 +499,15 @@ TrySurfOW::
 	cp PLAYER_SURF
 	jr z, .quit
 
+	call GetSurfType
+	push af
+	cp PLAYER_SURF_BOARD
+	jr z, .skip_badge_check
+	ld de, ENGINE_SCENERYBADGE
+	call CheckEngineFlag
+	jr c, .quit
+
+.skip_badge_check
 ; Must be facing water.
 	ld a, [wFacingTileID]
 	call GetTileCollision
@@ -503,7 +526,7 @@ TrySurfOW::
 	bit BIKEFLAGS_ALWAYS_ON_BIKE_F, [hl]
 	jr nz, .quit
 
-	call GetSurfType
+	pop af
 	ld [wBuffer2], a
 	call GetPartyNick
 
@@ -912,7 +935,7 @@ TryStrengthOW:
 	call CheckPartyMove
 	jr c, .nope
 
-	ld de, ENGINE_PLAINBADGE
+	ld de, ENGINE_RODEOBADGE
 	call CheckEngineFlag
 	jr c, .nope
 
@@ -1472,7 +1495,7 @@ TryCutOW::
 	call CheckPartyMove
 	jr c, .cant_cut
 
-	ld de, ENGINE_HIVEBADGE
+	ld de, ENGINE_IVYBADGE
 	call CheckEngineFlag
 	jr c, .cant_cut
 

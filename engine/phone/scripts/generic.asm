@@ -197,16 +197,6 @@ PhoneScript_SwarmCave:
 	promptbutton
 	sjump PhoneScript_SeeYouLater
 
-IrwinRocketRumorScript:
-	writetext IrwinRocketTakeoverRumorText
-	promptbutton
-	sjump PhoneScript_SeeYouLater
-
-GinaRocketRumorScript:
-	writetext GinaRocketTakeoverRumorText
-	promptbutton
-	sjump PhoneScript_ByeBye
-
 Phone_CheckIfUnseenRare_Male:
 	scall PhoneScriptRareWildMon
 	iffalse PhoneScript_SeeYouLater

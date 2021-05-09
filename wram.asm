@@ -205,7 +205,7 @@ wTilemapEnd:: ; c508
 SECTION "Miscellaneous", WRAM0
 
 ; This union spans 480 bytes. (c508-c6e8)
-UNION
+UNION ; c508
 ; surrounding tiles
 ; This buffer determines the size for the rest of the union;
 ; it uses exactly 480 bytes.
@@ -234,7 +234,7 @@ wUnownPuzzleEnd::
 NEXTU
 
 ; This union spans 200 bytes.
-UNION
+UNION ; c508
 ; wSpriteAnimDict is a 10x2 dictionary
 ; keys: taken from third column of SpriteAnimSeqData
 ; values: vTiles
@@ -300,7 +300,7 @@ wc508:: ds 13
 ENDU ; c5d0
 
 ; This union spans 280 bytes. (c5d0 - c6e8)
-UNION
+UNION ; c5d0
 ; pokedex
 wPokedexDataStart::
 wPokedexOrder:: ds $100 ; >= NUM_POKEMON
@@ -428,10 +428,7 @@ ENDU ; c6e8
 
 ENDU ; c6e8
 
-; This was a buffer for map-related pointers in the 1997 G/S prototype.
-; See wMapBuffer in pokegold-spaceworld's wram.asm.
-wUnusedMapBuffer:: ds 24
-wUnusedMapBufferEnd::
+	ds 24
 
 
 SECTION "Overworld Map", WRAM0
@@ -612,7 +609,7 @@ wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd:: ds $100 - SCREEN_HEIGHT_PX
 ENDU ; c900
 
-UNION
+UNION ; c900
 ; blank credits tile buffer
 wCreditsBlankFrame2bpp:: ds 4 * 4 tiles
 wCreditsBlankFrame2bppEnd::
@@ -695,9 +692,9 @@ wBattleAnimTempXOffset:: db
 wBattleAnimTempYOffset:: db
 wBattleAnimTempFrameOAMFlags:: db
 wBattleAnimTempPalette:: db
-ENDU ; c122
+ENDU ; ca22
 
-UNION
+UNION ; ca22
 	ds $32
 wBattleAnimEnd::
 
@@ -1345,7 +1342,7 @@ wMartItem10BCD:: ds 3
 NEXTU
 ; town map data
 wTownMapPlayerIconLandmark:: db
-UNION
+UNION ; ceee
 wTownMapCursorLandmark:: db
 wTownMapCursorObjectPointer:: dw
 NEXTU

@@ -273,15 +273,11 @@ ToddPhoneCallerScript:
 GinaPhoneCalleeScript:
 	gettrainername STRING_BUFFER_3, PICNICKER, GINA1
 	scall PhoneScript_AnswerPhone_Female
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue GinaRocketRumorScript
 	sjump Phone_GenericCall_Female
 
 GinaPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, PICNICKER, GINA1
 	scall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue GinaRocketRumorScript
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
 	scall PhoneScript_Random2
@@ -296,15 +292,11 @@ GinaPhoneCallerScript:
 IrwinPhoneCalleeScript:
 	gettrainername STRING_BUFFER_3, JUGGLER, IRWIN1
 	scall PhoneScript_AnswerPhone_Male
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue IrwinRocketRumorScript
 	sjump Phone_GenericCall_Male
 
 IrwinPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, JUGGLER, IRWIN1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue IrwinRocketRumorScript
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
 	scall PhoneScript_Random2

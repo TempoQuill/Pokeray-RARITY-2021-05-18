@@ -560,7 +560,7 @@ TrainerCard_JohtoBadgesOAM:
 	; cycle 1: face tile, in1 tile, in2 tile, in3 tile
 	; cycle 2: face tile, in1 tile, in2 tile, in3 tile
 
-	dw wJohtoBadges
+	dw wEquintoBadges
 
 	; Zephyrbadge
 	db $68, $18, 0

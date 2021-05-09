@@ -216,7 +216,7 @@ Music_TraversalCity_Ch2:
 	octave 3
 	note E_, 8
 	duty_cycle 3
-	vibrato 6, 2, 2
+	vibrato 6, 4, 2
 	volume_envelope 13, 7
 	octave 4
 	note D_, 4
