@@ -1280,7 +1280,8 @@ wMenuCursorX:: db ; cee1
 wCursorOffCharacter:: db ; cee2
 wCursorCurrentTile:: dw ; cee3
 
-	ds 3
+	ds 1
+wLinkMusic:: dw
 
 wOverworldDelay:: db ; cee8
 wTextDelayFrames:: db ; cee9

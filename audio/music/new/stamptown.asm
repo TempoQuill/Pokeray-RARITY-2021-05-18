@@ -4,7 +4,7 @@ Music_StampTown:
 	channel 1, Music_StampTown_Ch1
 	channel 2, Music_StampTown_Ch2
 	channel 3, Music_StampTown_Ch3
-	channel 4 ; leftover from Yoshi's 2P match bgm
+	channel 4 ; from 2P Match BGM and Violet City
 
 Music_StampTown_Ch1:
 	tempo 142

@@ -51,15 +51,15 @@ Music_DilapPokeCenter_Ch2:
 
 Music_DilapPokeCenter_Ch3:
 	sound_call .sub1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note G#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note G#, 1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note G#, 1
 	rest 11
 	sound_call .sub1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note E_, 1
 	rest 13
 	sound_jump Music_DilapPokeCenter_Ch3
@@ -68,79 +68,79 @@ Music_DilapPokeCenter_Ch3:
 	notetype 12, 1, 0
 	octave 5
 	note E_, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note E_, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note C_, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note C_, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note E_, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note E_, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	octave 6
 	note C_, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note C_, 1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note C_, 1
 	rest 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	octave 5
 	note A#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note A#, 1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note A#, 1
 	rest 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note G#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note G#, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note F#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note F#, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note D#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note D#, 1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note D#, 1
 	rest 11
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note D#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note D#, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note C_, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note C_, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note D#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note D#, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note G#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note G#, 1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note G#, 1
 	rest 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note F#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note F#, 1
-	volume_envelop 3, 0
+	volume_envelope 3, 0
 	note F#, 1
 	rest 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note D#, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note D#, 1
-	volume_envelop 1, 0
+	volume_envelope 1, 0
 	note E_, 1
-	volume_envelop 2, 0
+	volume_envelope 2, 0
 	note E_, 1
 	sound_ret

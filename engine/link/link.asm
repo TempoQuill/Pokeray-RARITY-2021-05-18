@@ -165,6 +165,18 @@ RayToGoldLinkComms:
 	jp InitTradeMenuDisplay
 
 RayToRayLinkComms:
+	ldh a, [rSB]
+	cp USING_EXTERNAL_CLOCK
+	push hl
+	ld de, LINK_MUSIC_2
+	jr z, .got_music
+	ld de, LINK_MUSIC_1
+.got_music
+	ld hl, wLinkMusic
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop hl
 	call ClearLinkData
 	call Link_PrepPartyData_Ray
 	call FixDataForLinkTransfer
@@ -409,7 +421,10 @@ RayToRayLinkComms:
 	jp Function28a04
 
 .ready_to_trade
-	ld de, MUSIC_ROUTE_30
+	ld a, [wLinkMusic]
+	ld e, a
+	ld a, [wLinkMusic + 1]
+	ld d, a
 	call PlayMusic
 	jp InitTradeMenuDisplay
 
