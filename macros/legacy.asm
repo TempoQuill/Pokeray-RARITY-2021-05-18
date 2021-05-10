@@ -105,9 +105,7 @@ toggle_perfect_pitch: MACRO
 ENDM
 
 music0xf1        EQUS "pitch_inc_switch"
-music0xf2        EQUS "toggle_sound_event"
-; frame_swap is never in any pret projects, but it is in a few tracks in Yoshi
-frame_swap       EQUS "toggle_sound_event"
+music0xf2        EQUS "frame_swap"
 music0xf3        EQUS "set_music"
 execute_music    EQUS "set_music"
 music0xf4        EQUS "dummy_f4"

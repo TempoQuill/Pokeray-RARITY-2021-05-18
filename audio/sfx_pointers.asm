@@ -30,7 +30,7 @@ SFX:
 	dba Sfx_FullHeal
 	dba Sfx_Menu
 	dba Sfx_ReadText
-	dba Sfx_ReadText2
+	dba Sfx_ReadText
 	dba Sfx_Poison
 	dba Sfx_GotSafariBalls
 	dba Sfx_BootPc

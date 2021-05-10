@@ -93,6 +93,15 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_GSIntroHoOh4             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_4
 	dbw $00, .OAMData_GSIntroHoOh5             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_5
 	dbw $04, .OAMData_Tree                     ; SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2
+	dbw $68, .OAMData_Swap_1                   ; SPRITE_ANIM_OAMSET_SWAPSPRITE_1
+	dbw $6c, .OAMData_Swap_1                   ; SPRITE_ANIM_OAMSET_SWAPSPRITE_2
+
+.OAMData_Swap_1:
+	db 4
+	dbsprite 0, 0, 0, 0, $00, 0
+	dbsprite 0, 1, 0, 0, $01, 0
+	dbsprite 1, 0, 0, 0, $02, 0
+	dbsprite 1, 1, 0, 0, $03, 0
 
 .OAMData_1x1_Palette0:
 	db 1

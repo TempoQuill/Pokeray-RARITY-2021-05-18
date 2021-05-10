@@ -19,9 +19,8 @@ Sfx_Menu:
 	channel 8, Sfx_Menu_Ch8
 
 Sfx_ReadText:
-Sfx_ReadText2:
 	channel_count 1
-	channel 5, Sfx_ReadText2_Ch5
+	channel 5, Sfx_ReadText_Ch5
 
 Sfx_Poison:
 	channel_count 1
@@ -3827,7 +3826,6 @@ Sfx_ExitBuilding_Ch8:
 	sound_ret
 
 Sfx_ReadText_Ch5:
-Sfx_ReadText2_Ch5:
 	duty_cycle 2
 	square_note 0, 9, 1, 1984
 	square_note 0, 8, 1, 2000

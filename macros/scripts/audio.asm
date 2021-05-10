@@ -4,7 +4,7 @@ ENDM
 
 channel: MACRO
 	dn (_num_channels << 2), \1 - 1 ; channel id
-	IF _NARG == \2
+	IF _NARG == 2
 		dw \2 ; address
 	ENDC
 _num_channels = 0
@@ -81,7 +81,7 @@ FIRST_MUSIC_CMD EQU const_value
 	const stereo_panning_cmd          ; $ef
 	const sfx_toggle_noise_cmd        ; $f0
 	const pitch_inc_switch_cmd        ; $f1
-	const toggle_sound_event_cmd      ; $f2
+	const frame_swap_cmd              ; $f2
 	const set_music_cmd               ; $f3
 	const dummy_f4_cmd                ; $f4
 	const dummy_f5_cmd                ; $f5
@@ -292,9 +292,10 @@ pitch_inc_switch: MACRO
 ENDM
 
 ; only present in ray/shade/chaos
-; to be used when porting BGM tracks from Yoshi
-toggle_sound_event: MACRO
-	db toggle_sound_event_cmd
+; uses wFrameSwap
+; animates sprite $68/$6c to music
+frame_swap: MACRO
+	db frame_swap_cmd
 ENDM
 
 ; only present in ray/shade/chaos

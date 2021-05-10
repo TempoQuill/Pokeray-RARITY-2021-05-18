@@ -1848,7 +1848,7 @@ MusicCommands:
 	dw Music_StereoPanning         ; stereo panning
 	dw Music_SFXToggleNoise        ; sfx noise sampling
 	dw Music_PitchIncSwitch        ; pitch inc
-	dw Music_SoundEventToggle      ; frame swap placeholder
+	dw Music_FrameSwap             ; frame swap
 	dw Music_SetMusic              ; execute music
 	dw MusicDummy                  ; nothing
 	dw MusicDummy                  ; nothing
@@ -1864,6 +1864,29 @@ MusicCommands:
 	dw Music_Ret                   ; return
 
 MusicDummy:
+	ret
+
+Music_FrameSwap:
+; only works on noise channels
+	ld a, [wCurChannel]
+	cp CHAN4
+	jr z, .got_valid_channel
+	cp CHAN8
+	ret nz
+
+.got_valid_channel
+	ld hl, wFrameSwap
+	ld a, [hl]
+	and a
+	jr z, .inc
+	xor a
+	jr .write
+
+.inc
+	inc a
+
+.write
+	ld [hl], a
 	ret
 
 Music_PitchIncSwitch:
@@ -1883,17 +1906,6 @@ Music_SetMusic:
 
 	bc_offset CHANNEL_FLAGS1
 	set SOUND_SFX, [hl]
-	ret
-
-Music_SoundEventToggle:
-; will be used when porting Yoshi BGM tracks
-
-	ld hl, wSoundEventFlag
-	ld a, [hl]
-	and a
-	jp z, Music_SetSoundEvent
-	xor a
-	ld [hl], a
 	ret
 
 Music_Ret:
@@ -2996,6 +3008,7 @@ _PlayMusic::
 	ld [wNoiseSampleAddress + 1], a
 	ld [wNoiseSampleDelay], a
 	ld [wMusicNoiseSampleSet], a
+	ld [wFrameSwap], a
 	call MusicOn
 	ret
 

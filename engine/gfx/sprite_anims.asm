@@ -55,6 +55,7 @@ DoAnimFrame:
 	dw .FlyLeaf
 	dw .FlyTo
 	dw .GSIntroHoOhLugia
+	dw .YoshiFrameSwap
 
 .Null:
 	ret
@@ -1448,3 +1449,14 @@ DoAnimFrame:
 .Sprites_Cosine:
 	call Sprites_Cosine
 	ret
+
+.YoshiFrameSwap:
+	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
+	add hl, bc
+	ld [hl], SPRITE_ANIM_FRAMESET_SWAP_1
+	ld a, [wFrameSwap]
+	and a
+	ret z
+	inc [hl]
+	ret
+

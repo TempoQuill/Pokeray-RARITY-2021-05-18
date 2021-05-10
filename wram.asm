@@ -108,9 +108,10 @@ wChannelsEnd:: ; c1b8
 
 wMapMusic:: db
 wDontPlayMapMusicOnReload:: db ; c1b9
-wMusicEnd:: ; c1ba
+wFrameSwap:: ; c1ba
+wMusicEnd:: ; c1bb
 
-	ds 8
+	ds 7
 
 SECTION "WRAM", WRAM0
 

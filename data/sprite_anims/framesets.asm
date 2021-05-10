@@ -56,6 +56,16 @@ SpriteAnimFrameData:
 	dw .Frameset_EggHatch4
 	dw .Frameset_GSIntroHoOhLugia
 	dw .Frameset_HeadbuttTree
+	dw .Frameset_Swap_1
+	dw .Frameset_Swap_2
+
+.Frameset_Swap_1:
+	frame SPRITE_ANIM_OAMSET_SWAPSPRITE_1, 0
+	endanim
+
+.Frameset_Swap_2:
+	frame SPRITE_ANIM_OAMSET_SWAPSPRITE_2, 0
+	endanim
 
 .Frameset_00:
 	frame SPRITE_ANIM_OAMSET_RED_WALK_1, 32

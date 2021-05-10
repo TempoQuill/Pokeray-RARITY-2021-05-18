@@ -113,6 +113,7 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_SEQ_FLY_LEAF                    ; 27
 	const SPRITE_ANIM_SEQ_FLY_TO                      ; 28
 	const SPRITE_ANIM_SEQ_GS_INTRO_HO_OH_LUGIA        ; 29
+	const SPRITE_ANIM_SEQ_YOSHI_FRAME_SWAP            ; 2a
 
 ; SpriteAnimFrameData indexes (see data/sprite_anims/framesets.asm)
 	const_def
@@ -172,6 +173,8 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_FRAMESET_EGG_HATCH_4               ; 35
 	const SPRITE_ANIM_FRAMESET_GS_INTRO_HO_OH_LUGIA      ; 36
 	const SPRITE_ANIM_FRAMESET_HEADBUTT                  ; 37
+	const SPRITE_ANIM_FRAMESET_SWAP_1                    ; 38
+	const SPRITE_ANIM_FRAMESET_SWAP_2                    ; 39
 
 ; SpriteAnimOAMData indexes (see data/sprite_anims/oam.asm)
 	const_def
@@ -267,3 +270,5 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_LUGIA_4      ; 59
 	const SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_LUGIA_5      ; 5a
 	const SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2             ; 5b
+	const SPRITE_ANIM_OAMSET_SWAPSPRITE_1                ; 5c
+	const SPRITE_ANIM_OAMSET_SWAPSPRITE_2                ; 5d
