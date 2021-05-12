@@ -176,12 +176,12 @@ GotMoneyForWinningText:
 
 BattleText_EnemyWasDefeated:
 	text "<ENEMY>"
-	line "was defeated!"
+	line "lost to <PLAYER>!"
 	prompt
 
 TiedAgainstText:
-	text "Tied against"
-	line "<ENEMY>!"
+	text "<ENEMY>"
+	line "tied <PLAYER>!"
 	prompt
 
 SentSomeToMomText:
@@ -223,19 +223,18 @@ BattleText_0x101459:
 	prompt
 
 LostAgainstText:
-	text "Lost against"
-	line "<ENEMY>!"
+	text "<ENEMY>"
+	line "defeated <PLAYER>!"
 	prompt
 
 BattleText_EnemyIsAboutToUseWillPlayerChangeMon:
 	text "<ENEMY>"
-	line "is about to use"
+	line "will use"
 	cont "@"
 	text_ram wEnemyMonNick
 	text "."
 
-	para "Will <PLAYER>"
-	line "swap #MON?"
+	para "Swap #MON?"
 	done
 
 BattleText_EnemySentOut:

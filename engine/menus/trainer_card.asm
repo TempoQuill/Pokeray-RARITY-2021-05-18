@@ -473,7 +473,7 @@ TrainerCard_Page2_3_OAMUpdate:
 	ld a, [de]
 	ld c, a
 	ld de, wVirtualOAMSprite00
-	ld b, NUM_JOHTO_BADGES
+	ld b, NUM_EQUINTO_BADGES
 .loop
 	srl c
 	push bc

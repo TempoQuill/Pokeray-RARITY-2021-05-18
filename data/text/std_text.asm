@@ -85,20 +85,6 @@ MagazineBookshelfText:
 	line "#MON GRAPH…"
 	done
 
-; not used
-	text "TEAM ROCKET OATH"
-
-	para "Steal #MON for"
-	line "profit!"
-
-	para "Exploit #MON"
-	line "for profit!"
-
-	para "All #MON exist"
-	line "for the glory of"
-	cont "TEAM ROCKET!"
-	done
-
 IncenseBurnerText:
 	text "What is this?"
 
@@ -164,21 +150,6 @@ MartSignText:
 	line "#MON Needs"
 
 	para "#MON MART"
-	done
-
-; not used
-	text "We will now judge"
-	line "the #MON you've"
-	cont "caught."
-
-	para "<……>"
-	line "<……>"
-
-	para "We have chosen the"
-	line "winners!"
-
-	para "Are you ready for"
-	line "this?"
 	done
 
 AskNumber1MText:
@@ -275,16 +246,6 @@ RematchFText:
 	line "Let's battle!"
 	done
 
-; not used
-	text "<PLAYER> wins the"
-	line "No. @"
-	text_ram wStringBuffer3
-	text " prize,"
-	cont "a @"
-	text_ram wStringBuffer4
-	text "!"
-	done
-
 ReceivedItemText:
 	text "<PLAYER> recieved"
 	line "a @"
@@ -305,30 +266,6 @@ ReceivedItemGroupText:
 	line "@"
 	text_ram wStringBuffer4
 	text "."
-	done
-
-; not used
-	text "Please join us for"
-	line "the next Contest!"
-	done
-
-; not used
-	text "Everyone else gets"
-	line "a BERRY as a con-"
-	cont "solation prize!"
-	done
-
-; not used
-	text "We hope you do"
-	line "better next time."
-	done
-
-; not used
-	text "We'll return the"
-	line "#MON we kept"
-
-	para "for you."
-	line "Here you go!"
 	done
 
 ; not used

@@ -15,7 +15,7 @@ _LoadFontsExtra::
 	call Get2bpp
 	ld de, FontExtra + 3 tiles ; "<BOLD_D>"
 	ld hl, vTiles2 tile "<BOLD_D>"
-	lb bc, BANK(FontExtra), 22 ; "<BOLD_D>" to "ぉ"
+	lb bc, BANK(FontExtra), 22 ; "<BOLD_D>" to $78
 	call Get2bpp
 	jr LoadFrame
 
@@ -49,8 +49,8 @@ LoadBattleFontsHPBar:
 	lb bc, BANK(FontBattleExtra), 12
 	call Get2bpp
 	ld hl, vTiles2 tile $70
-	ld de, FontBattleExtra + 16 tiles ; "<DO>"
-	lb bc, BANK(FontBattleExtra), 3 ; "<DO>" to "『"
+	ld de, FontBattleExtra + 16 tiles
+	lb bc, BANK(FontBattleExtra), 3
 	call Get2bpp
 	call LoadFrame
 

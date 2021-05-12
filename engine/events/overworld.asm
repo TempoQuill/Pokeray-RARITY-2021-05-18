@@ -501,6 +501,7 @@ TrySurfOW::
 
 	call GetSurfType
 	push af
+	; a surf board can't tell what badges you have
 	cp PLAYER_SURF_BOARD
 	jr z, .skip_badge_check
 	ld de, ENGINE_SCENERYBADGE
@@ -1450,10 +1451,6 @@ Script_GetOnBike_Register:
 	closetext
 	special UpdatePlayerSprite
 	end
-
-; unused
-	nop
-	ret
 
 Script_GetOffBike:
 	reloadmappart

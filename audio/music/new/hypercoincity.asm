@@ -1,4 +1,5 @@
 Music_HypercoinCity:
+; wav
 ; AUG 15 2020
 	channel_count 3
 	channel 1, Music_HypercoinCity_Ch1

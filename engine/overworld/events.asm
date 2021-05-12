@@ -433,14 +433,6 @@ CheckTimeEvents:
 	ld a, [wLinkMode]
 	and a
 	jr nz, .nothing
-
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	jr z, .do_daily
-	xor a
-	ret
-
-.do_daily
 	farcall CheckDailyResetTimer
 	farcall CheckSwarmFlag
 	farcall CheckPokerusTick
@@ -999,7 +991,7 @@ INCLUDE "engine/overworld/scripting.asm"
 WarpToSpawnPoint::
 	ld hl, wStatusFlags2
 	res STATUSFLAGS2_SAFARI_GAME_F, [hl]
-	res STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
+	res STATUSFLAGS2_OLD_FLAG, [hl]
 	ret
 
 RunMemScript::

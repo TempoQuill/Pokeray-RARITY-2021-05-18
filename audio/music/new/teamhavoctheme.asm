@@ -1,4 +1,5 @@
 Music_TeamHavocTheme:
+; wav
 ; NOV 10 2019
 	channel_count 4
 	channel 1, Music_TeamHavocTheme_Ch1

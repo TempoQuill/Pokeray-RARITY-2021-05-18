@@ -10,7 +10,7 @@ It should build the following ROMs:
 
 ## See also
 
-Follow the official team that made this prototype possible.
+Follow the official team that made this prototype possible to make.
 - **Discord:** [pret][discord]
 - **IRC:** [freenode#pret][irc]
 

@@ -62,7 +62,7 @@
 	const MUSIC_PRINTER                      ; 38
 	const MUSIC_ROUTE_26                     ; 39 ; ROUTE_61
 	const MUSIC_ROCKET_ENCOUNTER             ; 3a ; HAVOC_ENCOUNTER
-	const MUSIC_ROCKET_OVERTURE              ; 3b ; HAVOC_TAKEOVER
+	const MUSIC_ROCKET_OVERTURE              ; 3b ; HAVOC_THEME
 	const MUSIC_POKEMON_MARCH                ; 3c ; RBY_SURF ; SS_VAPOR_DEPARTURE
 	const MUSIC_VIOLET_CITY                  ; 3d ; STAMP_TOWN
 	const MUSIC_UNION_CAVE                   ; 3e ; SUNKERN_SWAMP
@@ -72,10 +72,13 @@
 	const MUSIC_POKEMON_LULLABY              ; 42 ; BUG_CATCHING_CONTEST_EXT ; TRADE_MENU_2
 NUM_MUSIC_IDS EQU const_value
 
-; wLinkMusic
-LINK_MUSIC_1 EQU MUSIC_POKE_FLUTE_CHANNEL
-LINK_MUSIC_2 EQU MUSIC_POKEMON_LULLABY
+; speical track behavior regarding linked games
+; doesn't effect map music behavior
+LINK_MUSIC_1 EQU $41
+LINK_MUSIC_2 EQU $42
 
+; map music with this value will be redirected to a valid track
+SPECIAL_MAP_MUSIC EQU $fd
 ; ExitPokegearRadio_HandleMusic uses these values
 RESTART_MAP_MUSIC EQU $fe
 ENTER_MAP_MUSIC   EQU $ff

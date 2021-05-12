@@ -1,4 +1,5 @@
 Music_Gym:
+; wav, drum
 ; JUN 18 2020
 	channel_count 4
 	channel 1, Music_Gym_Ch1

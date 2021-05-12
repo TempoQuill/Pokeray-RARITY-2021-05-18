@@ -1,4 +1,5 @@
 Music_Larch:
+; wav
 ; SEP 6 2019
 	channel_count 4
 	channel 1, Music_Larch_Ch1

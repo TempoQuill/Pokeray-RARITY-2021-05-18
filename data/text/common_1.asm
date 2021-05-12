@@ -141,12 +141,14 @@ _EnemyWithdrewText::
 
 _EnemyUsedOnText::
 	text "<ENEMY>"
-	line "used @"
+	line "used a(n)"
+	cont "@"
 	text_ram wMonOrItemNameBuffer
 	text_start
-	cont "on @"
+	text " on"
+	cont "@"
 	text_ram wEnemyMonNick
-	text "!"
+	cont "!"
 	prompt
 
 _NothingToChooseText::
@@ -772,77 +774,8 @@ _PnP_Text5::
 	text_ram wStringBuffer1
 	text_end
 
-_RocketRadioText1::
-	text_start
-	line "… …Ahem, we are"
-	done
-
-_RocketRadioText2::
-	text_start
-	line "TEAM ROCKET!"
-	done
-
-_RocketRadioText3::
-	text_start
-	line "After three years"
-	done
-
-_RocketRadioText4::
-	text_start
-	line "of preparation, we"
-	done
-
-_RocketRadioText5::
-	text_start
-	line "have risen again"
-	done
-
-_RocketRadioText6::
-	text_start
-	line "from the ashes!"
-	done
-
-_RocketRadioText7::
-	text_start
-	line "GIOVANNI! @"
-	text_pause
-	text "Can you"
-	done
-
-_RocketRadioText8::
-	text_start
-	line "hear?@"
-	text_pause
-	text " We did it!"
-	done
-
-_RocketRadioText9::
-	text_start
-	line "@"
-	text_pause
-	text "Where is our Boss?"
-	done
-
-_RocketRadioText10::
-	text_start
-	line "@"
-	text_pause
-	text "Is he listening?"
-	done
-
 _AskFloorElevatorText::
 	text "Which floor?"
-	done
-
-; not used
-	text "ANNOUNCER: <……>"
-
-	para "Time's up!"
-	done
-
-; not used
-	text "ANNOUNCER: The"
-	line "Contest is over!"
 	done
 
 _RepelWoreOffText::

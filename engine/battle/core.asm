@@ -2458,10 +2458,6 @@ PlayVictoryMusic:
 	pop de
 	ret
 
-IsKantoGymLeader:
-	ld hl, KantoGymLeaders
-	jr IsGymLeaderCommon
-
 IsGymLeader:
 	ld hl, GymLeaders
 IsGymLeaderCommon:

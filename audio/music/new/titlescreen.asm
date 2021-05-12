@@ -1,4 +1,5 @@
 Music_TitleScreen:
+; wav
 ; JUL 15 2019
 	channel_count 4
 	channel 1, Music_TitleScreen_Ch1

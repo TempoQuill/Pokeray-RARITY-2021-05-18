@@ -206,7 +206,6 @@ ENDM
 	dict "<GREEN>",   PrintGreensName
 	dict "#",         PlacePOKe
 	dict "<PC>",      PCChar
-	dict "<ROCKET>",  RocketChar
 	dict "<TM>",      TMChar
 	dict "<TRAINER>", TrainerChar
 	dict "<LF>",      LineFeedChar
@@ -311,7 +310,6 @@ PlaceCommandCharacter::
 TMCharText::      db "TM@"
 TrainerCharText:: db "TRAINER@"
 PCCharText::      db "PC@"
-RocketCharText::  db "ROCKET@"
 PlacePOKeText::   db "POKé@"
 SixDotsCharText:: db "……@"
 EnemyText::       db "Enemy @"

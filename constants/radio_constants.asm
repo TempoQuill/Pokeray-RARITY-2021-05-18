@@ -10,7 +10,6 @@
 	const LUCKY_CHANNEL          ; 03
 	const PLACES_AND_PEOPLE      ; 04
 	const LETS_ALL_SING          ; 05
-	const ROCKET_RADIO           ; 06
 	const POKE_FLUTE_RADIO       ; 07
 	const UNOWN_RADIO            ; 08
 	const EVOLUTION_RADIO        ; 09
@@ -54,15 +53,6 @@
 	const PLACES_AND_PEOPLE_5    ; 2e
 	const PLACES_AND_PEOPLE_6    ; 2f
 	const PLACES_AND_PEOPLE_7    ; 30
-	const ROCKET_RADIO_2         ; 31
-	const ROCKET_RADIO_3         ; 32
-	const ROCKET_RADIO_4         ; 33
-	const ROCKET_RADIO_5         ; 34
-	const ROCKET_RADIO_6         ; 35
-	const ROCKET_RADIO_7         ; 36
-	const ROCKET_RADIO_8         ; 37
-	const ROCKET_RADIO_9         ; 38
-	const ROCKET_RADIO_10        ; 39
 	const OAKS_POKEMON_TALK_10   ; 3a
 	const OAKS_POKEMON_TALK_11   ; 3b
 	const OAKS_POKEMON_TALK_12   ; 3c
@@ -83,7 +73,6 @@
 	const MAPRADIO_UNOWN
 	const MAPRADIO_PLACES_PEOPLE
 	const MAPRADIO_LETS_ALL_SING
-	const MAPRADIO_ROCKET
 
 ; OaksPKMNTalkRoutes size (see data/radio/oaks_pkmn_talk_routes.asm)
 NUM_OAKS_POKEMON_TALK_ROUTES EQU 15

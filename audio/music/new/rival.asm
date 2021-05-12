@@ -1,4 +1,5 @@
 Music_LookRival:
+; drum
 ; SEP 19 2019
 	channel_count 4
 	channel 1, Music_LookRival_Ch1
@@ -7,6 +8,7 @@ Music_LookRival:
 	channel 4, Music_LookRival_Ch4
 
 Music_AfterTheRivalFight:
+; drum
 ; SEP 19 2019
 	channel_count 4
 	channel 1, Music_AfterTheRivalFight_Ch1

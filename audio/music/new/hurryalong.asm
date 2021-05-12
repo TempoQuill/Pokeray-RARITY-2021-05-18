@@ -1,4 +1,5 @@
 Music_HurryAlong:
+; engine, wav, drum
 ; JUN 27 2020
 	channel_count 4
 	channel 1, Music_HurryAlong_Ch1

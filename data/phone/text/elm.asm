@@ -158,33 +158,6 @@ ElmPhoneEggAssistantText:
 	cont "him?"
 	done
 
-ElmPhoneRadioTowerRocketTakeoverText:
-	text "<PLAYER>, how are"
-	line "things going?"
-
-	para "I called because"
-	line "something weird is"
-
-	para "happening with the"
-	line "radio broadcasts."
-
-	para "They were talking"
-	line "about TEAM ROCKET."
-
-	para "<PLAYER>, do you"
-	line "know anything"
-	cont "about it?"
-
-	para "Maybe TEAM ROCKET"
-	line "has returned. No,"
-
-	para "that just can't"
-	line "be true."
-
-	para "Sorry to bug you."
-	line "Take care!"
-	done
-
 ElmPhoneGiftText:
 	text ", <PLAYER>?"
 

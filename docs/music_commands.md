@@ -221,7 +221,7 @@ USAGE:
 VARS:
 - Byte 2-3 = Big-endian 16-bit addend
 
-NOTE: `E6`'s use has been moderated due to the addition of `F1` Ray (more on that later).
+NOTE: `E6`'s use has been moderated due to the addition of `F1` in Ray (more on that later).
 
 USAGE:
 ```
@@ -348,13 +348,13 @@ USAGE:
 	pitch_inc_switch
 ```
 
-## `F2` **Switch Between 1 and 0 on wSoundEventFlag**
+## `F2` **Animate Sprite According to `wFrameSwap`**
 
-NOTE: This is an exclusive command to Ray as the command is empty in Gold.  In the RARITY prototype of Ray at least, this merely acts as a placeholder equivalent to `F1` in Yoshi.  No scripts even rely on `wSoundEventFlag` anyway.
+NOTE: This is an exclusive command to Ray as the command is empty in Gold.  In the RARITY prototype of Ray and onward, this is the equivalent to `F1` in Yoshi.  It toggles bit zero of `wFrameSwap` near the end of audio RAM.
 
 USAGE:
 ```
-	toggle_sound_event
+	frame_swap
 ```
 
 ## `F3` **Treat Sound Data As Music**

@@ -1,4 +1,5 @@
 Music_GymVictory:
+; wav, drum
 ; JUL 23 2019
 	channel_count 4
 	channel 1, Music_GymVictory_Ch1

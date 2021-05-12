@@ -1,4 +1,5 @@
 Music_LookHavoc:
+; wav
 ; NOV 10 2019
 	channel_count 4
 	channel 1, Music_LookHavoc_Ch1

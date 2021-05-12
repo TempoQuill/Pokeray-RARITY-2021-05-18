@@ -75,8 +75,8 @@ _MoveBoulderText::
 	prompt
 
 _AskStrengthText::
-	text "A #MON may be"
-	line "able to move this."
+	text "A #MON can move"
+	line "this."
 
 	para "Want to use"
 	line "STRENGTH?"
@@ -213,14 +213,15 @@ _WhitedOutText::
 	done
 
 _ItemfinderItemNearbyText::
-	text "Yes! ITEMFINDER"
-	line "indicates there's"
-	cont "an item nearby."
+	text "Yes! The ITEM-"
+	line "FINDER indicates"
+	cont "that an item is"
+	cont "nearby!"
 	prompt
 
 _ItemfinderNopeText::
-	text "Nope! ITEMFINDER"
-	line "isn't responding."
+	text "No response from"
+	line "the ITEMFINDER."
 	prompt
 
 _PoisonFaintText::
@@ -258,7 +259,7 @@ _SquirtbottleNothingText::
 
 _UseSacredAshText::
 	text "<PLAYER>'s #MON"
-	line "were all healed!"
+	line "are all healed!"
 	done
 
 _AnEggCantHoldAnItemText::
@@ -852,11 +853,6 @@ _DummyGameYeahText::
 
 _DummyGameDarnText::
 	text "Darn…"
-	done
-
-; not used
-	text "Would you like to"
-	line "end the Contest?"
 	done
 
 _ItemsTossOutHowManyText::

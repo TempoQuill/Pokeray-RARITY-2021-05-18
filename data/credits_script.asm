@@ -3,7 +3,7 @@ CreditsScript:
 ; Clear the banner.
 	db CREDITS_CLEAR
 
-; Pokemon Gold/Silver Version Staff
+; Pokemon Ray/Shade Version Staff
 	db                STAFF, 0
 
 	db CREDITS_WAIT, 8

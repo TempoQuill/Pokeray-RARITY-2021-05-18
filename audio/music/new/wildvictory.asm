@@ -1,4 +1,5 @@
 Music_WildVictory:
+; wav
 ; JUN 18 2020
 	channel_count 3
 	channel 1, Music_WildVictory_Ch1
@@ -6,6 +7,7 @@ Music_WildVictory:
 	channel 3, Music_WildVictory_Ch3
 
 Music_CatchVictory:
+; wav
 ; JUN 18 2020
 	channel_count 3
 	channel 1, Music_CatchVictory_Ch1

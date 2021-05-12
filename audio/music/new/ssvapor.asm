@@ -1,4 +1,5 @@
 Music_SSVapor:
+; wav
 ; JUL 19 2019
 	channel_count 3
 	channel 1, Music_SSVapor_Ch1

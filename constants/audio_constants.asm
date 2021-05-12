@@ -167,11 +167,11 @@ MUSIC_ON_F EQU 0
 	const RAY_CREDITS    ; d
 	const RAY_NORGEO     ; e
 	const FILLER         ; f
+NUM_WAVS EQU const_value
 
 ; ch3 masks
 WAVE_TABLE_MASK EQU %00001111
 WAVE_VOLUME_MASK EQU %11110000
-NUM_WAVS EQU 16
 
 ; wMusicFade
 MUSIC_FADE_IN_F EQU 7

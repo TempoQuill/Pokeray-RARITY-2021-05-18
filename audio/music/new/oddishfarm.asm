@@ -1,4 +1,5 @@
 Music_OddishFarm:
+; wav
 ; NOV 7 2019
 	channel_count 3
 	channel 1, Music_OddishFarm_Ch1

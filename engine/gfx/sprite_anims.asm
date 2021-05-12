@@ -1454,7 +1454,7 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_FRAMESET_SWAP_1
-	ld a, [wFrameSwap]
+	ld a, [wFrameSwap] ; in audio RAM
 	and a
 	ret z
 	inc [hl]

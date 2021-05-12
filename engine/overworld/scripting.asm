@@ -104,8 +104,8 @@ ScriptCommandTable:
 	dw Script_takecoins                  ; 26
 	dw Script_checkcoins                 ; 27
 	dw Script_addmailaddr                ; 28
-	dw Script_delmailaddr                 ; 29
-	dw Script_checkmailaddr               ; 2a
+	dw Script_delmailaddr                ; 29
+	dw Script_checkmailaddr              ; 2a
 	dw Script_checktime                  ; 2b
 	dw Script_checkpoke                  ; 2c
 	dw Script_givepoke                   ; 2d

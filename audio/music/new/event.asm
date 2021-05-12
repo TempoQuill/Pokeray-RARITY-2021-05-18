@@ -1,4 +1,5 @@
 Music_Event:
+; engine, wav, drum
 ; AUG 21 2019
 	channel_count 4
 	channel 1, Music_Event_Ch1

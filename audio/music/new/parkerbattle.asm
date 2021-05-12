@@ -1,4 +1,5 @@
 Music_ParkerBattle:
+; wav
 ; FEB 11 2020
 	channel_count 3
 	channel 1, Music_ParkerBattle_Ch1

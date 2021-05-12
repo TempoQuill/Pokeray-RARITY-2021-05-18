@@ -1,4 +1,5 @@
 Music_HealAlternate:
+; wav
 ; MAY 17 2020
 	channel_count 3
 	channel 1, Music_HealAlternate_Ch1

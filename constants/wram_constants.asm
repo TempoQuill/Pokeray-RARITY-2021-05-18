@@ -185,20 +185,16 @@ NUM_OBJECTS   EQU 16
 	const STATUSFLAGS_UNOWN_DEX_F                ; 1
 	const STATUSFLAGS_FLASH_F                    ; 2
 	const STATUSFLAGS_CAUGHT_POKERUS_F           ; 3
-	const STATUSFLAGS_ROCKET_SIGNAL_F            ; 4
+	const_skip
 	const STATUSFLAGS_NO_WILD_ENCOUNTERS_F       ; 5
 	const STATUSFLAGS_HALL_OF_FAME_F             ; 6
 
 ; wStatusFlags2::
-	const_def
-	const STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F ; 0
+	const_def 1
 	const STATUSFLAGS2_SAFARI_GAME_F            ; 1
-	const STATUSFLAGS2_BUG_CONTEST_TIMER_F      ; 2
-	const STATUSFLAGS2_UNUSED_3_F               ; 3
+	const STATUSFLAGS2_OLD_FLAG                 ; 2
+	const_skip
 	const STATUSFLAGS2_BIKE_SHOP_CALL_F         ; 4
-	const STATUSFLAGS2_UNUSED_5_F               ; 5
-	const STATUSFLAGS2_REACHED_GOLDENROD_F      ; 6
-	const STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F    ; 7
 
 ; wMomSavingMoney::
 MOM_SAVING_SOME_MONEY_F EQU 0

@@ -3,7 +3,7 @@ Music_NewBarkTown: ; leftover from Gold, unused
 	channel 1, Music_NewBarkTown_Ch1
 	channel 2, Music_NewBarkTown_Ch2
 	channel 3, Music_NewBarkTown_Ch3
-	channel 4 ; from old arr
+	channel 4 ; from older arr
 
 Music_NewBarkTown_Ch1:
 	tempo 187

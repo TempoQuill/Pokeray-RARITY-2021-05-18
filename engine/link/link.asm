@@ -165,13 +165,14 @@ RayToGoldLinkComms:
 	jp InitTradeMenuDisplay
 
 RayToRayLinkComms:
-	ldh a, [rSB]
+	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	push hl
 	ld de, LINK_MUSIC_2
 	jr z, .got_music
 	ld de, LINK_MUSIC_1
 .got_music
+	; back up music ID
 	ld hl, wLinkMusic
 	ld [hl], e
 	inc hl

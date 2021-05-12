@@ -1,4 +1,5 @@
 Music_Route52:
+; wav
 ; AUG 20 2019
 	channel_count 4
 	channel 1, Music_Route52_Ch1

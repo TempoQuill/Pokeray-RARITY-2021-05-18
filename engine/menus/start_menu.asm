@@ -17,8 +17,6 @@ StartMenu::
 
 	farcall ReanchorBGMap_NoOAMUpdate
 
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	ld hl, .MenuHeader
 	call LoadMenuHeader
 	call .SetUpMenuItems
@@ -294,13 +292,8 @@ endr
 	ld a, [wLinkMode]
 	and a
 	jr nz, .no_pack
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	jr nz, .no_pack
 	ld a, STARTMENUITEM_PACK
 	call .AppendMenuList
-.no_pack
-
 	ld hl, wPokegearFlags
 	bit POKEGEAR_OBTAINED_F, [hl]
 	jr z, .no_pokegear
@@ -315,11 +308,7 @@ endr
 	and a
 	jr nz, .no_save
 	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	ld a, STARTMENUITEM_QUIT
-	jr nz, .write
 	ld a, STARTMENUITEM_SAVE
-.write
 	call .AppendMenuList
 .no_save
 
@@ -375,9 +364,6 @@ endr
 	ret
 
 .DrawLeftoversStatusBox:
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	ret z
 	farcall StartMenu_DrawLeftoversStatusBox
 	ret
 

@@ -1,4 +1,5 @@
 Music_PokemonCenter:
+; wav, drum
 ; MAY 31 2020
 	channel_count 4
 	channel 1, Music_PokemonCenter_Ch1

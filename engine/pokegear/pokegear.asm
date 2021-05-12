@@ -10,19 +10,16 @@ PHONE_DISPLAY_HEIGHT EQU 4
 
 ; PokegearJumptable.Jumptable indexes
 	const_def
-	const POKEGEARSTATE_CLOCKINIT       ; 0
-	const POKEGEARSTATE_CLOCKJOYPAD     ; 1
-	const POKEGEARSTATE_MAPCHECKREGION  ; 2
-	const POKEGEARSTATE_JOHTOMAPINIT    ; 3
-	const POKEGEARSTATE_JOHTOMAPJOYPAD  ; 4
-	const POKEGEARSTATE_KANTOMAPINIT    ; 5
-	const POKEGEARSTATE_KANTOMAPJOYPAD  ; 6
-	const POKEGEARSTATE_PHONEINIT       ; 7
-	const POKEGEARSTATE_PHONEJOYPAD     ; 8
-	const POKEGEARSTATE_MAKEPHONECALL   ; 9
-	const POKEGEARSTATE_FINISHPHONECALL ; a
-	const POKEGEARSTATE_RADIOINIT       ; b
-	const POKEGEARSTATE_RADIOJOYPAD     ; c
+	const POKEGEARSTATE_CLOCKINIT        ; 0
+	const POKEGEARSTATE_CLOCKJOYPAD      ; 1
+	const POKEGEARSTATE_EQUINTOMAPINIT   ; 3
+	const POKEGEARSTATE_EQUINTOMAPJOYPAD ; 4
+	const POKEGEARSTATE_EMAILINIT        ; 7
+	const POKEGEARSTATE_EMAILJOYPAD      ; 8
+	const POKEGEARSTATE_MAKEPHONECALL    ; 9
+	const POKEGEARSTATE_FINISHPHONECALL  ; a
+	const POKEGEARSTATE_RADIOINIT        ; b
+	const POKEGEARSTATE_RADIOJOYPAD      ; c
 
 PokeGear:
 	ld hl, wOptions
@@ -91,7 +88,6 @@ PokeGear:
 	xor a
 	ld [wJumptableIndex], a ; POKEGEARSTATE_CLOCKINIT
 	ld [wPokegearCard], a ; POKEGEARCARD_CLOCK
-	ld [wPokegearMapRegion], a ; JOHTO_REGION
 	ld [wce66], a
 	ld [wPokegearPhoneScrollPosition], a
 	ld [wPokegearPhoneCursorPosition], a
@@ -315,18 +311,6 @@ InitPokegearTilemap:
 	db "SWITCH▶@"
 
 .Map:
-	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld e, 0
-	jr .ok
-
-.kanto
-	ld e, 1
-.ok
 	farcall PokegearMap
 	ld a, $07
 	ld bc, SCREEN_WIDTH - 2
@@ -430,11 +414,8 @@ PokegearJumptable:
 ; entries correspond to POKEGEARSTATE_* constants
 	dw PokegearClock_Init
 	dw PokegearClock_Joypad
-	dw PokegearMap_CheckRegion
 	dw PokegearMap_Init
-	dw PokegearMap_JohtoMap
-	dw PokegearMap_Init
-	dw PokegearMap_KantoMap
+	dw PokegearMap_EquintoMap
 	dw PokegearPhone_Init
 	dw PokegearPhone_Joypad
 	dw PokegearPhone_MakePhoneCall
@@ -471,7 +452,7 @@ PokegearClock_Joypad:
 	ld a, [wPokegearFlags]
 	bit POKEGEAR_EMAIL_CARD_F, a
 	jr z, .no_phone_card
-	ld c, POKEGEARSTATE_PHONEINIT
+	ld c, POKEGEARSTATE_EMAILINIT
 	ld b, POKEGEARCARD_PHONE
 	jr .done
 
@@ -520,24 +501,6 @@ Pokegear_UpdateClock:
 	text_far _GearTodayText
 	text_end
 
-PokegearMap_CheckRegion:
-	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld a, POKEGEARSTATE_JOHTOMAPINIT
-	jr .done
-	ret
-
-.kanto
-	ld a, POKEGEARSTATE_KANTOMAPINIT
-.done
-	ld [wJumptableIndex], a
-	call ExitPokegearRadio_HandleMusic
-	ret
-
 PokegearMap_Init:
 	call InitPokegearTilemap
 	ld a, [wPokegearMapPlayerIconLandmark]
@@ -552,14 +515,9 @@ PokegearMap_Init:
 	inc [hl]
 	ret
 
-PokegearMap_KantoMap:
-	call TownMap_GetKantoLandmarkLimits
-	jr PokegearMap_ContinueMap
-
-PokegearMap_JohtoMap:
-	ld d, LANDMARK_SILVER_CAVE
-	ld e, LANDMARK_NEW_BARK_TOWN
-PokegearMap_ContinueMap:
+PokegearMap_EquintoMap:
+	ld d, LANDMARK_MT_SABER
+	ld e, LANDMARK_COTTAGE_TOWN
 	ld hl, hJoyLast
 	ld a, [hl]
 	and B_BUTTON
@@ -577,7 +535,7 @@ PokegearMap_ContinueMap:
 	ld a, [wPokegearFlags]
 	bit POKEGEAR_EMAIL_CARD_F, a
 	jr z, .no_phone
-	ld c, POKEGEARSTATE_PHONEINIT
+	ld c, POKEGEARSTATE_EMAILINIT
 	ld b, POKEGEARCARD_PHONE
 	jr .done
 
@@ -758,7 +716,7 @@ PokegearRadio_Joypad:
 	ld a, [wPokegearFlags]
 	bit POKEGEAR_EMAIL_CARD_F, a
 	jr z, .no_phone
-	ld c, POKEGEARSTATE_PHONEINIT
+	ld c, POKEGEARSTATE_EMAILINIT
 	ld b, POKEGEARCARD_PHONE
 	jr .switch_page
 
@@ -867,7 +825,7 @@ PokegearPhone_Joypad:
 	ret
 
 .quit_submenu
-	ld a, POKEGEARSTATE_PHONEJOYPAD
+	ld a, POKEGEARSTATE_EMAILJOYPAD
 	ld [wJumptableIndex], a
 	ret
 
@@ -907,7 +865,7 @@ PokegearPhone_MakePhoneCall:
 	farcall Phone_NoSignal
 	ld hl, .GearOutOfServiceText
 	call PrintText
-	ld a, POKEGEARSTATE_PHONEJOYPAD
+	ld a, POKEGEARSTATE_EMAILJOYPAD
 	ld [wJumptableIndex], a
 	ld hl, PokegearAskWhoCallText
 	call PrintText
@@ -926,7 +884,7 @@ PokegearPhone_FinishPhoneCall:
 	and A_BUTTON | B_BUTTON
 	ret z
 	farcall HangUp
-	ld a, POKEGEARSTATE_PHONEJOYPAD
+	ld a, POKEGEARSTATE_EMAILJOYPAD
 	ld [wJumptableIndex], a
 	ld hl, PokegearAskWhoCallText
 	call PrintText
@@ -1446,7 +1404,6 @@ RadioChannels:
 	dbw 64, .PlacesAndPeople        ; 16.5
 	dbw 72, .LetsAllSing            ; 18.5
 	dbw 78, .PokeFluteRadio         ; 20.0
-	dbw 80, .EvolutionRadio         ; 20.5
 	db -1
 
 .PKMNTalkAndPokedexShow:
@@ -1486,47 +1443,10 @@ RadioChannels:
 	jp LoadStation_LetsAllSing
 
 .PokeFluteRadio:
-	call .InJohto
-	jr c, .NoSignal
 	ld a, [wPokegearFlags]
 	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, .NoSignal
 	jp LoadStation_PokeFluteRadio
-
-.EvolutionRadio:
-; This station airs in the Lake of Rage area when Team Rocket is still in Mahogany.
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_ROCKET_SIGNAL_F, a
-	jr z, .NoSignal
-	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_MAHOGANY_TOWN
-	jr z, .ok
-	cp LANDMARK_ROUTE_43
-	jr z, .ok
-	cp LANDMARK_LAKE_OF_RAGE
-	jr nz, .NoSignal
-.ok
-	jp LoadStation_EvolutionRadio
-
-.NoSignal:
-	call NoRadioStation
-	ret
-
-.InJohto:
-; if in Johto or on the S.S. Aqua, set carry
-; otherwise clear carry
-	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
-	cp KANTO_LANDMARK
-	jr c, .johto
-.kanto
-	and a
-	ret
-
-.johto
-	scf
-	ret
 
 LoadStation_OaksPokemonTalk:
 	xor a ; OAKS_POKEMON_TALK
@@ -1595,17 +1515,6 @@ LoadStation_PlacesAndPeople:
 
 LoadStation_LetsAllSing:
 	ld a, LETS_ALL_SING
-	ld [wCurRadioLine], a
-	xor a
-	ld [wNumRadioLinesPrinted], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
-	ld de, LetsAllSingName
-	ret
-
-LoadStation_RocketRadio:
-	ld a, ROCKET_RADIO
 	ld [wCurRadioLine], a
 	xor a
 	ld [wNumRadioLinesPrinted], a
@@ -1757,19 +1666,7 @@ _TownMap:
 	call DelayFrame
 
 .dmg
-	ld a, [wTownMapPlayerIconLandmark]
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-	ld d, KANTO_LANDMARK - 1
-	ld e, 1
 	call .loop
-	jr .resume
-
-.kanto
-	call TownMap_GetKantoLandmarkLimits
-	call .loop
-
-.resume
 	pop af
 	ld [wVramState], a
 	pop af
@@ -1840,15 +1737,6 @@ _TownMap:
 	jr .loop2
 
 .InitTilemap:
-	ld a, [wTownMapPlayerIconLandmark]
-	cp KANTO_LANDMARK
-	jr nc, .kanto2
-	ld e, JOHTO_REGION
-	jr .okay_tilemap
-
-.kanto2
-	ld e, KANTO_REGION
-.okay_tilemap
 	farcall PokegearMap
 	ld a, $07
 	ld bc, 6
@@ -1944,20 +1832,15 @@ PlayRadio:
 	dw LoadStation_UnownRadio
 	dw LoadStation_PlacesAndPeople
 	dw LoadStation_LetsAllSing
-	dw LoadStation_RocketRadio
 
 .OakOrPnP:
-	call IsInJohto
-	and a
-	jr nz, .kanto
 	call UpdateTime
 	ld a, [wTimeOfDay]
 	and a
 	jp z, LoadStation_PokedexShow
+	cp 1
+	jp z, LoadStation_PlacesAndPeople
 	jp LoadStation_OaksPokemonTalk
-
-.kanto
-	jp LoadStation_PlacesAndPeople
 
 PokegearMap:
 	ld a, e
@@ -2467,18 +2350,6 @@ Pokedex_GetArea:
 ; Don't show the player's sprite if you're
 ; not in the same region as what's currently
 ; on the screen.
-	ld a, [wTownMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
-	cp KANTO_LANDMARK
-	jr c, .johto
-.kanto
-	ld a, [wTownMapCursorLandmark]
-	and a
-	jr z, .clear
-	jr .ok
-
-.johto
 	ld a, [wTownMapCursorLandmark]
 	and a
 	jr nz, .clear

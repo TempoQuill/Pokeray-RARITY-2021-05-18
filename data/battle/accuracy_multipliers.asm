@@ -9,6 +9,9 @@ AccuracyLevelMultipliers:
 	db  60, 100 ; -2 =  60%
 	db  75, 100 ; -1 =  75%
 	db   1,   1 ;  0 = 100%
+	; not used
+	; no accuracy improving moves present
+	; X Accuracy dumps the responsible checks
 	db 133, 100 ; +1 = 133%
 	db 166, 100 ; +2 = 166%
 	db   2,   1 ; +3 = 200%

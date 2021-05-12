@@ -108,7 +108,7 @@ wChannelsEnd:: ; c1b8
 
 wMapMusic:: db
 wDontPlayMapMusicOnReload:: db ; c1b9
-wFrameSwap:: ; c1ba
+wFrameSwap:: db ; c1ba
 wMusicEnd:: ; c1bb
 
 	ds 7

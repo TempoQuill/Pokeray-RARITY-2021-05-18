@@ -1,4 +1,5 @@
 Music_WildBattle:
+; wav
 ; AUG 15 2019
 	channel_count 3
 	chnanel 1, Music_WildBattle_Ch1

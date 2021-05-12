@@ -1,4 +1,5 @@
 Music_StaffRoll:
+; wav, drum
 ; SEP 5 2019
 	channel_count 4
 	channel 1, Music_StaffRoll_Ch1

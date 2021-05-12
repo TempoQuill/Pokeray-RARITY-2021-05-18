@@ -395,6 +395,9 @@ RestartMapMusic::
 	ret
 
 SpecialMapMusic::
+	ld a, [wMapMusic]
+	cp SPECIAL_MAP_MUSIC
+	jr z, .get_map
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr z, .bike
@@ -412,6 +415,10 @@ SpecialMapMusic::
 
 .surf
 	ld de, MUSIC_SURF
+	scf
+	ret
+
+.get_map
 	scf
 	ret
 

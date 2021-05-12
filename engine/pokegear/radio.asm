@@ -1,20 +1,6 @@
 PlayRadioShow:
 ; If we're already in the radio program proper, we don't need to be here.
 	ld a, [wCurRadioLine]
-	cp POKE_FLUTE_RADIO
-	jr nc, .ok
-; If Team Rocket is not occupying the radio tower, we don't need to be here.
-	ld a, [wStatusFlags2]
-	bit STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F, a
-	jr z, .ok
-; If we're in Kanto, we don't need to be here.
-	call IsInJohto
-	and a
-	jr nz, .ok
-; Team Rocket broadcasts on all stations.
-	ld a, ROCKET_RADIO
-	ld [wCurRadioLine], a
-.ok
 ; Jump to the currently loaded station.  The index to which we need to jump is in wCurRadioLine.
 	jumptable RadioJumptable, wCurRadioLine
 
@@ -26,7 +12,6 @@ RadioJumptable:
 	dw LuckyNumberShow1  ; $03
 	dw PeoplePlaces1     ; $04
 	dw FernMonMusic1     ; $05
-	dw RocketRadio1      ; $06
 	dw PokeFluteRadio    ; $07
 	dw UnownRadio        ; $08
 	dw EvolutionRadio    ; $09
@@ -73,16 +58,6 @@ RadioJumptable:
 	dw PeoplePlaces5     ; $2e
 	dw PeoplePlaces6     ; $2f
 	dw PeoplePlaces7     ; $30
-; Rocket Radio
-	dw RocketRadio2      ; $31
-	dw RocketRadio3      ; $32
-	dw RocketRadio4      ; $33
-	dw RocketRadio5      ; $34
-	dw RocketRadio6      ; $35
-	dw RocketRadio7      ; $36
-	dw RocketRadio8      ; $37
-	dw RocketRadio9      ; $38
-	dw RocketRadio10     ; $39
 ; More Pokemon Channel stuff
 	dw OaksPKMNTalk10    ; $3a
 	dw OaksPKMNTalk11    ; $3b
@@ -1260,97 +1235,6 @@ PeoplePlaces7:
 	dw PnP_WeirdText
 	dw PnP_RightForMeText
 	dw PnP_OddText
-
-RocketRadio1:
-	call StartRadioStation
-	ld hl, RocketRadioText1
-	ld a, ROCKET_RADIO_2
-	jp NextRadioLine
-
-RocketRadio2:
-	ld hl, RocketRadioText2
-	ld a, ROCKET_RADIO_3
-	jp NextRadioLine
-
-RocketRadio3:
-	ld hl, RocketRadioText3
-	ld a, ROCKET_RADIO_4
-	jp NextRadioLine
-
-RocketRadio4:
-	ld hl, RocketRadioText4
-	ld a, ROCKET_RADIO_5
-	jp NextRadioLine
-
-RocketRadio5:
-	ld hl, RocketRadioText5
-	ld a, ROCKET_RADIO_6
-	jp NextRadioLine
-
-RocketRadio6:
-	ld hl, RocketRadioText6
-	ld a, ROCKET_RADIO_7
-	jp NextRadioLine
-
-RocketRadio7:
-	ld hl, RocketRadioText7
-	ld a, ROCKET_RADIO_8
-	jp NextRadioLine
-
-RocketRadio8:
-	ld hl, RocketRadioText8
-	ld a, ROCKET_RADIO_9
-	jp NextRadioLine
-
-RocketRadio9:
-	ld hl, RocketRadioText9
-	ld a, ROCKET_RADIO_10
-	jp NextRadioLine
-
-RocketRadio10:
-	ld hl, RocketRadioText10
-	ld a, ROCKET_RADIO
-	jp NextRadioLine
-
-RocketRadioText1:
-	text_far _RocketRadioText1
-	text_end
-
-RocketRadioText2:
-	text_far _RocketRadioText2
-	text_end
-
-RocketRadioText3:
-	text_far _RocketRadioText3
-	text_end
-
-RocketRadioText4:
-	text_far _RocketRadioText4
-	text_end
-
-RocketRadioText5:
-	text_far _RocketRadioText5
-	text_end
-
-RocketRadioText6:
-	text_far _RocketRadioText6
-	text_end
-
-RocketRadioText7:
-	text_far _RocketRadioText7
-	text_end
-
-RocketRadioText8:
-	text_far _RocketRadioText8
-	text_end
-
-RocketRadioText9:
-	text_far _RocketRadioText9
-	text_end
-
-RocketRadioText10:
-	text_far _RocketRadioText10
-	text_end
 
 PokeFluteRadio:
 	call StartRadioStation

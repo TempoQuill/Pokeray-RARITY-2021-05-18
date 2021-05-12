@@ -382,22 +382,27 @@ TradeTexts:
 	dw NPCTradeIntroText1
 	dw NPCTradeIntroText2
 	dw NPCTradeIntroText3
+	dw NPCTradeIntroText4
 ; TRADE_DIALOG_CANCEL
 	dw NPCTradeCancelText1
 	dw NPCTradeCancelText2
 	dw NPCTradeCancelText3
+	dw NPCTradeCancelText4
 ; TRADE_DIALOG_WRONG
 	dw NPCTradeWrongText1
 	dw NPCTradeWrongText2
 	dw NPCTradeWrongText3
+	dw NPCTradeWrongText4
 ; TRADE_DIALOG_COMPLETE
 	dw NPCTradeCompleteText1
 	dw NPCTradeCompleteText2
 	dw NPCTradeCompleteText3
+	dw NPCTradeCompleteText4
 ; TRADE_DIALOG_AFTER
 	dw NPCTradeAfterText1
 	dw NPCTradeAfterText2
 	dw NPCTradeAfterText3
+	dw NPCTradeAfterText4
 
 NPCTradeCableText:
 	text_far _NPCTradeCableText
@@ -475,4 +480,58 @@ NPCTradeCompleteText3:
 
 NPCTradeAfterText3:
 	text_far _NPCTradeAfterText3
+	text_end
+
+NPCTradeIntroText4:
+	text "Hi. My @"
+	text_ram wStringBuffer2
+	line "wants a new owner."
+
+	para "But I'd still like"
+	line "to keep around a"
+	cont "pet of my own."
+
+	para "Do you have, hm, a"
+	line "@"
+	text_ram wMonOrItemNameBuffer
+	text "?"
+	text_end
+
+NPCTradeCancelText4:
+	text "Okay, just let me"
+	line "know when you want"
+	cont "my @"
+	text_ram wStringBuffer2
+	text "."
+	text_end
+
+NPCTradeWrongText4:
+	text "Hey! That's not a"
+	line "@"
+	text_ram wMonOrItemNameBuffer
+	text "! You"
+	cont "knew I asked for"
+	cont "one of those!"
+	text_end
+
+NPCTradeCompleteText4:
+	text "Thanks for the"
+	line "@"
+	text_ram wMonOrItemNameBuffer
+	text ", my"
+	cont "friend. Enjoy your"
+	cont "@"
+	text_ram wStringBuffer2
+	text "."
+	text_end
+
+NPCTradeAfterText4:
+	text "Hi. How's that"
+	line "@"
+	text_ram wStringBuffer2
+	text " I sent"
+	cont "you? @"
+	text_ram wMonOrItemNameBuffer
+	text " is"
+	cont "doing great!"
 	text_end

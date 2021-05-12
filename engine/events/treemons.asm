@@ -51,7 +51,7 @@ RockMonEncounter:
 	xor a
 	ret
 
-	db $05 ; ????
+	dec b ; note: bc is not used for this function
 
 GetTreeMonSet:
 ; Return carry and treemon set in a

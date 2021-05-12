@@ -1,4 +1,5 @@
 Music_PartyHostBattle:
+; engine, wav
 ; SEP 16 2019
 	channel_count 3
 	channel 1, Music_PartyHostBattle_Ch1

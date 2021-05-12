@@ -1,4 +1,5 @@
 Music_StampTown:
+; wav
 ; APR 1 2021
 	channel_count 3
 	channel 1, Music_StampTown_Ch1

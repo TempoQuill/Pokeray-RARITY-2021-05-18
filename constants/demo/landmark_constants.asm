@@ -1,4 +1,3 @@
-
 ; Landmarks indexes (see data/maps/landmarks.asm)
 	const_def
 	const LANDMARK_SPECIAL
