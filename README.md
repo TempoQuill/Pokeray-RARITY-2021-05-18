@@ -7,6 +7,8 @@ It should build the following ROMs:
 - Pokemon - Ray Version (U) [C][!].gbc `sha1: d8b8a3600a465308c9953dfa04f0081c05bdcb94`
 - Pokemon - Shade Version (U) [C][!].gbc `sha1: 49b163f7e57702bc939d642a18f591de55d92dae`
 
+If you encounter any building problems, contact me with the info the terminal spat out.
+
 
 ## See also
 
