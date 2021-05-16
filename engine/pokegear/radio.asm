@@ -596,7 +596,6 @@ PokedexShow1:
 	jr nc, .loop
 	ld c, a
 	push bc
-	ld a, c
 	call CheckCaughtMon
 	pop bc
 	jr z, .loop

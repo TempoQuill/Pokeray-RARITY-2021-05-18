@@ -46,8 +46,6 @@ SetSeenMon::
 	jr PokedexFlagAction
 
 CheckCaughtMon::
-	ld c, a
-	pop af
 	ld b, a
 	ld hl, wPokedexCaught
 	ld a, CHECK_FLAG

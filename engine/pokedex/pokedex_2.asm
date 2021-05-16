@@ -104,6 +104,8 @@ DisplayDexEntry:
 	push af
 	ld a, [wTempSpecies]
 	dec a
+	ld c, a
+	pop af
 	call CheckCaughtMon
 	pop hl
 	pop bc

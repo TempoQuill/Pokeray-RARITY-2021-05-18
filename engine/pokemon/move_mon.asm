@@ -188,9 +188,14 @@ endr
 	jr .initializeDVs
 
 .registerpokedex
+	ld a, [wCurPartySpecies + 1]
+	ld [wTempSpecies + 1], a
+	push af
 	ld a, [wCurPartySpecies]
 	ld [wTempSpecies], a
 	dec a
+	ld c, a
+	pop af
 	push de
 	call CheckCaughtMon
 	ld a, [wTempSpecies]
@@ -1152,15 +1157,22 @@ ShiftBoxMon:
 GiveEgg::
 	ld a, [wCurPartySpecies]
 	push af
+	ld a, [wCurPartySpecies + 1]
+	push af
 	callfar GetPreEvolution
+	pop af
 	callfar GetPreEvolution
+	pop af
+	ld a, [wCurPartySpecies + 1]
+	push af
 	ld a, [wCurPartySpecies]
 	dec a
 
 ; TryAddMonToParty sets Seen and Caught flags
 ; when it is successful.  This routine will make
 ; sure that we aren't newly setting flags.
-	push af
+	ld c, a
+	pop af
 	call CheckCaughtMon
 	pop af
 	push bc

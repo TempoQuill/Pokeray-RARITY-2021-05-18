@@ -23,6 +23,8 @@ GameCornerPrizeMonCheckDex:
 	push af
 	ld a, [wScriptVar]
 	dec a
+	ld c, a
+	pop af
 	call CheckCaughtMon
 	ret nz
 	ld a, [wScriptVar]

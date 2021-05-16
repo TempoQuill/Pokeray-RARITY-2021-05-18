@@ -582,7 +582,10 @@ DayCare_InitBreeding:
 
 .GotMother:
 	ld [wCurPartySpecies], a
+	push af
+	ld [wCurPartySpecies + 1], a
 	callfar GetPreEvolution
+	pop af
 	callfar GetPreEvolution
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a

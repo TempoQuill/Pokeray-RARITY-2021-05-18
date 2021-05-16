@@ -26,8 +26,12 @@ PrintPage1:
 	hlcoord 2, 11, wPrinterTilemapBuffer
 	lb bc, 5, 18
 	call ClearBox
+	ld a, [wTempSpecies + 1]
+	push af
 	ld a, [wTempSpecies]
 	dec a
+	ld c, a
+	pop af
 	call CheckCaughtMon
 	push af
 	ld a, [wTempSpecies]
@@ -75,8 +79,12 @@ PrintPage2:
 	ld bc, SCREEN_WIDTH
 	ld a, $32
 	call ByteFill
+	ld a, [wTempSpecies + 1]
+	push af
 	ld a, [wTempSpecies]
 	dec a
+	ld c, a
+	pop af
 	call CheckCaughtMon
 	push af
 	ld a, [wTempSpecies]

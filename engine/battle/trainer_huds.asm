@@ -145,6 +145,8 @@ DrawEnemyHUDBorder:
 	push af
 	ld a, [wTempEnemyMonSpecies]
 	dec a
+	ld c, a
+	pop af
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
