@@ -79,8 +79,7 @@ panning: MACRO
 ENDM
 
 force_stereo_panning: MACRO
-	db old_panning_cmd
-	dn (\1 * 15), (\2 * 15)
+	stereo_panning \1, \2
 ENDM
 
 tone                 EQUS "pitch_offset"

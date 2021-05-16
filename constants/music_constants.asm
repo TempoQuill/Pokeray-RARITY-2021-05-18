@@ -73,7 +73,7 @@
 NUM_MUSIC_IDS EQU const_value
 
 ; speical track behavior regarding linked games
-; doesn't effect map music behavior
+; doesn't affect map music behavior
 LINK_MUSIC_1 EQU $41
 LINK_MUSIC_2 EQU $42
 
