@@ -28,7 +28,6 @@ Music_Event_Ch1:
 	relative_pitch 0
 	sound_call .sub1
 	sound_loop 4, .mainloop
-.loop2:
 	relative_pitch 2
 	sound_call .sub1
 	sound_call .sub1
