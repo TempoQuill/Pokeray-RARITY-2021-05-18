@@ -131,22 +131,30 @@ ROMX $2b
 	"Songs 4"
 ROMX $2c
 	"New Sound Effects"
+;	2d
 ROMX $2e
 	"Pics 14"
 	org $6300
 	"bank2E_2"
 ROMX $2f
 	"Sprites 1"
+;	30
 ROMX $31
 	"Sprites 2"
 	org $7a40
 	"bank31_2"
 ROMX $32
 	"bank32"
+;	33
+;	34
+;	35
+;	36
+;	37
 ROMX $38
 	"bank38"
 ROMX $39
 	"bank39"
+;	3a
 ROMX $3b
 	"Font Inversed"
 ROMX $3c
@@ -163,6 +171,38 @@ ROMX $41
 	"Phone Scripts"
 ROMX $42
 	"Demo Map Scripts 1"
+;	43
+;	44
+;	45
+;	46
+;	47
+;	48
+;	49
+;	4a
+;	4b
+;	4c
+;	4d
+;	4e
+;	4f
+;	50
+;	51
+;	52
+;	53
+;	54
+;	55
+;	56
+;	57
+;	58
+;	59
+;	5a
+;	5b
+;	5c
+;	5d
+;	5e
+;	5f
+;	60
+;	61
+;	62
 ROMX $63
 	"Demo Map Blocks 1"
 ROMX $64
@@ -171,6 +211,7 @@ ROMX $65
 	"Text 2"
 ROMX $66
 	"Text 3"
+;	67
 ROMX $68
 	"Pokedex Entries 001-064"
 ROMX $69
@@ -191,6 +232,21 @@ ROMX $70
 	"bank70"
 	"Tileset Data 6"
 	"bank70_2"
+;	71
+;	72
+;	73
+;	74
+;	75
+;	76
+;	77
+;	78
+;	79
+;	7a
+;	7b
+;	7c
+;	7d
+;	7e
+;	7f
 WRAM0
 	"Audio RAM"
 	"WRAM"

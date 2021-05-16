@@ -1,5 +1,38 @@
 # Music Commands
 
+## **Header Commands**
+
+This is spread across two commands: `channel_count` and `channel`.  In Gold, `channel` was fixed to two arguments due to disassemblers failing to account for leftover header data.  However, Ray improves flexibility by letting `channel` opt to use only 1 argument in the case of leftovers.
+
+USAGE:
+```
+	channel_count 3
+	channel 1, Music_HouseEnroute_Ch1
+	channel 2, Music_HouseEnroute_Ch2
+	channel 3, Music_HouseEnroute_Ch3
+	channel 4 ; from placeholder (it was the fanmade version)
+```
+
+## **Notes**
+
+Depending on a variety of variables, a note could be anywhere from 1 to 4 bytes.
+- `rest` - `00-0F` - Used for channels 1-4.  Sometimes 5-8 after `DF` is encountered.  1 byte.  Note length.
+- `note` - `10-CF` - Used for channels 1-3.  Sometimes 5-7 after `DF` is encountered.  1 byte.  Pitch, note length.
+- `drum_note` - `10-CF` - Used for channel 4.  Sometimes 8 after `DF` is encountered.  1 byte.  ID, note length.
+- `square_note` - `00-CF` - Used for channels 5-7.  4 bytes.  Base length, Volume settings, raw pitch.
+- `noise_note` - `00-CF` - Used for channel 8 and within percussion structure.  3 bytes.  Base length, Volume settings, raw pitch.
+
+USAGE:
+```
+	note C_, 16
+	...
+	drum_note 12, 1
+	...
+	square_note 20, 8, 4, 1920
+	...
+	drum_note 4, 10, 1, 44
+```
+
 ## `D0-D7` **Octave**
 
 VARS:
@@ -134,7 +167,7 @@ VARS:
 - Nybble 5 = Octave of destination
 - Nybble 6 = Pitch of destination
 
-NOTE: I've been trying to figure out how to get this to work on channels 2-3/6-7.  But for now, it still only works on channel 1/5.
+NOTE: I've been trying to figure out how to get this to work on channels 2-3/6-7; as such, support has been added for that point in time.  But for now, it still only works on channel 1/5.
 
 USAGE:
 ```
@@ -158,7 +191,7 @@ USAGE:
 IMPORTANT NOTE: This only works in Ray.  This is because it was stubbed in the retail release of Gold.
 
 VARS:
-- Byte 2 = Mute flag (On/off)
+- Byte 2 = Boolean Mute flag (On/off)
 
 USAGE:
 ```
@@ -170,7 +203,7 @@ USAGE:
 VARS:
 - Byte 2 = Drum Kit
 
-NOTE: This command is only one byte if used a second time.  Keep track of whether or not its on when making music.
+NOTE: This command is only one byte if used a second time.  Keep track of whether or not it's on when making music.
 
 USAGE:
 ```
@@ -330,7 +363,7 @@ USAGE:
 VARS:
 - Byte 2 = Drum Kit
 
-NOTE: This command is only one byte if used a second time.  Keep track of whether or not its on when making music.
+NOTE: This command is only one byte if used a second time.  Keep track of whether or not it's on when making music.
 
 USAGE:
 ```
