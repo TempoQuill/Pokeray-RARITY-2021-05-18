@@ -27,15 +27,11 @@ Music_Event_Ch1:
 .mainloop:
 	relative_pitch 0
 	sound_call .sub1
-	note_type 12, 10, 4
-	note F#, 4
 	sound_loop 4, .mainloop
 .loop2:
 	relative_pitch 2
 	sound_call .sub1
-	note_type 12, 10, 4
-	note F#, 4
-	sound_loop 2, .loop2
+	sound_call .sub1
 	sound_jump .mainloop
 
 .sub1:
@@ -48,6 +44,8 @@ Music_Event_Ch1:
 	note C_, 4
 	note G_, 4
 	note C_, 4
+	note_type 12, 10, 4
+	note F#, 4
 	sound_ret
 
 Music_Event_Ch2:
