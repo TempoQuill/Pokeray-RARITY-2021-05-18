@@ -1248,22 +1248,22 @@ Music_VSMatchPlayer2_Ch4:
 	drum_speed 12
 	rest 4
 	drum_speed 6
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 7, 2
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 12, 2
 	rest 14
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 6
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 4
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 12, 2
+	drum_note 12, 2
 	rest 6
 	drum_note 6, 2
 	rest 6
@@ -1271,31 +1271,31 @@ Music_VSMatchPlayer2_Ch4:
 
 .sub2:
 	drum_speed 6
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
@@ -1303,95 +1303,95 @@ Music_VSMatchPlayer2_Ch4:
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
@@ -1399,133 +1399,133 @@ Music_VSMatchPlayer2_Ch4:
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 5, 2
 	rest 16
@@ -1535,95 +1535,31 @@ Music_VSMatchPlayer2_Ch4:
 	rest 10
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
@@ -1631,136 +1567,200 @@ Music_VSMatchPlayer2_Ch4:
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
-	rest 2
-	drum_note 4, 2
-	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 12, 2
+	rest 2
+	drum_note 4, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 12, 2
+	rest 2
+	drum_note 12, 2
+	drum_note 12, 2
+	rest 2
+	drum_note 12, 2
+	drum_note 12, 2
+	rest 2
+	drum_note 12, 2
+	drum_note 12, 2
+	drum_note 12, 2
 	rest 6
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 12, 2
+	drum_note 12, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 6
 	drum_speed 8
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 12, 2
+	drum_note 12, 2
 	rest 4
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 12, 2
+	drum_note 12, 2
 	rest 4
 	drum_speed 6
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 9, 1
-	drum_note 7, 2
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 12, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 10
 	sound_ret
 
 .sub3:
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 6
 	drum_note 4, 2
 	rest 6
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_note 4, 2
 	rest 6
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 2
 	drum_speed 8
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 4, 2
 	drum_speed 12
-	drum_note 7, 1
+	drum_note 12, 1
 	rest 3
 	drum_note 6, 1
 	rest 1
@@ -1770,23 +1770,23 @@ Music_VSMatchPlayer2_Ch4:
 .sub4:
 	drum_note 4, 2
 	rest 6
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 6
 	drum_note 4, 2
 	rest 2
-	drum_note 7, 2
+	drum_note 12, 2
 	rest 6
 	drum_note 4, 2
 	rest 2
 	drum_speed 8
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_note 4, 2
-	drum_note 7, 2
+	drum_note 12, 2
 	drum_speed 12
-	drum_note 7, 1
+	drum_note 12, 1
 	rest 3
 	drum_note 6, 1
 	rest 1
