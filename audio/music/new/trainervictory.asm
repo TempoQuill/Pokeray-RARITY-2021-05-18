@@ -42,7 +42,7 @@ Music_TrainerVictory_Ch1:
 	octave 3
 	note B_, 3
 	note A_, 3
-	note G_, 3
+	note E_, 3
 	sound_loop 2, .mainloop
 	note F#, 5
 	rest 1
