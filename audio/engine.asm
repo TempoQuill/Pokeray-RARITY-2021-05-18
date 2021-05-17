@@ -1453,8 +1453,8 @@ ReadNoiseSample:
 ;	w: does nothing
 ;	x: actual duration - 1
 ;		1 = 2 2 = 3 etc
-;	zz: volume envelope
-;       yy: frequency
+;	yy: volume envelope
+;       zz: frequency
 
 	; de = [wNoiseSampleAddress]
 	ld hl, wNoiseSampleAddress
