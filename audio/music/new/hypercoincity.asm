@@ -225,8 +225,11 @@ Music_HypercoinCity_Ch2:
 	octave 3
 	note A#, 8
 	vibrato 0, 0, 0
+	octave 2
 	note D#, 16
-	note C#, 16
+	octave 1
+	note A#, 8
+	note G_, 8
 	sound_jump .mainloop
 
 .sub1:
