@@ -250,7 +250,7 @@ ENDM
 
 new_song: MACRO
 	db new_song_cmd
-	bigdw \1 ; id
+	dw \1 ; id
 ENDM
 
 sfx_priority_on: MACRO
