@@ -291,23 +291,23 @@ Music_HurryAlong_Ch4:
 	rest 16
 	rest 16
 .mainloop:
-	drum_note 1, 1
-	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 2, 2
 .loop1:
-	drum_note 1, 1
-	drum_note 2, 1
-	drum_note 1, 1
-	drum_note 2, 1
-	drum_note 1, 1
-	drum_note 2, 1
-	drum_note 1, 1
-	drum_note 2, 1
-	drum_note 1, 1
-	drum_note 2, 1
-	drum_note 1, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
 	sound_loop 2 .loop1
-	drum_note 7, 3
+	drum_note 7, 4
 	sound_jump .mainloop
