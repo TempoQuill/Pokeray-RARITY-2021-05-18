@@ -1,5 +1,7 @@
 # Music Commands
 
+NOTE: The music contained in `audio/music/new/` is hand-converted from files composed in DefleMask.  Immediately following respective labels within these music files is the necessary upgrades (if any) utilized throughout each file.  Below that is the creation date of the source DMF (DefleMask file).  Some of these date as far back as July of 2019 as that was when the idea of Pokemon Ray was first concieved.
+
 ## **Header Commands**
 
 This is spread across two commands: `channel_count` and `channel`.  In Gold, `channel` was fixed to two arguments due to disassemblers failing to account for leftover header data.  However, Ray improves flexibility by letting `channel` opt to use only 1 argument in the case of leftovers.
