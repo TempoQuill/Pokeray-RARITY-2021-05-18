@@ -86,9 +86,9 @@ Music_TrainerVictory_Ch2:
 	rest 1
 	note A_, 1
 	rest 1
+	volume_envelope 12, 2
 	note A_, 2
 	note B_, 2
-	volume_envelope 12, 2
 	octave 5
 	note C#, 2
 	volume_envelope 12, 7
