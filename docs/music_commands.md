@@ -376,7 +376,7 @@ USAGE:
 
 ## `F1` **Pitch Incremental Switch**
 
-NOTE: This is an exclusive command to Ray as the command is empty in Gold.  In ray, this acts just like `E8` from Red.  It also renders `E6` obsolete in this regard.  However, `F1` and `E6` do stack with each other.  Preambling `E6` with `F1` just means to add by one more than `E6` says.
+NOTE: This is an exclusive command to Ray as the command is empty in Gold.  In Ray, this acts just like `E8` from Red.  It also renders `E6` obsolete in this regard.  However, `F1` and `E6` do stack with each other.  Preambling `E6` with `F1` just means to add by one more than `E6` says.
 
 USAGE:
 ```
@@ -414,7 +414,7 @@ USAGE (if any):
 	dummy_f8
 ```
 
-## `F9` **Set Bit 0 of wSoundEventFlag**
+## `F9` **Set Bit 0 of `wSoundEventFlag`**
 
 NOTE: No scripts rely on `wSoundEventFlag`.
 
