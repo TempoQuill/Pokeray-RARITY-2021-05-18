@@ -95,6 +95,7 @@ Music_TrainerVictory_Ch2:
 	note D_, 12
 .mainloop:
 	note_type 6, 12, 7
+	octave 4
 	note C#, 1
 	note D_, 4
 	sound_call .sub2
