@@ -389,10 +389,16 @@ Script_closewindow:
 Script_pokepic:
 	call GetScriptByte
 	and a
-	jr nz, .ok
+	jr nz, .ok_1
 	ld a, [wScriptVar]
-.ok
+.ok_1
 	ld [wCurPartySpecies], a
+	call GetScriptByte
+	and a
+	jr nz, .ok_2
+	ld a, [wScriptVar + 1]
+.ok_2
+	ld [wCurPartySpecies + 1], a
 	farcall Pokepic
 	ret
 
@@ -756,6 +762,9 @@ Script_cry:
 	and a
 	jr nz, .ok
 	ld a, [wScriptVar]
+	ld c, a
+	ld a, [wScriptVar + 1]
+	ld b, a
 .ok
 	call PlayMonCry
 	ret
@@ -1047,6 +1056,8 @@ EarthquakeMovement:
 Script_loadpikachudata:
 	ld a, PIKACHU
 	ld [wTempWildMonSpecies], a
+	xor a
+	ld [wTempWildMonSpecies + 1], a
 	ld a, 5
 	ld [wCurPartyLevel], a
 	ret
@@ -1070,6 +1081,8 @@ Script_loadwildmon:
 	ld [wBattleScriptFlags], a
 	call GetScriptByte
 	ld [wTempWildMonSpecies], a
+	call GetScriptByte
+	ld [wTempWildMonSpecies + 1], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
 	ret
@@ -1831,6 +1844,8 @@ Script_givepoke:
 	call GetScriptByte
 	ld [wCurPartySpecies], a
 	call GetScriptByte
+	ld [wCurPartySpecies + 1], a
+	call GetScriptByte
 	ld [wCurPartyLevel], a
 	call GetScriptByte
 	ld [wCurItem], a
@@ -1860,6 +1875,8 @@ Script_giveegg:
 	ld [wMonType], a
 	call GetScriptByte
 	ld [wCurPartySpecies], a
+	call GetScriptByte
+	ld [wCurPartySpecies + 1], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
 	farcall GiveEgg

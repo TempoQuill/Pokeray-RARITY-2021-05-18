@@ -1502,8 +1502,10 @@ LinkTrade:
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	ld [wPlayerTrademonSpecies], a
+	ld a, [hl]
+	ld [wPlayerTrademonSpecies + 1], a
 	push af
 	ld a, [wceed]
 	ld hl, wPartyMonOT
@@ -1534,8 +1536,10 @@ LinkTrade:
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	ld [wOTTrademonSpecies], a
+	ld a, [hl]
+	ld [wOTTrademonSpecies + 1], a
 	ld a, [wceee]
 	ld hl, wOTPartyMonOT
 	call SkipNames
@@ -1601,8 +1605,10 @@ LinkTrade:
 	ld d, 0
 	ld e, a
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld hl, wOTPartyMon1Species
 	ld a, c
 	call GetPartyLocation
@@ -1624,6 +1630,9 @@ LinkTrade:
 ; illicit trade machines, but it doesn't seem like a very effective one.
 ; Removing this code breaks link compatibility with the vanilla gen2 games, but
 ; has otherwise no consequence.
+	ld a, [wCurPartySpecies + 1]
+	and a
+	jr z, .send_checkbyte
 	ld b, 1
 	pop af
 	ld c, a

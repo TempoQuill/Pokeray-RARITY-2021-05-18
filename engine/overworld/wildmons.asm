@@ -135,10 +135,16 @@ FindNest:
 
 .RoamMon1:
 	ld a, [wRoamMon1Species]
-	ld b, a
+	ld c, a
 	ld a, [wNamedObjectIndexBuffer]
+	cp c
+	jr z, .skip_1
+	ld a, [wRoamMon1Species + 1]
+	ld b, a
+	ld a, [wNamedObjectIndexBuffer + 1]
 	cp b
 	ret nz
+.skip_1
 	ld a, [wRoamMon1MapGroup]
 	ld b, a
 	ld a, [wRoamMon1MapNumber]
@@ -151,10 +157,16 @@ FindNest:
 
 .RoamMon2:
 	ld a, [wRoamMon2Species]
-	ld b, a
+	ld c, a
 	ld a, [wNamedObjectIndexBuffer]
+	cp c
+	jr z, .skip_2
+	ld a, [wRoamMon2Species + 1]
+	ld b, a
+	ld a, [wNamedObjectIndexBuffer + 1]
 	cp b
 	ret nz
+.skip_2
 	ld a, [wRoamMon2MapGroup]
 	ld b, a
 	ld a, [wRoamMon2MapNumber]
@@ -167,10 +179,16 @@ FindNest:
 
 .RoamMon3:
 	ld a, [wRoamMon3Species]
-	ld b, a
+	ld c, a
 	ld a, [wNamedObjectIndexBuffer]
+	cp c
+	jr z, .skip_3
+	ld a, [wRoamMon3Species + 1]
+	ld b, a
+	ld a, [wNamedObjectIndexBuffer + 1]
 	cp b
 	ret nz
+.skip_3
 	ld a, [wRoamMon3MapGroup]
 	ld b, a
 	ld a, [wRoamMon3MapNumber]
@@ -195,6 +213,7 @@ TryWildEncounter::
 .no_battle
 	xor a ; BATTLETYPE_NORMAL
 	ld [wTempWildMonSpecies], a
+	ld [wTempWildMonSpecies + 1], a
 	ld [wBattleType], a
 	ld a, 1
 	and a
@@ -299,6 +318,8 @@ ChooseWildEncounter:
 	pop hl
 	add hl, bc ; this selects our mon
 	ld a, [hli]
+	ld c, a
+	ld a, [hl]
 	ld b, a
 ; If the Pokemon is encountered by surfing, we need to give the levels some variety.
 	call CheckOnWater
@@ -321,18 +342,26 @@ ChooseWildEncounter:
 .ok
 	ld a, b
 	ld [wCurPartyLevel], a
+	inc hl
 	ld b, [hl]
-	; ld a, b
-	call ValidateTempWildMonSpecies
-	jr c, .nowildbattle
+	ld a, b
+	and a
+	dec hl
+	ld c, [hl]
+	ld a, c
+	jr nz, .skip_unown
 
-	ld a, b ; This is in the wrong place.
 	cp UNOWN
-	jr nz, .done
+	jr nz, .skip_unown
 
 	ld a, [wUnlockedUnowns]
 	and a
 	jr z, .nowildbattle
+	jr .done
+
+.skip_unown
+	call ValidateTempWildMonSpecies
+	jr c, .nowildbattle
 
 .done
 	jr .loadwildmon
@@ -343,8 +372,10 @@ ChooseWildEncounter:
 	ret
 
 .loadwildmon
-	ld a, b
+	ld a, c
 	ld [wTempWildMonSpecies], a
+	ld a, b
+	ld [wTempWildMonSpecies + 1], a
 
 .startwildbattle
 	xor a
@@ -466,12 +497,18 @@ InitRoamMons:
 ; initialize wRoamMon structs
 
 ; species
-	ld a, RAIKOU
+	ld a, LOW(RAIKOU)
 	ld [wRoamMon1Species], a
-	ld a, ENTEI
+	ld a, LOW(ENTEI)
 	ld [wRoamMon2Species], a
-	ld a, SUICUNE
+	ld a, LOW(SUICUNE)
 	ld [wRoamMon3Species], a
+	ld a, HIGH(RAIKOU)
+	ld [wRoamMon1Species + 1], a
+	ld a, HIGH(ENTEI)
+	ld [wRoamMon2Species + 1], a
+	ld a, HIGH(SUICUNE)
+	ld [wRoamMon3Species + 1], a
 
 ; level
 	ld a, 40
@@ -538,6 +575,8 @@ CheckEncounterRoamMon:
 	dec hl
 	ld a, [hli]
 	ld [wTempWildMonSpecies], a
+	ld a, [hli]
+	ld [wTempWildMonSpecies + 1], a
 	ld a, [hl]
 	ld [wCurPartyLevel], a
 	ld a, BATTLETYPE_ROAMING

@@ -26,6 +26,11 @@ NPCTrade::
 	cp [hl]
 	ld a, TRADE_DIALOG_WRONG
 	jr nz, .done
+	inc hl
+	ld a, [wCurPartySpecies + 1]
+	cp [hl]
+	ld a, TRADE_DIALOG_WRONG
+	jr nz, .done
 
 	call CheckTradeGender
 	ld a, TRADE_DIALOG_WRONG
@@ -113,20 +118,28 @@ Trade_GetDialog:
 DoNPCTrade:
 	ld e, NPCTRADE_GIVEMON
 	call GetTradeAttribute
-	ld a, [hl]
+	ld a, [hli]
 	ld [wPlayerTrademonSpecies], a
+	ld a, [hld]
+	ld [wPlayerTrademonSpecies + 1], a
 
 	ld e, NPCTRADE_GETMON
 	call GetTradeAttribute
-	ld a, [hl]
+	ld a, [hli]
 	ld [wOTTrademonSpecies], a
+	ld a, [hld]
+	ld [wOTTrademonSpecies + 1], a
 
 	ld a, [wPlayerTrademonSpecies]
+	ld [wNamedObjectIndexBuffer], a
+	ld a, [wPlayerTrademonSpecies + 1]
 	ld de, wPlayerTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
 
 	ld a, [wOTTrademonSpecies]
+	ld [wNamedObjectIndexBuffer], a
+	ld a, [wOTTrademonSpecies + 1]
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
@@ -160,6 +173,8 @@ DoNPCTrade:
 	ld [wCurPartyLevel], a
 	ld a, [wOTTrademonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wOTTrademonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	xor a
 	ld [wMonType], a ; PARTYMON
 	ld [wPokemonWithdrawDepositParameter], a ; REMOVE_PARTY
@@ -272,7 +287,7 @@ Trade_GetAttributeOfLastPartymon:
 
 GetTradeMonName:
 	push de
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetBasePokemonName
 	ld hl, wStringBuffer1
 	pop de
@@ -316,6 +331,8 @@ Trade_CopyTwoBytesReverseEndian:
 GetTradeMonNames:
 	ld e, NPCTRADE_GETMON
 	call GetTradeAttribute
+	ld a, [hli]
+	ld [wNamedObjectIndexBuffer], a
 	ld a, [hl]
 	call GetTradeMonName
 
@@ -324,6 +341,8 @@ GetTradeMonNames:
 
 	ld e, NPCTRADE_GIVEMON
 	call GetTradeAttribute
+	ld a, [hli]
+	ld [wNamedObjectIndexBuffer], a
 	ld a, [hl]
 	call GetTradeMonName
 

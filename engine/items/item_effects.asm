@@ -359,9 +359,12 @@ PokeBallEffect:
 	cp b
 	ld a, 0
 	jr z, .catch_without_fail
+	ld [wWildMon + 1], a
 	jr nc, .fail_to_catch
 
 .catch_without_fail
+	ld a, [wEnemyMonSpecies + 1]
+	ld [wWildMon + 1], a
 	ld a, [wEnemyMonSpecies]
 
 .fail_to_catch
@@ -433,6 +436,8 @@ PokeBallEffect:
 .load_data
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	ld a, [wEnemyMonLevel]
 	ld [wCurPartyLevel], a
 	farcall LoadEnemyMon
@@ -470,6 +475,10 @@ PokeBallEffect:
 	ld [wWildMon], a
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
+	ld a, [wEnemyMonSpecies + 1]
+	ld [wWildMon + 1], a
+	ld [wCurPartySpecies + 1], a
+	ld [wTempSpecies + 1], a
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jp z, .FinishTutorial
@@ -506,6 +515,8 @@ PokeBallEffect:
 
 	ld a, [wEnemyMonSpecies]
 	ld [wTempSpecies], a
+	ld a, [wEnemyMonSpecies + 1]
+	ld [wTempSpecies + 1], a
 	predef NewPokedexEntry
 
 .skip_pokedex
@@ -559,6 +570,8 @@ PokeBallEffect:
 
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 
 	call YesNoBox
@@ -629,6 +642,8 @@ PokeBallEffect:
 
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 
 	call YesNoBox
@@ -771,9 +786,10 @@ HeavyBallMultiplier:
 ; else add 40 to catch rate (never happens)
 	ld a, [wEnemyMonSpecies]
 	dec a
-	ld hl, PokedexDataPointerTable
 	ld e, a
-	ld d, 0
+	ld a, [wEnemyMonSpecies + 1]
+	ld d, a
+	ld hl, PokedexDataPointerTable
 	add hl, de
 	add hl, de
 	add hl, de
@@ -894,7 +910,8 @@ MoonBallMultiplier:
 	ld a, [wTempEnemyMonSpecies]
 	dec a
 	ld c, a
-	ld b, 0
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld b, a
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
@@ -935,14 +952,22 @@ LoveBallMultiplier:
 	; does species match?
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld b, a
 	ld a, [wTempBattleMonSpecies]
 	cp c
+	ret nz
+
+	ld a, [wTempBattleMonSpecies + 1]
+	cp b
 	ret nz
 
 	; check player mon species
 	push bc
 	ld a, [wTempBattleMonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wTempBattleMonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	xor a ; PARTYMON
 	ld [wMonType], a
 	ld a, [wCurBattleMon]
@@ -959,6 +984,8 @@ LoveBallMultiplier:
 	push de
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	ld a, WILDMON
 	ld [wMonType], a
 	farcall GetGender
@@ -997,6 +1024,8 @@ FastBallMultiplier:
 ; FleeMons tables.
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld b, a
 	ld hl, FleeMons
 	ld d, 3
 
@@ -1357,6 +1386,8 @@ RareCandyEffect:
 	ld [wMonType], a
 	ld a, [wCurPartySpecies]
 	ld [wTempSpecies], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wTempSpecies + 1], a
 	predef LearnLevelMoves
 
 	xor a
@@ -1741,6 +1772,8 @@ ItemActionText:
 	ld [wPartyMenuActionText], a
 	ld a, [wCurPartySpecies]
 	push af
+	ld a, [wCurPartySpecies + 1]
+	push af
 	ld a, [wCurPartyMon]
 	push af
 	push hl
@@ -1756,6 +1789,8 @@ ItemActionText:
 	pop hl
 	pop af
 	ld [wCurPartyMon], a
+	pop af
+	ld [wCurPartySpecies + 1], a
 	pop af
 	ld [wCurPartySpecies], a
 	ret

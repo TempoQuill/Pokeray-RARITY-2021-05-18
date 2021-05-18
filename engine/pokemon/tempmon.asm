@@ -120,13 +120,17 @@ GetMonSpecies:
 
 .breedmon
 	ld a, [wBreedMon1Species]
+	ld [wCurPartySpecies], a
+	ld a, [wBreedMon1Species + 1]
 	jr .done2
 
 .done
 	ld d, 0
 	add hl, de
+	ld a, [hli]
+	ld [wCurPartySpecies], a
 	ld a, [hl]
 
 .done2
-	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ret

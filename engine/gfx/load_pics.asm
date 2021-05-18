@@ -155,8 +155,12 @@ GetMonBackpic:
 
 	; These are assumed to be at the same address in their respective banks.
 	ld hl, PokemonPicPointers ; UnownPicPointers
+	ld a, [wCurPartySpecies + 1]
+	ld e, a
+	and a
 	ld a, [wCurPartySpecies]
 	ld d, BANK(PokemonPicPointers)
+	jr nz, .ok
 	cp UNOWN
 	jr nz, .ok
 	ld a, [wUnownLetter]

@@ -167,6 +167,9 @@ DayCare_DepositPokemonText:
 	ld a, DAYCARETEXT_DEPOSIT
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
 	call PrintDayCareText
@@ -225,6 +228,9 @@ DayCare_GetBackMonForMoney:
 	ld a, DAYCARETEXT_WITHDRAW
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	ld a, DAYCARETEXT_GOT_BACK
 	call PrintDayCareText
@@ -539,9 +545,6 @@ DayCare_InitBreeding:
 	cp 150
 	jr c, .loop
 	ld [wStepsToEgg], a
-	jp .UselessJump
-
-.UselessJump:
 	xor a
 	ld hl, wEggMon
 	ld bc, BOXMON_STRUCT_LENGTH
@@ -560,38 +563,56 @@ DayCare_InitBreeding:
 	ld [wCurPartySpecies], a
 	ld a, $3
 	ld [wMonType], a
+	ld a, [wBreedMon1Species + 1]
+	and a
+	ld a, $1
+	jr nz, .LookAtSecondBreedMon
 	ld a, [wBreedMon1Species]
 	cp DITTO
 	ld a, $1
 	jr z, .LoadWhichBreedmonIsTheMother
+.LookAtSecondBreedMon
+	ld a, [wBreedMon2Species + 1]
+	and a
+	ld a, 0
+	jr nz, .SkipLook
 	ld a, [wBreedMon2Species]
 	cp DITTO
-	ld a, $0
+	ld a, 0
 	jr z, .LoadWhichBreedmonIsTheMother
+.SkipLook
 	farcall GetGender
-	ld a, $0
+	ld a, 0
 	jr z, .LoadWhichBreedmonIsTheMother
 	inc a
 
 .LoadWhichBreedmonIsTheMother:
+	push bc
 	ld [wBreedMotherOrNonDitto], a
 	and a
 	ld a, [wBreedMon1Species]
+	ld [wCurPartySpecies], a
+	ld c, a
+	ld a, [wBreedMon1Species + 1]
 	jr z, .GotMother
 	ld a, [wBreedMon2Species]
+	ld [wCurPartySpecies], a
+	ld c, a
+	ld a, [wBreedMon2Species + 1]
 
 .GotMother:
-	ld [wCurPartySpecies], a
-	push af
 	ld [wCurPartySpecies + 1], a
-	callfar GetPreEvolution
-	pop af
+	ld b, a
 	callfar GetPreEvolution
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
 
+	ld a, b
+	and a
+	ld a, c
+	jr nz, .GotEggSpecies
+
 ; Nidoran♀ can give birth to either gender of Nidoran
-	ld a, [wCurPartySpecies]
 	cp NIDORAN_F
 	jr nz, .GotEggSpecies
 	call Random
@@ -603,10 +624,11 @@ DayCare_InitBreeding:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld [wEggMonSpecies], a
-	ld a, 0
+	ld a, b
 	ld [wCurPartySpecies + 1], a
 	ld [wCurSpecies + 1], a
 	ld [wEggMonSpecies + 1], a
+	pop bc
 
 	call GetBaseData
 	ld hl, wEggNick
@@ -653,13 +675,21 @@ DayCare_InitBreeding:
 	ld [hld], a
 	ld [wTempMonDVs + 1], a
 	ld de, wBreedMon1DVs
+	ld a, [wBreedMon1Species + 1]
+	and a
+	jr nz, .GetBreedMon2
 	ld a, [wBreedMon1Species]
 	cp DITTO
 	jr z, .GotDVs
+.GetBreedMon2
 	ld de, wBreedMon2DVs
+	ld a, [wBreedMon2Species + 1]
+	and a
+	jr nz, .skip
 	ld a, [wBreedMon2Species]
 	cp DITTO
 	jr z, .GotDVs
+.skip
 	ld a, TEMPMON
 	ld [wMonType], a
 	push hl

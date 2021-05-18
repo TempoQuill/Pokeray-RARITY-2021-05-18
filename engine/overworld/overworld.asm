@@ -309,16 +309,25 @@ GetMonSprite:
 
 .BreedMon1
 	ld a, [wBreedMon1Species]
+	push af
+	ld a, [wBreedMon1Species + 1]
 	jr .Mon
 
 .BreedMon2
 	ld a, [wBreedMon2Species]
+	push af
+	ld a, [wBreedMon2Species + 1]
 
 .Mon:
+	ld d, a
+	and a
+	pop af
 	ld e, a
+	jr nz, .next
 	and a
 	jr z, .NoBreedmon
 
+.next
 	push hl
 	farcall LoadOverworldMonIcon
 	pop hl

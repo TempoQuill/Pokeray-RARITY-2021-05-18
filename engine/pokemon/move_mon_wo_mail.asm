@@ -70,11 +70,15 @@ InsertSpeciesIntoBoxOrParty:
 	ld c, a
 	ld b, 0
 	add hl, bc
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	ld a, [wCurPartySpecies]
 	ld c, a
 .loop
 	ld a, [hl]
 	ld [hl], c
+	inc hl
+	ld [hl], b
 	inc hl
 	inc c
 	ld c, a

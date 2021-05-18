@@ -323,11 +323,13 @@ PlacePartyMonTMHMCompatibility:
 .skip
 	push hl
 	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
+	ld e, c
+	ld d, b
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	predef CanLearnTMHMMove
 	pop hl
 	call .PlaceAbleNotAble
@@ -453,10 +455,13 @@ PlacePartyMonGender:
 	push bc
 	push hl
 	call PartyMenuCheckEggLowByte
+	push af
 	jr nz, .skip
 	call PartyMenuCheckEggHiByte
 	jr z, .next
+	ld [wCurPartySpecies + 1], a
 .skip
+	pop af
 	ld [wCurPartySpecies], a
 	push hl
 	ld a, b
@@ -639,8 +644,10 @@ PartyMenuSelect:
 	ld b, $0
 	ld hl, wPartySpecies
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX

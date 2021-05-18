@@ -189,20 +189,34 @@ RunTradeAnimScript:
 	ldh [hWY], a
 	call EnableLCD
 	call LoadTradeBallAndCableGFX
+	push bc
 	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonSpecies + 1]
+	ld b, a
 	ld hl, wPlayerTrademonDVs
 	ld de, vTiles0
 	call TradeAnim_GetFrontpic
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonSpecies + 1]
+	ld b, a
 	ld hl, wOTTrademonDVs
 	ld de, vTiles0 tile $31
 	call TradeAnim_GetFrontpic
 	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonSpecies + 1]
+	ld b, a
 	ld de, wPlayerTrademonSpeciesName
 	call TradeAnim_GetNickname
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonSpecies + 1]
+	ld b, a
 	ld de, wOTTrademonSpeciesName
 	call TradeAnim_GetNickname
+	pop bc
 	call TradeAnim_NormalPals
 	ret
 
@@ -750,6 +764,8 @@ TradeAnim_ShowGivemonData:
 	call ShowPlayerTrademonStats
 	ld a, [wPlayerTrademonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wPlayerTrademonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	ld a, [wPlayerTrademonDVs]
 	ld [wTempMonDVs], a
 	ld a, [wPlayerTrademonDVs + 1]
@@ -761,6 +777,9 @@ TradeAnim_ShowGivemonData:
 	call TradeAnim_ShowGivemonFrontpic
 
 	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonSpecies + 1]
+	ld b, a
 	call GetCryIndex
 	jr c, .skip_cry
 	ld e, c
@@ -775,6 +794,8 @@ TradeAnim_ShowGetmonData:
 	call ShowOTTrademonStats
 	ld a, [wOTTrademonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wOTTrademonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	ld a, [wOTTrademonDVs]
 	ld [wTempMonDVs], a
 	ld a, [wOTTrademonDVs + 1]
@@ -786,6 +807,9 @@ TradeAnim_ShowGetmonData:
 	call TradeAnim_ShowGetmonFrontpic
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonSpecies + 1]
+	ld b, a
 	call GetCryIndex
 	jr c, .skip_cry
 	ld e, c
@@ -1357,45 +1381,6 @@ TradeAnim_WaitAnim:
 .done
 	call TradeAnim_AdvanceScriptPointer
 	ret
-
-DebugTrade: ; unreferenced
-; This function was meant for use in Japanese versions, so the
-; constant used for copy length was changed by accident.
-
-	ld hl, .DebugTradeData
-
-	ld a, [hli]
-	ld [wPlayerTrademonSpecies], a
-	ld de, wPlayerTrademonSenderName
-	ld c, NAME_LENGTH + 2 ; JP: NAME_LENGTH_JAPANESE + 2
-.loop1
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop1
-
-	ld a, [hli]
-	ld [wOTTrademonSpecies], a
-	ld de, wOTTrademonSenderName
-	ld c, NAME_LENGTH + 2 ; JP: NAME_LENGTH_JAPANESE + 2
-.loop2
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop2
-	ret
-
-debugtrade: MACRO
-; species, ot name, ot id
-	db \1, \2
-	dw \3
-ENDM
-
-.DebugTradeData:
-	debugtrade VENUSAUR,  "GAYFREE@", $0123 ; GAME FREAK
-	debugtrade CHARIZARD, "CREATIA@", $0456 ; Creatures Inc.
 
 TradeGameBoyTilemap:  INCBIN "gfx/trade/game_boy.tilemap" ; 6x8
 TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap" ; 12x3

@@ -123,6 +123,9 @@ AnimateHallOfFame:
 	call PlaceString
 	call WaitBGMap
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	ld c, 180
 	call DelayFrames
@@ -234,7 +237,9 @@ AnimateHOFMonEntrance:
 	ld a, [hli]
 	ld [wTempMonSpecies], a
 	ld [wCurPartySpecies], a
-	inc hl
+	ld a, [hli]
+	ld [wTempMonSpecies + 1], a
+	ld [wCurPartySpecies + 1], a
 	inc hl
 	ld a, [hli]
 	ld [wTempMonDVs], a
@@ -394,6 +399,9 @@ _HallOfFamePC:
 	call GetSGBLayout
 	call SetPalettes
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	and a
 	ret
@@ -442,6 +450,8 @@ DisplayHOFMon:
 	ld a, [hli]
 	ld [wTempMonSpecies], a
 	ld a, [hli]
+	ld [wTempMonSpecies + 1], a
+	ld a, [hli]
 	ld [wTempMonID], a
 	ld a, [hli]
 	ld [wTempMonID + 1], a
@@ -468,6 +478,8 @@ DisplayHOFMon:
 	call Textbox
 	ld a, [wTempMonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wTempMonSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	ld [wDeciramBuffer], a
 	ld hl, wTempMonDVs
 	predef GetUnownLetter
@@ -551,6 +563,7 @@ HOF_AnimatePlayerPic:
 	xor a
 	ldh [hBGMapMode], a
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call SetPalettes

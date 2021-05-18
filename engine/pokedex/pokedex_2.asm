@@ -81,6 +81,8 @@ DisplayDexEntry:
 	hlcoord 9, 3
 	call PlaceString ; mon species
 	ld a, [wTempSpecies]
+	ld c, a
+	ld a, [wTempSpecies + 1]
 	ld b, a
 	call GetDexEntryPointer
 	ld a, b
@@ -227,10 +229,9 @@ GetDexEntryPointer:
 ; return dex entry pointer b:de
 	push hl
 	ld hl, PokedexDataPointerTable
-	ld a, b
-	dec a
-	ld d, 0
-	ld e, a
+	dec c
+	ld d, b
+	ld e, c
 	add hl, de
 	add hl, de
 	add hl, de

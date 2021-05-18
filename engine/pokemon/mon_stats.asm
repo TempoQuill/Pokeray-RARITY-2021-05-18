@@ -197,13 +197,18 @@ GetGender:
 	call z, CloseSRAM
 
 ; We need the gender ratio to do anything with this.
+	push de
 	push bc
+	ld a, [wCurPartySpecies + 1]
+	ld d, a
 	ld a, [wCurPartySpecies]
 	dec a
+	ld e, a
 	ld hl, BaseData + BASE_GENDER
 	ld bc, BASE_DATA_SIZE
 	call AddNTimes
 	pop bc
+	pop de
 
 	ld a, BANK(BaseData)
 	call GetFarByte

@@ -2,6 +2,7 @@ ConvertMon_2to1:
 ; Takes the Gen 2 Pokemon number stored in wTempSpecies,
 ; finds it in the Pokered_MonIndices table,
 ; and returns its index in wTempSpecies.
+; unused as the time capsule links with Gold instead
 	push bc
 	push hl
 	ld a, [wTempSpecies]

@@ -1043,7 +1043,7 @@ BattleAnimCmd_BeatUp:
 
 	ld a, [wBattleAnimParam]
 	ld [wCurPartySpecies], a
-	ld a, [wBattleAnimParam]
+	xor a
 	ld [wCurPartySpecies + 1], a
 
 	ldh a, [hBattleTurn]

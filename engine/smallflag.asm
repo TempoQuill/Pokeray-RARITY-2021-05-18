@@ -1,20 +1,28 @@
 SmallFarFlagAction:
-; Perform action b on bit c in flag array hl.
+; Perform action a on bit c in flag array hl.
 ; If checking a flag, check flag array d:hl unless d is 0.
 
 ; For longer flag arrays, see FlagAction.
 
 	push hl
+	push af
 	push bc
+	push af
 
 ; Divide by 8 to get the byte we want.
 	push bc
+rept 3
+	xor a
 	srl c
-	srl c
-	srl c
-	ld b, 0
+	srl b
+	adc a
+	rra
+	or c
+	ld c, a
+endr
 	add hl, bc
 	pop bc
+	pop af
 
 ; Which bit we want from the byte
 	ld a, c
@@ -32,9 +40,9 @@ SmallFarFlagAction:
 	ld c, a
 
 ; What are we doing to this flag?
-	dec b
+	dec a
 	jr z, .set ; 1 = SET_FLAG
-	dec b
+	dec a
 	jr z, .check ; 2 = CHECK_FLAG
 ; 0 = RESET_FLAG
 
@@ -66,6 +74,7 @@ SmallFarFlagAction:
 
 .done
 	pop bc
+	pop af
 	pop hl
 	ld c, a
 	ret

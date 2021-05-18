@@ -26,6 +26,8 @@ MoveDeletion:
 	jr c, .declined
 	ld a, [wMenuCursorY]
 	push af
+	ld a, [wCurSpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	ld a, [wCurSpecies]
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName

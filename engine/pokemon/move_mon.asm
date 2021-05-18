@@ -29,9 +29,14 @@ TryAddMonToParty:
 	; The terminator is usually here, but it'll be back.
 	ld a, [wCurPartySpecies]
 	ld [de], a
-	; Load the terminator into the next slot.
 	inc de
+	ld a, [wCurPartySpecies + 1]
+	ld [de], a
+	; Load the terminator into the next slot.
 	ld a, -1
+	inc de
+	ld [de], a
+	inc de
 	ld [de], a
 	; Now let's load the OT name.
 	ld hl, wPartyMonOT
@@ -55,6 +60,8 @@ TryAddMonToParty:
 	jr nz, .skipnickname
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 	ld hl, wPartyMonNicknames
 	ldh a, [hMoveMon]
@@ -135,6 +142,7 @@ rept NUM_MOVES - 1
 endr
 	ld [hl], a
 	ld [wEvolutionOldSpecies], a
+	ld [wEvolutionOldSpecies + 1], a
 	predef FillMoves
 
 .next
@@ -198,6 +206,8 @@ endr
 	pop af
 	push de
 	call CheckCaughtMon
+	ld a, [wTempSpecies + 1]
+	ld b, a
 	ld a, [wTempSpecies]
 	dec a
 	call SetSeenAndCaughtMon
@@ -355,6 +365,9 @@ endr
 	ld a, [wMonType]
 	and $f
 	jr nz, .done
+	ld a, [wCurPartySpecies + 1]
+	and a
+	jr nz, .done
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .done
@@ -414,6 +427,8 @@ AddTempmonToParty:
 	add hl, bc
 	ld a, [wCurPartySpecies]
 	ld [hli], a
+	ld a, [wCurPartySpecies + 1]
+	ld [hli], a
 	ld [hl], $ff
 
 	ld hl, wPartyMon1Species
@@ -469,6 +484,9 @@ AddTempmonToParty:
 	ld [hl], BASE_HAPPINESS
 .egg
 
+	ld a, [wCurPartySpecies + 1]
+	and a
+	jr nz, .done
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .done
@@ -530,10 +548,17 @@ SendGetMonIntoFromBox:
 	ld a, [wPokemonWithdrawDepositParameter]
 	cp DAY_CARE_WITHDRAW
 	ld a, [wBreedMon1Species]
+	push af
+	ld a, [wBreedMon1Species + 1]
 	jr z, .okay1
+	pop af
 	ld a, [wCurPartySpecies]
+	push af
+	ld a, [wCurPartySpecies + 1]
 
 .okay1
+	ld [hli], a
+	pop af
 	ld [hli], a
 	ld [hl], $ff
 	ld a, [wPokemonWithdrawDepositParameter]
@@ -791,6 +816,8 @@ RestorePPOfDepositedPokemon:
 RetrieveMonFromDayCareMan:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
+	ld a, [wBreedMon1Species + 1]
+	ld [wCurPartySpecies + 1], a
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
@@ -806,6 +833,8 @@ RetrieveMonFromDayCareMan:
 RetrieveMonFromDayCareLady:
 	ld a, [wBreedMon2Species]
 	ld [wCurPartySpecies], a
+	ld a, [wBreedMon1Species + 1]
+	ld [wCurPartySpecies + 1], a
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
@@ -1010,6 +1039,8 @@ SendMonIntoBox:
 
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 
 	ld de, sBoxMonNicknames
@@ -1074,9 +1105,14 @@ SendMonIntoBox:
 	inc de
 	ld a, [wCurPartyLevel]
 	ld [de], a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	ld a, [wCurPartySpecies]
 	dec a
 	call SetSeenAndCaughtMon
+	ld a, [wCurPartySpecies + 1]
+	and a
+	jr nz, .not_unown
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .not_unown
@@ -1185,15 +1221,20 @@ GiveEgg::
 ; the Egg, reset the flag that was just set by
 ; TryAddMonToParty.
 	pop bc
+	ld a, b
+	and a
+	jr nz, .skip_caught_flag
 	ld a, c
 	and a
 	jr nz, .skip_caught_flag
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	ld a, [wCurPartySpecies]
 	dec a
 	ld c, a
 	ld d, $0
 	ld hl, wPokedexCaught
-	ld b, RESET_FLAG
+	ld a, RESET_FLAG
 	predef SmallFarFlagAction
 
 .skip_caught_flag
@@ -1201,19 +1242,27 @@ GiveEgg::
 ; the Egg, reset the flag that was just set by
 ; TryAddMonToParty.
 	pop bc
+	ld a, b
+	and a
+	jr nz, .skip_seen_flag
 	ld a, c
 	and a
 	jr nz, .skip_seen_flag
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	ld a, [wCurPartySpecies]
 	dec a
 	ld c, a
 	ld d, $0
 	ld hl, wPokedexSeen
-	ld b, RESET_FLAG
+	ld a, RESET_FLAG
 	predef SmallFarFlagAction
 
 .skip_seen_flag
 	pop af
+	ld a, b
+	ld [wCurPartySpecies + 1], a
+	ld a, c
 	ld [wCurPartySpecies], a
 	ld a, [wPartyCount]
 	dec a
@@ -1221,13 +1270,17 @@ GiveEgg::
 	ld hl, wPartyMon1Species
 	call AddNTimes
 	ld a, [wCurPartySpecies]
+	ld [hli], a
+	ld a, [wCurPartySpecies + 1]
 	ld [hl], a
 	ld hl, wPartyCount
 	ld a, [hl]
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld a, EGG
+	ld a, LOW(EGG)
+	ld [hli], a
+	ld a, HIGH(EGG)
 	ld [hl], a
 	ld a, [wPartyCount]
 	dec a
@@ -1681,6 +1734,8 @@ GivePoke::
 .failed
 	ld a, [wCurPartySpecies]
 	ld [wTempEnemyMonSpecies], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wTempEnemyMonSpecies + 1], a
 	callfar LoadEnemyMon
 	call SendMonIntoBox
 	jp nc, .FailedToGiveMon
@@ -1705,6 +1760,9 @@ GivePoke::
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
 	ld [wTempEnemyMonSpecies], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
+	ld [wTempEnemyMonSpecies + 1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer

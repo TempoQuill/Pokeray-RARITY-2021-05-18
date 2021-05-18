@@ -720,8 +720,12 @@ Printer_PrintBoxListSegment:
 	ld a, [de]
 	cp $ff
 	jp z, .finish
+	inc de
 	ld [wNamedObjectIndexBuffer], a
 	ld [wCurPartySpecies], a
+	ld a, [de]
+	ld [wNamedObjectIndexBuffer + 1], a
+	ld [wCurPartySpecies + 1], a
 
 	push bc
 	push hl

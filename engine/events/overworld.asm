@@ -1173,16 +1173,10 @@ FishFunction:
 	dw .FishNoFish
 
 .TryFish:
-	ld a, [wPlayerState]
-	cp PLAYER_SURF
-	jr z, .fail
-	cp PLAYER_SURF_PIKA
-	jr z, .fail
 	call GetFacingTileCoord
 	call GetTileCollision
 	cp WATER_TILE
 	jr z, .facingwater
-.fail
 	ld a, $3
 	ret
 
@@ -1197,13 +1191,21 @@ FishFunction:
 	ld d, a
 	ld a, [wBuffer2]
 	ld e, a
+	push af
 	farcall Fish
+	push af
+	ld a, e
+	and a
+	ld [wTempWildMonSpecies], a
 	ld a, d
+	jr nz, .dontcheck
 	and a
 	jr z, .nonibble
-	ld [wTempWildMonSpecies], a
-	ld a, e
+.dontcheck
+	ld [wTempWildMonSpecies + 1], a
+	pop af
 	ld [wCurPartyLevel], a
+	pop af
 	ld a, BATTLETYPE_FISH
 	ld [wBattleType], a
 	ld a, $2

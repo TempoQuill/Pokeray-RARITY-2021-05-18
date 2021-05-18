@@ -61,6 +61,7 @@ _UnownPrinter:
 	xor a
 	ld [wTempMonDVs], a
 	ld [wTempMonDVs + 1], a
+	ld [wCurPartySpecies + 1], a
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -139,6 +140,7 @@ _UnownPrinter:
 	ld a, UNOWN
 	ld [wCurPartySpecies], a
 	xor a
+	ld [wCurPartySpecies + 1], a
 	ld [wBoxAlignment], a
 	ld de, vTiles2
 	predef GetMonFrontpic

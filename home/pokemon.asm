@@ -102,6 +102,8 @@ _PrepMonFrontpic::
 	ld [wBoxAlignment], a
 	inc a
 	ld [wCurPartySpecies], a
+	xor a
+	ld [wCurPartySpecies + 1], a
 	ret
 
 PlayStereoCry::
@@ -280,7 +282,7 @@ GetBaseData::
 	cp NUM_POKEMON + 1
 	jr c, .skip
 	push hl
-	ld hl, [wBaseDexNo]
+	ld hl, wBaseDexNo
 	add 5
 	ld [hli], a
 	inc [hl]
@@ -290,6 +292,8 @@ GetBaseData::
 .skip
 	ld a, [wCurSpecies]
 	ld [wBaseDexNo], a
+	ld a, [wCurSpecies + 1]
+	ld [wBaseDexNo + 1], a
 
 .done
 	pop af

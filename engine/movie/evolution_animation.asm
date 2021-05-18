@@ -33,6 +33,8 @@ EvolutionAnimation:
 
 	ld a, [wEvolutionOldSpecies]
 	ld [wPlayerHPPal], a
+	ld a, [wEvolutionOldSpecies + 1]
+	ld [wPlayerHPPalBank + 1], a
 
 	ld c, FALSE
 	call .GetSGBLayout
@@ -62,6 +64,9 @@ EvolutionAnimation:
 	ldh [hBGMapMode], a
 
 	ld a, [wEvolutionOldSpecies]
+	ld c, a
+	ld a, [wEvolutionOldSpecies + 1]
+	ld b, a
 	call PlayMonCry
 
 	ld de, MUSIC_EVOLUTION
@@ -95,7 +100,11 @@ EvolutionAnimation:
 	call .ReplaceFrontpic
 
 	ld a, [wEvolutionNewSpecies]
+	ld c, a
+	ld a, [wEvolutionNewSpecies + 1]
 .return
+	ld b, a
+	push bc
 	ld [wPlayerHPPal], a
 
 	ld c, FALSE
@@ -106,6 +115,7 @@ EvolutionAnimation:
 	callfar ClearSpriteAnims
 
 	ld a, [wPlayerHPPal]
+	pop bc
 	call PlayMonCry
 
 	pop af
@@ -131,6 +141,8 @@ EvolutionAnimation:
 	ld [wEvolutionCanceled], a
 
 	ld a, [wEvolutionOldSpecies]
+	ld c, a
+	ld a, [wEvolutionOldSpecies + 1]
 	jr .return
 
 .GetSGBLayout:

@@ -300,15 +300,15 @@ NEXTU
 wc508:: ds 13
 ENDU ; c5d0
 
-; This union spans 280 bytes. (c5d0 - c6e8)
+; This union spans 304 bytes. (c5d0 - c700)
 UNION ; c5d0
 ; pokedex
 wPokedexDataStart::
 wPokedexOrder:: ds $100 ; >= NUM_POKEMON
 wPokedexOrderEnd::
 wDexListingScrollOffset:: db ; offset of the first displayed entry from the start
-wDexListingCursor:: db ; Dex cursor
-wDexListingEnd:: db ; Last mon to display
+wDexListingCursor:: dw ; Dex cursor
+wDexListingEnd:: dw ; Last mon to display
 wDexListingHeight:: db ; number of entries displayed at once in the dex listing
 wCurDexMode:: db ; Pokedex Mode
 wDexSearchMonType1:: db ; first type to search
@@ -323,19 +323,19 @@ wDexCurUnownIndex:: db
 wDexUnownCount:: db
 wDexConvertedMonType:: db ; mon type converted from dex search mon type
 wDexListingScrollOffsetBackup:: db
-wDexListingCursorBackup:: db
-wBackupDexListingCursor:: db
+wDexListingCursorBackup:: dw
+wBackupDexListingCursor:: dw
 wBackupDexListingPage:: db
 wDexCurLocation:: db
 wPokedexDataEnd::
-	ds 3
+	ds 23
 
 NEXTU
 ; pokegear
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
 wPokegearPhoneScrollPosition:: db
-wPokegearPhoneSelectedPerson:: db ; cd3
+wPokegearPhoneSelectedPerson:: db
 wPokegearPhoneSubmenuCursor:: db
 wPokegearMapCursorObjectPointer:: dw
 wPokegearMapCursorLandmark:: db
@@ -427,9 +427,8 @@ wBetaPokerSGBCol:: db
 wBetaPokerSGBRow:: db
 ENDU ; c6e8
 
-ENDU ; c6e8
+ENDU ; c700
 
-	ds 24
 
 
 SECTION "Overworld Map", WRAM0
@@ -1023,12 +1022,15 @@ wBGMapBufferEnd::
 wDefaultSGBLayout:: db ; cc98
 
 wPlayerHPPal:: db ; cc99
+wPlayerHPPalBank:: db
 wEnemyHPPal:: db ; cc9a
+wEnemyHPPalBank:: db
 
 wHPPals:: ds PARTY_LENGTH ; cc9b
 wCurHPPal:: db ; cca1
+wCurHPPalBank:: db
 
-	ds 7
+	ds 4
 
 wSGBPals:: ds 48 ; cca9
 
@@ -1052,7 +1054,7 @@ wBattleAction:: db ; ce52
 	ds 3
 wPlayerLinkAction:: db ; ce56
 wce57:: db
-	ds 3
+	ds 2
 wLinkTimeoutFrames:: dw ; ce5b
 wce5d:: dw
 
@@ -1062,7 +1064,7 @@ wCurSpecies:: dw ; ce60
 
 wNamedObjectTypeBuffer:: db ; ce62
 
-wJumptableIndex:: db ; ce63
+wJumptableIndex:: dw ; ce63
 
 UNION ; ce64
 ; unidentified
@@ -1939,7 +1941,7 @@ wScriptPos:: dw ; d161
 
 wScriptStackSize:: db ; d163
 wScriptStack:: ds 3 * 5 ; d164
-wScriptVar:: db ; d173
+wScriptVar:: dw ; d173
 wScriptDelay:: db ; d174
 
 ; d175
@@ -1950,7 +1952,6 @@ wScriptTextBank::
 wPriorityScriptAddr::
 wScriptTextAddr::
 	dw
-	ds 1
 wWildEncounterCooldown:: db ; d179
 wXYComparePointer:: dw ; c17a
 

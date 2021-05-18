@@ -33,6 +33,7 @@ _NameRater:
 	push af
 	ld a, [wCurPartySpecies + 1]
 	ld [wCurSpecies + 1], a
+	ld [wNamedObjectIndexBuffer + 1], a
 	pop af
 	call GetBaseData
 	ld b, NAME_MON

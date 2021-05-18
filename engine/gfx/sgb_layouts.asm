@@ -177,9 +177,14 @@ LoadSGBLayout:
 	ld [wSGBPals + 5], a
 	ld a, [hl]
 	ld [wSGBPals + 6], a
+	push hl
 	ld a, [wCurPartySpecies]
+	ld l, a
+	ld a, [wCurPartySpecies + 1]
+	ld h, a
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	pop hl
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -210,8 +215,13 @@ LoadSGBLayout:
 	ld [hl], LOW(palred 26 + palgreen 10 + palblue 6)
 	inc hl
 	ld [hl], HIGH(palred 26 + palgreen 10 + palblue 6)
+	push bc
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call GetMonPalettePointer
+	pop bc
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -242,9 +252,14 @@ LoadSGBLayout:
 	ld [hl], LOW(palred 26 + palgreen 10 + palblue 6)
 	inc hl
 	ld [hl], HIGH(palred 26 + palgreen 10 + palblue 6)
+	push hl
 	ld a, [wCurPartySpecies]
+	ld l, a
+	ld a, [wCurPartySpecies + 1]
+	ld h, a
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	pop hl
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -450,7 +465,8 @@ endr
 	call CopyBytes
 	ld a, [wCurPartySpecies]
 	ld l, a
-	ld h, 0
+	ld a, [wCurPartySpecies + 1]
+	ld h, a
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -485,9 +501,14 @@ endr
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
 	call CopyBytes
+	push hl
 	ld a, [wCurPartySpecies]
+	ld l, a
+	ld a, [wCurPartySpecies + 1]
+	ld h, a
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	pop hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
@@ -510,9 +531,14 @@ endr
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
 	call CopyBytes
+	push hl
 	ld a, [wCurPartySpecies]
+	ld l, a
+	ld a, [wCurPartySpecies + 1]
+	ld h, a
 	ld bc, wTempMonDVs
 	call GetFrontpicPalettePointer
+	pop hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]

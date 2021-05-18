@@ -249,6 +249,7 @@ Pokedex_InitMainScreen:
 	call Pokedex_ResetBGMapMode
 	ld a, -1
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	call Pokedex_UpdateCursorOAM
@@ -345,6 +346,9 @@ Pokedex_InitDexEntryScreen:
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	call Pokedex_IncrementDexPointer
 	ret
@@ -414,6 +418,9 @@ Pokedex_ReinitDexEntryScreen:
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	ld hl, wJumptableIndex
 	dec [hl]
@@ -457,8 +464,13 @@ DexEntryScreen_MenuActionJumptable:
 	call Pokedex_RedisplayDexEntry
 	call Pokedex_LoadSelectedMonTiles
 	call WaitBGMap
+	push bc
 	call Pokedex_GetSelectedMon
+	ld a, c
 	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wCurPartySpecies + 1], a
+	pop bc
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	ret
@@ -466,6 +478,9 @@ DexEntryScreen_MenuActionJumptable:
 .Cry:
 	call Pokedex_GetSelectedMon
 	ld a, [wTempSpecies]
+	ld c, a
+	ld a, [wTempSpecies + 1]
+	ld b, a
 	call GetCryIndex
 	ld e, c
 	ld d, b
@@ -744,6 +759,7 @@ Pokedex_InitSearchResultsScreen:
 	call Pokedex_UpdateSearchResultsCursorOAM
 	ld a, -1
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	call Pokedex_IncrementDexPointer
@@ -1485,6 +1501,7 @@ Pokedex_PrintListing:
 	ld d, $0
 	ld hl, wPokedexOrder
 	add hl, de
+	add hl, de
 	ld e, l
 	ld d, h
 	hlcoord 0, 2
@@ -1492,7 +1509,11 @@ Pokedex_PrintListing:
 .loop
 	push af
 	ld a, [de]
+	inc de
 	ld [wTempSpecies], a ; also sets wNamedObjectIndexBuffer
+	ld a, [de]
+	dec de
+	ld [wTempSpecies + 1], a
 	push de
 	push hl
 	call .PrintEntry
@@ -1580,12 +1601,18 @@ Pokedex_GetSelectedMon:
 	ld a, [wDexListingCursor]
 	ld hl, wDexListingScrollOffset
 	add [hl]
-	ld e, a
-	ld d, $0
+	ld c, a
+	ld a, [wDexListingCursor + 1]
+	ld b, a
+	ld e, b
+	ld d, c
 	ld hl, wPokedexOrder
 	add hl, de
-	ld a, [hl]
+	add hl, de
+	ld a, [hli]
 	ld [wTempSpecies], a
+	ld a, [hli]
+	ld [wTempSpecies + 1], a
 	ret
 
 Pokedex_CheckCaught:
@@ -1605,6 +1632,8 @@ Pokedex_CheckCaught:
 Pokedex_CheckSeen:
 	push de
 	push hl
+	ld a, [wTempSpecies + 1]
+	ld b, a
 	ld a, [wTempSpecies]
 	dec a
 	call CheckSeenMon
@@ -1653,10 +1682,13 @@ Pokedex_OrderMonsByMode:
 	ret
 
 .FindLastSeen:
-	ld hl, wPokedexOrder + NUM_POKEMON - 1
+	ld hl, wPokedexOrder + (NUM_POKEMON * 2) - 1
 	ld d, NUM_POKEMON
 	ld e, d
 .loopfindend
+	ld a, [hld]
+	ld [wTempSpecies + 1], a
+	ld b, a
 	ld a, [hld]
 	ld [wTempSpecies], a
 	call Pokedex_CheckSeen
@@ -1679,9 +1711,14 @@ Pokedex_ABCMode:
 	push bc
 	ld a, [de]
 	ld [wTempSpecies], a
+	inc de
+	ld a, [de]
+	ld [wTempSpecies + 1], a
 	call Pokedex_CheckSeen
 	jr z, .skipabc
 	ld a, [wTempSpecies]
+	ld [hli], a
+	ld a, [wTempSpecies + 1]
 	ld [hli], a
 	ld a, [wDexListingEnd]
 	inc a
@@ -1925,6 +1962,9 @@ Pokedex_SearchForMons:
 
 .match_found
 	ld a, [wTempSpecies]
+	ld [de], a
+	inc de
+	ld a, [wTempSpecies + 1]
 	ld [de], a
 	inc de
 	ld a, [wDexSearchResultCount]
@@ -2369,6 +2409,8 @@ Pokedex_LoadSelectedMonTiles:
 	ld [wUnownLetter], a
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wTempSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	call GetBaseData
 	ld de, vTiles2
 	predef GetMonFrontpic
@@ -2397,15 +2439,25 @@ Pokedex_LoadAnyFootprint:
 	srl a
 	srl a
 	srl a
-	ld e, 0
 	ld d, a
+	ld a, [wTempSpecies + 1]
+	and %00000111
+	swap a
+	sla a
+	ld e, a
 	ld a, [wTempSpecies]
 	dec a
 	and %111
 	swap a ; * $10
 	and a
 	ld l, a
-	ld h, 0
+	ld a, [wTempSpecies + 1]
+	dec a
+	and %11111000
+	srl a
+	srl a
+	srl a
+	ld h, a
 	add hl, de
 	ld de, Footprints
 	add hl, de
@@ -2506,6 +2558,8 @@ Pokedex_LoadUnownFrontpicTiles:
 	ld [wUnownLetter], a
 	ld a, UNOWN
 	ld [wCurPartySpecies], a
+	xor a
+	ld [wCurPartySpecies + 1], a
 	call GetBaseData
 	ld de, vTiles2 tile $00
 	predef GetMonFrontpic
@@ -2525,6 +2579,8 @@ _NewPokedexEntry:
 	call Pokedex_LoadAnyFootprint
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
+	ld a, [wTempSpecies + 1]
+	ld [wCurPartySpecies + 1], a
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_DrawFootprint
 	hlcoord 0, 17
@@ -2542,6 +2598,9 @@ _NewPokedexEntry:
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	ret
 

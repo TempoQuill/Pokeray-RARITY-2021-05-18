@@ -738,10 +738,14 @@ StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonDVs
 	call GetUnownLetter
 	hlcoord 0, 0
+	ld a, [wCurPartySpecies + 1]
+	and a
+	jr nz, .not_unown
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr z, .unown
 
+.not_unown
 	call PrepMonFrontpic
 	jr .play_cry
 
@@ -752,6 +756,9 @@ StatsScreen_PlaceFrontpic:
 
 .play_cry
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	pop bc
 	ld b, 1

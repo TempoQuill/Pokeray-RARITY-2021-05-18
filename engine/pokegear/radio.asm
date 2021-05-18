@@ -213,6 +213,9 @@ endr
 	call GetFarByte
 	ld [wNamedObjectIndexBuffer], a
 	ld [wCurPartySpecies], a
+	call GetFarByte
+	ld [wNamedObjectIndexBuffer + 1], a
+	ld [wCurPartySpecies + 1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
@@ -274,6 +277,8 @@ OPT_OakText3:
 OaksPKMNTalk7:
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 	ld hl, OPT_MaryText1
 	ld a, OAKS_POKEMON_TALK_8
@@ -603,17 +608,21 @@ PokedexShow1:
 	ld a, c
 	ld [wCurPartySpecies], a
 	ld [wNamedObjectIndexBuffer], a
+	ld a, b
+	ld [wCurPartySpecies + 1], a
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 	ld hl, PokedexShowText
 	ld a, POKEDEX_SHOW_2
 	jp NextRadioLine
 
 PokedexShow2:
+	ld hl, PokedexDataPointerTable
 	ld a, [wCurPartySpecies]
 	dec a
-	ld hl, PokedexDataPointerTable
 	ld c, a
-	ld b, 0
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	add hl, bc
 	add hl, bc
 	add hl, bc

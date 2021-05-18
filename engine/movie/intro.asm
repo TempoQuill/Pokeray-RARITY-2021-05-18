@@ -1037,17 +1037,17 @@ Functione53eb:
 	ret
 
 Intro_LoadChikoritaPalette:
-	ld c, CHIKORITA
+	lb bc, HIGH(CHIKORITA), LOW(CHIKORITA)
 	farcall Intro_LoadMonPalette
 	ret
 
 Intro_LoadCyndaquilPalette:
-	ld c, CYNDAQUIL
+	lb bc, HIGH(CYNDAQUIL), LOW(CYNDAQUIL)
 	farcall Intro_LoadMonPalette
 	ret
 
 Intro_LoadTotodilePalette:
-	ld c, TOTODILE
+	lb bc, HIGH(TOTODILE), LOW(TOTODILE)
 	farcall Intro_LoadMonPalette
 	ret
 

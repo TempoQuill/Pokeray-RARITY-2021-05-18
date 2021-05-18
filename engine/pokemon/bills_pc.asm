@@ -62,6 +62,7 @@ _DepositPKMN:
 	call PCMonInfo
 	ld a, $ff
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
@@ -117,6 +118,8 @@ _DepositPKMN:
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
@@ -176,6 +179,8 @@ BillsPCDepositFuncStats:
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ret
@@ -305,6 +310,7 @@ _WithdrawPKMN:
 	call PCMonInfo
 	ld a, $ff
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
@@ -359,6 +365,8 @@ _WithdrawPKMN:
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
@@ -417,6 +425,8 @@ BillsPC_Withdraw:
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ret
@@ -546,6 +556,7 @@ _MovePKMNWithoutMail:
 	call PCMonInfo
 	ld a, $ff
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
@@ -610,6 +621,8 @@ _MovePKMNWithoutMail:
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
@@ -664,6 +677,8 @@ _MovePKMNWithoutMail:
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ret
@@ -1021,6 +1036,8 @@ PCMonInfo:
 	ret z
 
 	ld [wTempSpecies], a
+	ld a, [hl]
+	ld [wTempSpecies + 1], a
 	hlcoord 1, 4
 	xor a
 	ld b, 7
@@ -1441,7 +1458,7 @@ BillsPC_GetSelectedPokemonSpecies:
 	add hl, de
 	add hl, de
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ret
 
 BillsPC_UpdateSelectionCursor:
@@ -1667,6 +1684,8 @@ StatsScreenDPad:
 	jr z, StatsScreenDPad
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wTempSpecies], a
+	ld a, [hl]
+	ld [wTempSpecies + 1], a
 	call BillsPC_LoadMonStats
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
@@ -1769,6 +1788,9 @@ DepositPokemon:
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1824,6 +1846,9 @@ TryWithdrawPokemon:
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call PlayMonCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -2104,8 +2129,10 @@ CopySpeciesToTemp:
 	ld c, a
 	ld b, $0
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	ld [wCurPartySpecies], a
+	ld a, [hl]
+	ld [wCurPartySpecies + 1], a
 	ret
 
 CopyNicknameToTemp:

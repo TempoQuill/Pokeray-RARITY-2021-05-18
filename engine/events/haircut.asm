@@ -3,6 +3,8 @@ BillsGrandfather:
 	jr c, .cancel
 	ld a, [wCurPartySpecies]
 	ld [wScriptVar], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wScriptVar + 1], a
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
@@ -10,6 +12,7 @@ BillsGrandfather:
 .cancel
 	xor a
 	ld [wScriptVar], a
+	ld [wScriptVar + 1], a
 	ret
 
 OlderHaircutBrother:

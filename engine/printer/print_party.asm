@@ -36,6 +36,7 @@ PrintPage1:
 	push af
 	ld a, [wTempSpecies]
 	ld b, a
+	ld a, [wTempSpecies + 1]
 	ld c, 1 ; get page 1
 	farcall GetDexEntryPagePointer
 	pop af
@@ -89,6 +90,7 @@ PrintPage2:
 	push af
 	ld a, [wTempSpecies]
 	ld b, a
+	ld a, [wTempSpecies + 1]
 	ld c, 2 ; get page 2
 	farcall GetDexEntryPagePointer
 	pop af

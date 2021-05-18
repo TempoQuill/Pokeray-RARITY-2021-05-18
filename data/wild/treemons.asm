@@ -11,62 +11,72 @@ TreeMons:
 ; Structure:
 ;	db  %, species, level
 
+treemon_set: MACRO
+	db \1
+	dw \2
+	db \3
+ENDM
+
+treemon_ret: MACRO
+	db \1
+ENDM
+
 TreeMonSet_None:
 TreeMonSet_Unused:
 TreeMonSet_City:
 ; common
-	db 50, VENONAT,    15
-	db 30, VENONAT,    15
-	db 10, ABRA,       15
-	db  5, ABRA,       15
-	db  5, VENOMOTH,   15
-	db -1
+	treemon_set 50, VENONAT,    15
+	treemon_set 30, VENONAT,    15
+	treemon_set 10, ABRA,       15
+	treemon_set  5, ABRA,       15
+	treemon_set  5, VENOMOTH,   15
+	treemon_ret
 ; rare
-	db 50, VENONAT,    15
-	db 30, MAGNEMITE,  15
-	db 10, ABRA,       15
-	db  5, ABRA,       15
-	db  5, VENOMOTH,   15
-	db -1
+	treemon_set 50, VENONAT,    15
+	treemon_set 30, MAGNEMITE,  15
+	treemon_set 10, ABRA,       15
+	treemon_set  5, ABRA,       15
+	treemon_set  5, VENOMOTH,   15
+	treemon_ret
 
 TreeMonSet_Forest:
 
 ; common
-	db 50, CATERPIE,   10
-	db 15, CATERPIE,   10
-	db 15, METAPOD,    10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, BUTTERFREE, 10
-	db -1
+	treemon_set 50, CATERPIE,   10
+	treemon_set 15, CATERPIE,   10
+	treemon_set 15, METAPOD,    10
+	treemon_set 10, EXEGGCUTE,  10
+	treemon_set  5, EXEGGCUTE,  10
+	treemon_set  5, BUTTERFREE, 10
+	treemon_ret
 ; rare
-	db 50, CATERPIE,   10
-	db 15, PINECO,     10
-	db 15, PINECO,     10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, BUTTERFREE, 10
-	db -1
+	treemon_set 50, CATERPIE,   10
+	treemon_set 15, PINECO,     10
+	treemon_set 15, PINECO,     10
+	treemon_set 10, EXEGGCUTE,  10
+	treemon_set  5, EXEGGCUTE,  10
+	treemon_set  5, BUTTERFREE, 10
+	treemon_ret
 
 TreeMonSet_Canyon:
 ; common
-	db 50, SPEAROW,    10
-	db 15, SPEAROW,    10
-	db 15, SPEAROW,    10
-	db 10, AIPOM,      10
-	db  5, AIPOM,      10
-	db  5, AIPOM,      10
-	db -1
+	treemon_set 50, SPEAROW,    10
+	treemon_set 15, SPEAROW,    10
+	treemon_set 15, SPEAROW,    10
+	treemon_set 10, AIPOM,      10
+	treemon_set  5, AIPOM,      10
+	treemon_set  5, AIPOM,      10
+	treemon_ret
 ; rare
-	db 50, SPEAROW,    10
-	db 15, HERACROSS,  10
-	db 15, HERACROSS,  10
-	db 10, AIPOM,      10
-	db  5, AIPOM,      10
-	db  5, AIPOM,      10
-	db -1
+	treemon_set 50, SPEAROW,    10
+	treemon_set 15, HERACROSS,  10
+	treemon_set 15, HERACROSS,  10
+	treemon_set 10, AIPOM,      10
+	treemon_set  5, AIPOM,      10
+	treemon_set  5, AIPOM,      10
+	treemon_ret
 
 TreeMonSet_Rock:
-	db 90, KRABBY,     15
-	db 10, SHUCKLE,    15
-	db -1
+	treemon_set 90, KRABBY,     15
+	treemon_set 10, SHUCKLE,    15
+	treemon_ret

@@ -106,6 +106,8 @@ CheckForLuckyNumberWinners:
 	push af
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurPartySpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 	ld hl, .LuckyNumberMatchPartyText
 	pop af
@@ -172,11 +174,15 @@ CheckForLuckyNumberWinners:
 
 .bettermatch
 	dec b
-	ld a, b
+	ld a, c
 	ld [wScriptVar], a
-	pop bc
 	ld a, b
+	ld [wScriptVar + 1], a
+	pop bc
+	ld a, c
 	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wCurPartySpecies + 1], a
 	pop bc
 	scf
 	ret

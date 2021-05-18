@@ -217,13 +217,12 @@ Intro_LoadMonPalette:
 	ldh a, [hSGB]
 	and a
 	ret z
-	ld a, c
-	push af
+	push bc
 	ld hl, PalPacket_a155
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
 	call CopyBytes
-	pop af
+	pop bc
 	call GetMonPalettePointer
 	ld a, [hli]
 	ld [wSGBPals + 3], a
@@ -238,7 +237,6 @@ Intro_LoadMonPalette:
 
 .cgb
 	ld de, wOBPals1
-	ld a, c
 	call GetMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ret
@@ -280,6 +278,9 @@ ApplyMonOrTrainerPals:
 	and a
 	jr z, .get_trainer
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurPartySpecies + 1]
+	ld b, a
 	call GetMonPalettePointer
 	jr .load_palettes
 
@@ -470,6 +471,23 @@ LoadPalette_White_Col1_Col2_Black:
 	inc de
 	ret
 
+Load3ColorPalette:
+	ld a, LOW(PALRGB_WHITE)
+	ld [de], a
+	inc de
+	ld a, HIGH(PALRGB_WHITE)
+	ld [de], a
+	inc de
+
+	ld c, 3 * PAL_COLOR_SIZE
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	ret
+
 FillBoxCGB:
 .row
 	push bc
@@ -608,6 +626,9 @@ GetBattlemonBackpicPalettePointer:
 	ld c, l
 	ld b, h
 	ld a, [wTempBattleMonSpecies]
+	ld c, a
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld b, a
 	call GetPlayerOrMonPalettePointer
 	pop de
 	ret
@@ -618,6 +639,9 @@ GetEnemyFrontpicPalettePointer:
 	ld c, l
 	ld b, h
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wTempEnemyMonSpecies + 1]
+	ld b, a
 	call GetFrontpicPalettePointer
 	pop de
 	ret
@@ -691,8 +715,8 @@ Function9c39: ; unreferenced
 	ret
 
 _GetMonPalettePointer:
-	ld l, a
-	ld h, $0
+	ld l, c
+	ld h, b
 	add hl, hl
 	add hl, hl
 	add hl, hl

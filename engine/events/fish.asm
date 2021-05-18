@@ -1,9 +1,8 @@
 Fish:
 ; Using a fishing rod.
 ; Fish for monsters with rod e in encounter group d.
-; Return monster d at level e.
+; Return monster de at level a.
 
-	push af
 	push bc
 	push hl
 
@@ -18,7 +17,6 @@ endr
 
 	pop hl
 	pop bc
-	pop af
 	ret
 
 .Fish:
@@ -57,15 +55,18 @@ endr
 
 	; Species 0 reads from a time-based encounter table.
 	ld a, [hli]
+	ld e, a
+	ld a, [hli]
 	ld d, a
 	and a
 	call z, .TimeEncounter
 
-	ld e, [hl]
+	ld a, [hl]
 	ret
 
 .no_bite
 	ld de, 0
+	xor a
 	ret
 
 .TimeEncounter:

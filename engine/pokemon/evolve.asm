@@ -25,11 +25,17 @@ EvolveAfterBattle_MasterLoop:
 	pop hl
 
 	inc hl
+	ld a, [hli]
+	cp $ff
+	jp z, .KeepGoing
 	ld a, [hl]
 	cp $ff
 	jp z, .ReturnToMap
 
+.KeepGoing
 	ld [wEvolutionOldSpecies], a
+	ld a, [hl]
+	ld [wEvolutionOldSpecies + 1], a
 
 	push hl
 	ld a, [wCurPartyMon]
@@ -41,9 +47,10 @@ EvolveAfterBattle_MasterLoop:
 	and a
 	jp z, EvolveAfterBattle_MasterLoop
 
+	ld a, [wEvolutionOldSpecies + 1]
+	ld b, a
 	ld a, [wEvolutionOldSpecies]
 	dec a
-	ld b, 0
 	ld c, a
 	ld hl, EvosAttacksPointers
 	add hl, bc
@@ -261,8 +268,10 @@ EvolveAfterBattle_MasterLoop:
 
 	push hl
 
-	ld a, [hl]
+	ld a, [hli]
 	ld [wEvolutionNewSpecies], a
+	ld a, [hl]
+	ld [wEvolutionNewSpecies + 1], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call GetNick
@@ -368,9 +377,15 @@ EvolveAfterBattle_MasterLoop:
 	xor a
 	ld [wMonType], a
 	call LearnLevelMoves
+	ld a, [wTempSpecies + 1]
+	ld b, a
 	ld a, [wTempSpecies]
 	dec a
 	call SetSeenAndCaughtMon
+
+	ld a, [wTempSpecies + 1]
+	and a
+	jr nz, .skip_unown
 
 	ld a, [wTempSpecies]
 	cp UNOWN
@@ -384,6 +399,8 @@ EvolveAfterBattle_MasterLoop:
 	pop de
 	pop hl
 	ld a, [wTempMonSpecies]
+	ld [hli], a
+	ld a, [wTempMonSpecies + 1]
 	ld [hl], a
 	push hl
 	ld l, e
@@ -445,6 +462,8 @@ UpdateSpeciesNameIfNotNicknamed:
 	push hl
 	ld a, [wCurSpecies]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [wCurSpecies + 1]
+	ld [wNamedObjectIndexBuffer + 1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	pop de
@@ -486,10 +505,12 @@ EvolvingText:
 	text_end
 
 LearnLevelMoves:
+	ld a, [wTempSpecies + 1]
+	ld [wCurPartySpecies + 1], a
+	ld b, a
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	dec a
-	ld b, 0
 	ld c, a
 	ld hl, EvosAttacksPointers
 	add hl, bc
@@ -545,6 +566,8 @@ LearnLevelMoves:
 	jr .find_move
 
 .done
+	ld a, [wCurPartySpecies + 1]
+	ld [wTempSpecies + 1], a
 	ld a, [wCurPartySpecies]
 	ld [wTempSpecies], a
 	ret
@@ -556,7 +579,9 @@ FillMoves:
 	push de
 	push bc
 	ld hl, EvosAttacksPointers
-	ld b, 0
+	ld a, [wCurPartySpecies + 1]
+	add a
+	ld b, a
 	ld a, [wCurPartySpecies]
 	dec a
 	add a
@@ -584,9 +609,13 @@ FillMoves:
 	ld a, [wCurPartyLevel]
 	cp b
 	jp c, .done
+	ld a, [wEvolutionOldSpecies + 1]
+	and a
+	jr nz, .check_ceed
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .CheckMove
+.check_ceed
 	ld a, [wceed]
 	cp b
 	jr nc, .GetMove
@@ -617,9 +646,13 @@ FillMoves:
 	ld h, d
 	ld l, e
 	call ShiftMoves
+	ld a, [wEvolutionOldSpecies + 1]
+	and a
+	jr nz, .unshifted
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .ShiftedMove
+.unshifted
 	push de
 	ld bc, wPartyMon1PP - (wPartyMon1Moves + NUM_MOVES - 1)
 	add hl, bc
@@ -634,9 +667,13 @@ FillMoves:
 .LearnMove:
 	ld a, [hl]
 	ld [de], a
+	ld a, [wEvolutionOldSpecies + 1]
+	and a
+	jr nz, .get_moves
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .NextMove
+.get_moves
 	push hl
 	ld a, [hl]
 	ld hl, MON_PP - MON_MOVES
@@ -705,7 +742,12 @@ GetPreEvolution:
 	inc hl
 	ld a, [wCurPartySpecies]
 	cp [hl]
+	jr nz, .not_found_yet
+	inc hl
+	ld a, [wCurPartySpecies + 1]
+	cp [hl]
 	jr z, .found_preevo
+.not_found_yet
 	inc hl
 	ld a, [hl]
 	and a
@@ -723,5 +765,7 @@ GetPreEvolution:
 	inc c
 	ld a, c
 	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wCurPartySpecies + 1], a
 	scf
 	ret

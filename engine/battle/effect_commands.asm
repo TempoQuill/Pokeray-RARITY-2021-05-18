@@ -3670,6 +3670,9 @@ UpdateMoveData:
 	call GetBattleVar
 	ld [wCurSpecies], a
 	ld [wNamedObjectIndexBuffer], a
+	call GetBattleVar
+	ld [wCurSpecies + 1], a
+	ld [wNamedObjectIndexBuffer + 1], a
 
 	dec a
 	call GetMoveData

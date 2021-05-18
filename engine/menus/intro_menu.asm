@@ -71,8 +71,11 @@ _ResetWRAM:
 
 	xor a
 	ld [wRoamMon1Species], a
+	ld [wRoamMon1Species + 1], a
 	ld [wRoamMon2Species], a
+	ld [wRoamMon2Species + 1], a
 	ld [wRoamMon3Species], a
+	ld [wRoamMon3Species + 1], a
 	ld a, -1
 	ld [wRoamMon1MapGroup], a
 	ld [wRoamMon2MapGroup], a
@@ -499,6 +502,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	xor a
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, POKEMON_PROF
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
@@ -539,6 +543,7 @@ OakSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, CAL
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
@@ -561,7 +566,7 @@ OakText1:
 OakText2:
 	text_far _OakText2
 	text_asm
-	ld a, MARILL
+	lb bc, HIGH(MARILL), LOW(MARILL)
 	call PlayMonCry
 	call WaitSFX
 	ld hl, OakText3
@@ -605,6 +610,7 @@ NamePlayer:
 
 	xor a
 	ld [wCurPartySpecies], a
+	ld [wCurPartySpecies + 1], a
 	ld a, CAL
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic

@@ -34,7 +34,7 @@ SetSeenAndCaughtMon::
 	push af
 	ld c, a
 	ld hl, wPokedexCaught
-	ld b, SET_FLAG
+	ld a, SET_FLAG
 	call PokedexFlagAction
 	pop af
 	; fallthrough
@@ -42,7 +42,7 @@ SetSeenAndCaughtMon::
 SetSeenMon::
 	ld c, a
 	ld hl, wPokedexSeen
-	ld b, SET_FLAG
+	ld a, SET_FLAG
 	jr PokedexFlagAction
 
 CheckCaughtMon::
@@ -54,11 +54,11 @@ CheckCaughtMon::
 CheckSeenMon::
 	ld c, a
 	ld hl, wPokedexSeen
-	ld b, CHECK_FLAG
+	ld a, CHECK_FLAG
 	; fallthrough
 
 PokedexFlagAction::
-	ld d, b
+	ld d, a
 	predef SmallFarFlagAction
 	ld a, c
 	and a

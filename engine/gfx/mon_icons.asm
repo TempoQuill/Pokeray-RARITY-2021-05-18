@@ -135,7 +135,7 @@ SetPartyMonIconAnimSpeed:
 	db $80 ; HP_RED
 
 NamingScreen_InitAnimatedMonIcon:
-	ld a, [wTempIconSpecies]
+	ld hl, wTempIconSpecies
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	xor a
@@ -149,7 +149,7 @@ NamingScreen_InitAnimatedMonIcon:
 	ret
 
 MoveList_InitAnimatedMonIcon:
-	ld a, [wTempIconSpecies]
+	ld hl, wTempIconSpecies
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	xor a
@@ -164,7 +164,7 @@ MoveList_InitAnimatedMonIcon:
 	ret
 
 Trade_LoadMonIconGFX:
-	ld a, [wTempIconSpecies]
+	ld hl, wTempIconSpecies
 	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	ld a, $62

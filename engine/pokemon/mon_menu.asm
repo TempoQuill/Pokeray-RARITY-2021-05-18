@@ -460,6 +460,9 @@ ComposeMailMessage:
 	ld a, [wCurPartySpecies]
 	ld [de], a
 	inc de
+	ld a, [wCurPartySpecies + 1]
+	ld [de], a
+	inc de
 	ld a, [wCurItem]
 	ld [de], a
 	ld a, [wCurPartyMon]
@@ -1090,8 +1093,10 @@ SetUpMoveScreenBG:
 	ld d, $0
 	ld hl, wPartySpecies
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ld [wTempIconSpecies], a
+	ld a, [hl]
+	ld [wTempIconSpecies + 1], a
 	ld e, MONICON_MOVES
 	farcall LoadMenuMonIcon
 	hlcoord 0, 1
@@ -1180,15 +1185,22 @@ PlaceMoveData:
 	hlcoord 11, 12
 	ld de, String_MoveAtk
 	call PlaceString
-	ld a, [wCurSpecies]
+	ld a, [wCurSpecies + 1]
 	ld b, a
+	ld a, [wCurSpecies]
+	ld c, a
 	hlcoord 2, 12
 	predef PrintMoveType
+	push de
+	ld a, [wCurSpecies + 1]
+	ld d, a
 	ld a, [wCurSpecies]
 	dec a
+	ld e, a
 	ld hl, Moves + MOVE_POWER
 	ld bc, MOVE_LENGTH
 	call AddNTimes
+	pop de
 	ld a, BANK(Moves)
 	call GetFarByte
 	hlcoord 16, 12
