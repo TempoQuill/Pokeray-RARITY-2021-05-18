@@ -26,6 +26,7 @@ Music_LookWoman_Ch1:
 	volume_envelope 10, 1
 	note A_, 4
 	note G#, 4
+	note F#, 4
 	volume_envelope 10, 4
 	note E_, 12
 	volume_envelope 10, 1
