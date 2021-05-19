@@ -271,7 +271,7 @@ Music_Gym_Ch2:
 	note D_, 3
 	octave 4
 	note A_, 1
-	note A_, 2
+	note A_, 4
 	note G#, 12
 	note F#, 2
 	note G#, 2
