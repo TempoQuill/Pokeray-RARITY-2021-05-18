@@ -686,17 +686,17 @@ Music_Portite_Ch4:
 	sound_call .sub1
 	sound_call .sub1
 .loop1:
+	drum_note 6, 1
 	drum_note 5, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 1
+	drum_note 5, 1
+	drum_note 5, 1
 	drum_note 1, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	sound_loop 15, .loop1
 	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	sound_loop 15, .loop1
 	drum_note 6, 1
+	drum_note 5, 1
 	drum_note 9, 4
 	drum_note 1, 1
 	drum_note 1, 1
@@ -706,34 +706,34 @@ Music_Portite_Ch4:
 	drum_note 9, 4
 .sub1loop1:
 	drum_note 1, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 1
+	drum_note 5, 1
+	drum_note 5, 1
 	drum_note 5, 1
 	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
 	sound_loop 7, .sub1loop1
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
 .sub1loop2:
+	drum_note 6, 1
 	drum_note 5, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 1
+	drum_note 5, 1
+	drum_note 5, 1
 	drum_note 1, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
 	sound_loop 7, .sub1loop2
+	drum_note 6, 1
+	drum_note 1, 1
+	drum_note 5, 1
 	drum_note 5, 1
 	drum_note 1, 1
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 1, 1
-	drum_note 6, 1
+	drum_note 5, 1
 	drum_note 1, 1
 	drum_note 1, 1
 	sound_ret
