@@ -286,6 +286,8 @@ SRAM $03
 	"Backup Save 3"
 SRAM $04
 	"Boxes 15-21"
+SRAM $05
+	"Pokedex"
 HRAM
 	"OAM DMA"
 	"HRAM"

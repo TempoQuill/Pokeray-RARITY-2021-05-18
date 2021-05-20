@@ -211,6 +211,34 @@ sBox19:: box sBox19
 sBox20:: box sBox20
 sBox21:: box sBox21
 
+SECTION "Pokedex", SRAM
+
+sPokedexDataStart:: ; a000
+sPokedexOrder:: ds $300 ; >= NUM_POKEMON
+sPokedexOrderEnd:: ; a300
+sDexListingScrollOffset:: db ; offset of the first displayed entry from the start
+sDexListingCursor:: dw ; a301 ; Dex cursor
+sDexListingEnd:: dw ; a303 ; Last mon to display
+sDexListingHeight:: db ; a305 ; number of entries displayed at once in the dex listing
+sCurDexMode:: db ; a306 ; Pokedex Mode
+sDexSearchMonType1:: db ; a307 ; first type to search
+sDexSearchMonType2:: db ; a308 ; second type to search
+sDexSearchResultCount:: db ; a309
+sDexArrowCursorPosIndex:: db ; a30a
+sDexArrowCursorDelayCounter:: db ; a30b
+sDexArrowCursorBlinkCounter:: db ; a30c
+sDexSearchSlowpokeFrame:: db ; a30d
+sUnlockedUnownMode:: db ; a30e
+sDexCurUnownIndex:: db ; a30f
+sDexUnownCount:: db ; a310
+sDexConvertedMonType:: db ; a311 ; mon type converted from dex search mon type
+sDexListingScrollOffsetBackup:: db ; a312
+sDexListingCursorBackup:: dw ; a313
+sBackupDexListingCursor:: dw ; a315
+sBackupDexListingPage:: db ; a317
+sDexCurLocation:: db ; a318
+sPokedexDataEnd::
+
 
 SECTION "Backup Save 3", SRAM
 
